@@ -1,13 +1,13 @@
-package Statisticslol.TFTlolchess;
+package com.grassparty.tft;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TftLolchessApplication {
+public class TftApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TftLolchessApplication.class, args);
+		SpringApplication.run(TftApplication.class, args);
 	}
 
 }
