@@ -13,6 +13,8 @@ import java.net.URL;
 
 // api_key RGAPI-60a5827e-8baf-453c-b7b8-13ac51ca7d61
 
+// 의현 : RGAPI-60eb9a0a-89d3-472f-aacc-67af1dbcdfd1
+
 @Service
 public class SummonerService {
 
@@ -36,9 +38,31 @@ public class SummonerService {
             e.printStackTrace();
         }
 
+        return summonerDTO;
+    }
+
+
+    public SummonerDTO GetSummonerDTOByname(){
+        URL url = null;
+        SummonerDTO summonerDTO = null;
+
+        try {
+            url = new URL("https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/%EB%B3%91%EA%B7%B8%EB%8B%88?api_key=RGAPI-60eb9a0a-89d3-472f-aacc-67af1dbcdfd1");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            InputStream responseStream = con.getInputStream();
+
+            // Manually converting the response body InputStream to summonerDTO using Jackson
+            ObjectMapper mapper = new ObjectMapper();
+            summonerDTO = mapper.readValue(responseStream, SummonerDTO.class);
+        } catch (MalformedURLException | ProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         return summonerDTO;
     }
-
 }

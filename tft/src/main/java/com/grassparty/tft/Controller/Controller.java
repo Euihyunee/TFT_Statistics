@@ -15,8 +15,6 @@ public class Controller {
 
 
     @GetMapping("/")
-    public SummonerDTO HelloDTO(){
-        return service.GetSummonerDtoByPuuid();
-    }
+    public SummonerDTO helloDTO(){ return service.GetSummonerDTOByname();}
 
 }
