@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.*;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 
 // api_key RGAPI-60a5827e-8baf-453c-b7b8-13ac51ca7d61
 
@@ -43,7 +43,9 @@ public class SummonerService {
     public SummonerDTO GetSummonerDTOByName(String name){
         URL url = null;
         SummonerDTO summonerDTO = null;
-
+        name = "/%EB%B3%91%EA%B7%B8%EB%8B%88";
+        String api_key = "RGAPI-60eb9a0a-89d3-472f-aacc-67af1dbcdfd1";
+        String site = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name";
         try {
             url = new URL("https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/%EB%B3%91%EA%B7%B8%EB%8B%88?api_key=RGAPI-60eb9a0a-89d3-472f-aacc-67af1dbcdfd1");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
