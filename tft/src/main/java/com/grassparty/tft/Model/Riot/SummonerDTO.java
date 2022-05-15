@@ -9,4 +9,8 @@ public class SummonerDTO {
     String id;
     String puuid;
     long summonerLevel;
+
+    public String getPuuid(){
+        return puuid;
+    }
 }
