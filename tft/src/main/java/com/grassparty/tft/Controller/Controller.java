@@ -14,10 +14,13 @@ public class Controller {
     @GetMapping("/")
     public String helloDTO(){ return "hello";}
 
-    @GetMapping(path="/{puuid}")
+    @GetMapping(path="/puuid/{puuid}")
     public SummonerDTO GetDTOByPuuid(@PathVariable String puuid){ return service.GetSummonerDtoByPuuid(puuid);}
 
-    @GetMapping(path="/{name}")
+    @GetMapping(path="/name/{name}")
     public SummonerDTO GetDTOByName(@PathVariable String name){ return service.GetSummonerDTOByName(name);}
+
+    @GetMapping(path="/test/{test}")
+    public String test(@PathVariable String test){ return test;}
 
 }
