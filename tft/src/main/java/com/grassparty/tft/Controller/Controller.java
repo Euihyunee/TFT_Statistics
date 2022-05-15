@@ -3,10 +3,7 @@ package com.grassparty.tft.Controller;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Service.SummonerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
@@ -15,6 +12,12 @@ public class Controller {
 
 
     @GetMapping("/")
-    public SummonerDTO helloDTO(){ return service.GetSummonerDTOByname();}
+    public String helloDTO(){ return "hello";}
+
+    @GetMapping(path="/{puuid}")
+    public SummonerDTO GetDTOByPuuid(@PathVariable String puuid){ return service.GetSummonerDtoByPuuid(puuid);}
+
+    @GetMapping(path="/{name}")
+    public SummonerDTO GetDTOByName(@PathVariable String name){ return service.GetSummonerDTOByName(name);}
 
 }

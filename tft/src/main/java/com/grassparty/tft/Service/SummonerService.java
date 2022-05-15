@@ -6,10 +6,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
+import java.net.*;
+import java.nio.charset.StandardCharsets;
 
 // api_key RGAPI-60a5827e-8baf-453c-b7b8-13ac51ca7d61
 
@@ -18,7 +16,7 @@ import java.net.URL;
 @Service
 public class SummonerService {
 
-    public SummonerDTO GetSummonerDtoByPuuid(){
+    public SummonerDTO GetSummonerDtoByPuuid(String puuid){
         URL url = null;
         SummonerDTO summonerDTO = null;
         try {
@@ -42,7 +40,7 @@ public class SummonerService {
     }
 
 
-    public SummonerDTO GetSummonerDTOByname(){
+    public SummonerDTO GetSummonerDTOByName(String name){
         URL url = null;
         SummonerDTO summonerDTO = null;
 
