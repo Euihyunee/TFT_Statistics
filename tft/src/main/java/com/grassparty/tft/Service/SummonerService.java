@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-// RGAPI-60a5827e-8baf-453c-b7b8-13ac51ca7d61
+// api_key RGAPI-60a5827e-8baf-453c-b7b8-13ac51ca7d61
 
 @Service
 public class SummonerService {
@@ -20,7 +20,7 @@ public class SummonerService {
         URL url = null;
         SummonerDTO summonerDTO = null;
         try {
-            url = new URL("https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/q_-oeF0aCGPhtfcd-qdnr6bmbex4dmcOIFy5LevX4X7LA4LmxzP4ZaxS7zdZkpfP0qp2CwGbibvcFA");
+            url = new URL("https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/q_-oeF0aCGPhtfcd-qdnr6bmbex4dmcOIFy5LevX4X7LA4LmxzP4ZaxS7zdZkpfP0qp2CwGbibvcFA?api_key=RGAPI-60a5827e-8baf-453c-b7b8-13ac51ca7d61");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
 

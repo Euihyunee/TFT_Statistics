@@ -1,6 +1,9 @@
 package com.grassparty.tft.Model.Riot;
 
+import lombok.Data;
+
 // riot api DTO 받이
+@Data
 public class SummonerDTO {
     String accountId;
     int profileIconId;
@@ -9,8 +12,4 @@ public class SummonerDTO {
     String id;
     String puuid;
     long summonerLevel;
-
-    public String getPuuid(){
-        return puuid;
-    }
 }
