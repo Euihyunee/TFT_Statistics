@@ -18,36 +18,25 @@ import java.nio.charset.StandardCharsets;
 public class SummonerService {
 
     public SummonerDTO GetSummonerDtoByPuuid(String puuid){
-        URL url = null;
-        SummonerDTO summonerDTO = null;
-        try {
-            url = new URL("https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/q_-oeF0aCGPhtfcd-qdnr6bmbex4dmcOIFy5LevX4X7LA4LmxzP4ZaxS7zdZkpfP0qp2CwGbibvcFA?api_key=RGAPI-60a5827e-8baf-453c-b7b8-13ac51ca7d61");
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
-
-            InputStream responseStream = con.getInputStream();
-
-            // Manually converting the response body InputStream to summonerDTO using Jackson
-            ObjectMapper mapper = new ObjectMapper();
-            summonerDTO = mapper.readValue(responseStream, SummonerDTO.class);
-
-        } catch (MalformedURLException | ProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return summonerDTO;
+        String api_query = "?api_key=";
+        String api_key = "RGAPI-60eb9a0a-89d3-472f-aacc-67af1dbcdfd1";
+        String site = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/";
+        return getSummonerDTO(puuid, api_query, api_key, site);
     }
 
 
     public SummonerDTO GetSummonerDTOByName(String name){
-        URL url = null;
-        SummonerDTO summonerDTO = null;
         String encodedName = URLEncoder.encode(name, StandardCharsets.UTF_8);
-        String api_key = "?api_key=RGAPI-60eb9a0a-89d3-472f-aacc-67af1dbcdfd1";
+        String api_query = "?api_key=";
+        String api_key = "RGAPI-60eb9a0a-89d3-472f-aacc-67af1dbcdfd1";
         String site = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/";
-        String result = site + encodedName + api_key;
+        return getSummonerDTO(encodedName, api_query, api_key, site);
+    }
+
+    private SummonerDTO getSummonerDTO(String encodedName, String api_query, String api_key, String site) {
+        URL url;
+        SummonerDTO summonerDTO = null;
+        String result = site + encodedName + api_query + api_key;
         try {
             url = new URL(result);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
