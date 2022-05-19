@@ -56,4 +56,8 @@ public class SummonerService {
 
         return summonerDTO;
     }
+
+    public String GetEncode(String name){
+        return URLEncoder.encode(name, StandardCharsets.UTF_8);
+    }
 }

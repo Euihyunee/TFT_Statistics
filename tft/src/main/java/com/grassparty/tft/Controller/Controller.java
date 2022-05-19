@@ -23,4 +23,7 @@ public class Controller {
     @GetMapping(path="/test/{test}")
     public String test(@PathVariable String test){ return test;}
 
+    @GetMapping(path="/UTF-8/{name}")
+    public String GetEncodeByName(@PathVariable String name){ return service.GetEncode(name);}
+
 }
