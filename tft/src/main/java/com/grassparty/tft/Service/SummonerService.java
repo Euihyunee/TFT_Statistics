@@ -21,7 +21,8 @@ public class SummonerService {
         String api_query = "?api_key=";
         String api_key = "RGAPI-60eb9a0a-89d3-472f-aacc-67af1dbcdfd1";
         String site = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/";
-        return getSummonerDTO(puuid, api_query, api_key, site);
+        String encodedUrl = site + puuid + api_query + api_key;
+        return getSummonerDTO(encodedUrl);
     }
 
 
@@ -30,15 +31,15 @@ public class SummonerService {
         String api_query = "?api_key=";
         String api_key = "RGAPI-60eb9a0a-89d3-472f-aacc-67af1dbcdfd1";
         String site = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/";
-        return getSummonerDTO(encodedName, api_query, api_key, site);
+        String encodedUrl = site + encodedName + api_query + api_key;
+        return getSummonerDTO(encodedUrl);
     }
 
-    private SummonerDTO getSummonerDTO(String encodedName, String api_query, String api_key, String site) {
+    private SummonerDTO getSummonerDTO(String encodedUrl) {
         URL url;
         SummonerDTO summonerDTO = null;
-        String result = site + encodedName + api_query + api_key;
         try {
-            url = new URL(result);
+            url = new URL(encodedUrl);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
 
