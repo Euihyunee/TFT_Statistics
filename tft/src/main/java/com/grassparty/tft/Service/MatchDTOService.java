@@ -5,7 +5,7 @@ package com.grassparty.tft.Service;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grassparty.tft.Model.Riot.MatchDTO;
+import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import org.springframework.boot.autoconfigure.cassandra.CassandraProperties;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,7 @@ public class MatchDTOService {
 //        String site_query = "ids?start=0&count=1";
 //        String url = site + puuid + site_query + api_query + api_key;
 //    }
-    public MatchDTO GetMatchDTOByMatchId(String matchid) {
+    public MatchDto GetMatchDTOByMatchId(String matchid) {
         String api_query = "?api_key=";
         String api_key = "RGAPI-14b9bb7b-1eb9-4903-94f7-4dc8a0e6c033";
         String site = "https://asia.api.riotgames.com/tft/match/v1/matches/";
@@ -40,23 +40,24 @@ public class MatchDTOService {
         return GetMatchDTO(url);
     }
     @ResponseBody
-    private MatchDTO GetMatchDTO(String matchurl){
-        MatchDTO matchDTO = null;
-        URL url = null;
-        HttpURLConnection con= null;
-        try{
-            url = new URL(matchurl);
-            con = (HttpURLConnection) url.openConnection();
+    private MatchDto GetMatchDTO(String matchurl){
+        MatchDto matchDto = null;
+        try {
+            URL url = new URL(matchurl);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
-            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"));
 
+            InputStream responseStream = con.getInputStream();
 
+            // Manually converting the response body InputStream to summonerDTO using Jackson
+            ObjectMapper mapper = new ObjectMapper();
+            matchDto = mapper.readValue(responseStream, MatchDto.class);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return matchDTO;
+        return matchDto;
     }
 }

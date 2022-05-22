@@ -1,6 +1,6 @@
 package com.grassparty.tft.Controller;
 
-import com.grassparty.tft.Model.Riot.MatchDTO;
+import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Service.MatchDTOService;
 import com.grassparty.tft.Model.MetaRecordDTO;
@@ -41,6 +41,6 @@ public class Controller {
     public String GetEncodeByName(@PathVariable String name){ return summonerService.GetEncode(name);}
 
     @GetMapping(path="/MatchID/{matchid}")
-    public MatchDTO GetMatchDTO(@PathVariable String matchid){return matchservice.GetMatchDTOByMatchId(matchid);}
+    public MatchDto GetMatchDTO(@PathVariable String matchid){return matchservice.GetMatchDTOByMatchId(matchid);}
 
 }
