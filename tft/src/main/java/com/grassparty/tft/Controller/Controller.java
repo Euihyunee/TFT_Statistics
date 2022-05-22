@@ -16,15 +16,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class Controller {
     @Autowired
-<<<<<<< HEAD
-    private SummonerService service = new SummonerService();
-    @Autowired
-    private MatchDTOService mservice = new MatchDTOService();
-=======
     private SummonerService summonerService = new SummonerService();
     @Autowired
+    private MatchDTOService mservice = new MatchDTOService();
+    @Autowired
     private MetaRecordService metaRecordService = new MetaRecordService();
->>>>>>> 881170932550e1e26f299208f4e2715c3befd4bf
+
 
 
     @GetMapping("/")
