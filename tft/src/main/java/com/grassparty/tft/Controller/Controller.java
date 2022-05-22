@@ -1,14 +1,10 @@
 package com.grassparty.tft.Controller;
 
-<<<<<<< HEAD
 import com.grassparty.tft.Model.Riot.MatchDTO;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Service.MatchDTOService;
-=======
 import com.grassparty.tft.Model.MetaRecordDTO;
-import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Service.MetaRecordService;
->>>>>>> 881170932550e1e26f299208f4e2715c3befd4bf
 import com.grassparty.tft.Service.SummonerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
