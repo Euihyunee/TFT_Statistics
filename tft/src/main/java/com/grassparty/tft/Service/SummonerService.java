@@ -1,6 +1,7 @@
 package com.grassparty.tft.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grassparty.tft.Model.Riot.MatchDTO;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,7 @@ public class SummonerService {
         String encodedUrl = site + encodedName + api_query + api_key;
         return getSummonerDTO(encodedUrl);
     }
+
 
     private SummonerDTO getSummonerDTO(String encodedUrl) {
         URL url;
