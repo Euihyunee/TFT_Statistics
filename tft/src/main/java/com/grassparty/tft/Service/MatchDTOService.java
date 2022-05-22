@@ -3,6 +3,7 @@ package com.grassparty.tft.Service;
 // 병그니 "puuid": "B4ih79LiSu71XEqrD9RyY9RZK5PG5y495cRv9lmGx0emFsYYx32ftAKARxcQ7p4IQM_z-t_pt5qVKA" "counts=q?"
 // matchid : "KR_5927958808"
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grassparty.tft.Model.Riot.MatchDTO;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class MatchDTOService {
             InputStream responseStream = con.getInputStream();
 
             // Manually converting the response body InputStream to summonerDTO using Jackson
-            ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             matchDTO = mapper.readValue(responseStream, MatchDTO.class);
 
         } catch (MalformedURLException | ProtocolException e) {

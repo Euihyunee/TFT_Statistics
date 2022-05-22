@@ -14,7 +14,7 @@ public class Controller {
     @Autowired
     private SummonerService summonerService = new SummonerService();
     @Autowired
-    private MatchDTOService mservice = new MatchDTOService();
+    private MatchDTOService matchservice = new MatchDTOService();
     @Autowired
     private MetaRecordService metaRecordService = new MetaRecordService();
 
@@ -41,6 +41,6 @@ public class Controller {
     public String GetEncodeByName(@PathVariable String name){ return summonerService.GetEncode(name);}
 
     @GetMapping(path="/MatchID/{matchid}")
-    public MatchDTO GetMatchDTO(@PathVariable String matchid){return mservice.GetMatchDTOByMatchId(matchid);}
+    public MatchDTO GetMatchDTO(@PathVariable String matchid){return matchservice.GetMatchDTOByMatchId(matchid);}
 
 }
