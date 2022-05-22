@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class ParticipantDto {
+    String[] augments;
     CompanionDto companion;
     int gold_left;
     int last_round;
