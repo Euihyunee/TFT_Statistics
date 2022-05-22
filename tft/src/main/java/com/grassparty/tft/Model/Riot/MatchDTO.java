@@ -7,6 +7,6 @@ import lombok.Data;
 // riot api DTO 받이, 그냥 object로 받으면 필요없을것같다는 생각이 들었음..
 @Data
 public class MatchDTO {
-    InfoDTO infoDTO;
-    MetadataDTO metadataDTO;
+    InfoDTO info;
+    MetadataDTO metadata;
 }
