@@ -1,6 +1,7 @@
 package com.grassparty.tft.Model.Riot.etc;
 
 public class ParticipantDTO {
+    String[] augments;
     CompanionDTO companion;
     int gold_left;
     int last_round;
