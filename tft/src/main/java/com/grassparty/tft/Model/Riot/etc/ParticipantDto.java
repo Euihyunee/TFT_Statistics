@@ -3,9 +3,8 @@ package com.grassparty.tft.Model.Riot.etc;
 import lombok.Data;
 
 @Data
-public class ParticipantDTO {
-    String[] augments;
-    CompanionDTO companion;
+public class ParticipantDto {
+    CompanionDto companion;
     int gold_left;
     int last_round;
     int level;
@@ -14,6 +13,6 @@ public class ParticipantDTO {
     String puuid;
     float time_eliminated;
     int total_damage_to_players;
-    TraitDTO[] traits;
-    UnitDTO[] units;
+    TraitDto[] traits;
+    UnitDto[] units;
 }

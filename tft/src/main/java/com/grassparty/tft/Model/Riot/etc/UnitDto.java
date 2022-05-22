@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class UnitDTO {
+public class UnitDto {
     int[] items;
     String character_id;
     // String chosen; // ??

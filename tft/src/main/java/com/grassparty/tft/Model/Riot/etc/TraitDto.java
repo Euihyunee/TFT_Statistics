@@ -3,7 +3,7 @@ package com.grassparty.tft.Model.Riot.etc;
 import lombok.Data;
 
 @Data
-public class TraitDTO {
+public class TraitDto {
     String name;
     int num_units;
     int style;
