@@ -1,6 +1,7 @@
 package com.grassparty.tft.Controller;
 
 import com.grassparty.tft.Model.Riot.MatchDto;
+import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Service.MatchDTOService;
 import com.grassparty.tft.Model.MetaRecordDTO;
@@ -23,8 +24,8 @@ public class Controller {
     @GetMapping("/")
     public String helloDTO(){ return "hello";}
 
-    @GetMapping(path="/puuid/{puuid}")
-    public SummonerDTO GetDTOByPuuid(@PathVariable String puuid){ return summonerService.GetSummonerDtoByPuuid(puuid);}
+//    @GetMapping(path="/puuid/{puuid}")
+//    public SummonerDTO GetDTOByPuuid(@PathVariable String puuid){ return summonerService.GetSummonerDtoByPuuid(puuid);}
 
     @GetMapping(path="/name/{name}")
     public SummonerDTO GetDTOByName(@PathVariable String name){ return summonerService.GetSummonerDTOByName(name);}
@@ -42,5 +43,8 @@ public class Controller {
 
     @GetMapping(path="/MatchID/{matchid}")
     public MatchDto GetMatchDTO(@PathVariable String matchid){return matchservice.GetMatchDTOByMatchId(matchid);}
+
+    @GetMapping(path="/puuid/{puuid}")
+    public MatchID getMatchID(@PathVariable String puuid){return matchservice.GetMatchIdByPuuid(puuid);}
 
 }
