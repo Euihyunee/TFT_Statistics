@@ -42,9 +42,8 @@ public class MatchDTOService {
             headers.set("X-Riot-Token", "RGAPI-0c49710a-31e5-4f66-bc0c-887b6da3b71c"); //헤더에 API키 추가
 
             HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-            URI url = URI.create(matchurl);
 
-            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class); //요청을 보내어 결과를 받아옴
+            ResponseEntity<String> response = restTemplate.exchange(matchurl, HttpMethod.GET, entity, String.class); //요청을 보내어 결과를 받아옴
 
             String matches = response.getBody().toString();
             matches = matches.replace("[", "");
