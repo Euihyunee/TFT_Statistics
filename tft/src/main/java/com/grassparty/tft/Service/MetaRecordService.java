@@ -3,6 +3,7 @@ package com.grassparty.tft.Service;
 import com.grassparty.tft.Model.MetaRecordDTO;
 import com.grassparty.tft.Model.MetaTraitDTO;
 import com.grassparty.tft.Model.Riot.etc.UnitDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -32,6 +33,10 @@ public class MetaRecordService {
     public MetaRecordDTO GetDummyDTO(){
         return metaRecordDTOs.get(0);
     }
+    public MetaRecordDTO GetMetaRecordDTO(){
+        return metaRecordDTOs.get(0);
+    }
+
 
 }
 
