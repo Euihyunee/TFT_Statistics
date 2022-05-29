@@ -9,5 +9,4 @@ public class TraitDto {
     int style;
     int tier_current;
     int tier_total;
-
 }
