@@ -5,9 +5,11 @@ import com.grassparty.tft.Model.MetaRecordDTO;
 import com.grassparty.tft.Model.Riot.FullDTO.FullInfoDTO;
 import com.grassparty.tft.Model.Riot.FullDTO.FullMetadataDTO;
 import com.grassparty.tft.Model.Riot.FullDTO.FullParticipantDTO;
+import com.grassparty.tft.Model.Riot.FullDTO.FullUnitDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.etc.InfoDto;
 import com.grassparty.tft.Model.Riot.etc.ParticipantDto;
+import com.grassparty.tft.Model.Riot.etc.UnitDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +52,14 @@ public class ModelConvertService {
             }
         }
         return fullRecordDTO;
+    }
+
+    public FullRecordDTO M_GetFullRecordFromMatchDTO(MatchDto matchDto){
+        // 예시 (getter, setter를 사용하지 말고 생성자로 만드는 방식)
+        UnitDto sampleUnitDto = matchDto.getInfo().getParticipants()[0].getUnits()[0];
+        FullUnitDTO fullUnitDTO = new FullUnitDTO(sampleUnitDto.getItems(), sampleUnitDto.getCharacter_id(), sampleUnitDto.getItemNames(), sampleUnitDto.getRarity(), sampleUnitDto.getTier());
+        
+        return null;
     }
 
     public MetaRecordDTO GetMetaRecordFromFullRecord(FullRecordDTO fullRecordDTO, String puuid){
