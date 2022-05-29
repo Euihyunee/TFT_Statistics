@@ -1,11 +1,13 @@
 package com.grassparty.tft.Controller;
 
+import com.grassparty.tft.Model.FullRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Service.MatchDTOService;
 import com.grassparty.tft.Model.MetaRecordDTO;
 import com.grassparty.tft.Service.MetaRecordService;
+import com.grassparty.tft.Service.ModelConvertService;
 import com.grassparty.tft.Service.SummonerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,8 @@ public class Controller {
     private MatchDTOService matchservice = new MatchDTOService();
     @Autowired
     private MetaRecordService metaRecordService = new MetaRecordService();
+    @Autowired
+    private ModelConvertService modelConvertService = new ModelConvertService();
 
 
 
@@ -46,4 +50,12 @@ public class Controller {
 
     @GetMapping(path="/puuid/{puuid}")
     public MatchID GetMatchID(@PathVariable String puuid){return matchservice.GetMatchIdByPuuid(puuid);}
+
+    // GetFullRecordFromMatchDTO test
+    @GetMapping(path="/test/GetFull")
+    public FullRecordDTO testGetFullRecordFromMatchDTO(){
+        MatchDto matchDto = matchservice.GetMatchDTOByMatchId("KR_5939246621");
+
+        return modelConvertService.GetFullRecordFromMatchDTO(matchDto);
+    }
 }

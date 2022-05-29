@@ -1,8 +1,12 @@
 package com.grassparty.tft.Model.Riot.etc;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ParticipantDto {
     String[] augments;
     CompanionDto companion;

@@ -71,7 +71,7 @@ public class MatchDTOService {
     }
     public MatchDto GetMatchDTOByMatchId(String matchid) {
         String api_query = "?api_key=";
-        String api_key = "RGAPI-0c49710a-31e5-4f66-bc0c-887b6da3b71c";
+        String api_key = "RGAPI-943a2f15-3bf8-48db-a6b9-aab38cce93bd";
         String site = "https://asia.api.riotgames.com/tft/match/v1/matches/";
         String url = site + matchid + api_query + api_key;
         return GetMatchDTO(url);
