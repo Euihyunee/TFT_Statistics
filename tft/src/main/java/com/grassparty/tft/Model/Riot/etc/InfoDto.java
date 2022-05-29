@@ -14,7 +14,7 @@ public class InfoDto {
     String game_version;
     ParticipantDto[] participants;
     String tft_game_type;
-    String tft_set_name;
+    String tft_set_core_name;
     int queue_id;
     int tft_set_number;
 }

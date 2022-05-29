@@ -2,10 +2,13 @@ package com.grassparty.tft.Service;
 
 import com.grassparty.tft.Model.FullRecordDTO;
 import com.grassparty.tft.Model.MetaRecordDTO;
+import com.grassparty.tft.Model.Riot.FullDTO.FullInfoDTO;
+import com.grassparty.tft.Model.Riot.FullDTO.FullMetadataDTO;
 import com.grassparty.tft.Model.Riot.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.etc.InfoDto;
 import com.grassparty.tft.Model.Riot.etc.ParticipantDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
@@ -14,7 +17,12 @@ public class ModelConvertService {
 
     public FullRecordDTO GetFullRecordFromMatchDTO(MatchDto matchDto){
         // Riot DTO인 MatchDTO -> FullRecordDTO 로 변환
-        FullRecordDTO fullRecordDTO = new FullRecordDTO();
+        FullParticipantDTO fullParticipantDTO = new FullParticipantDTO();
+
+        FullInfoDTO fullInfoDTO = new FullInfoDTO(fullParticipantDTO);
+        FullMetadataDTO fullMetadataDTO = new FullMetadataDTO();
+
+        FullRecordDTO fullRecordDTO = new FullRecordDTO(fullInfoDTO, fullMetadataDTO);
 
         fullRecordDTO.getMetadata().setMatch_id(matchDto.getMetadata().getMatch_id());
         fullRecordDTO.getMetadata().setParticipants(matchDto.getMetadata().getParticipants());
@@ -22,7 +30,7 @@ public class ModelConvertService {
         fullRecordDTO.getInfo().setGame_length(matchDto.getInfo().getGame_length());
         int len = matchDto.getInfo().getParticipants().length;
         int i,j;
-        for(i=0; i<len; i++){
+        for(i=0; i<=len-1; i++){
             fullRecordDTO.getInfo().getParticipants()[i].setAugments(matchDto.getInfo().getParticipants()[i].getAugments());
             fullRecordDTO.getInfo().getParticipants()[i].setGold_left(matchDto.getInfo().getParticipants()[i].getGold_left());
             fullRecordDTO.getInfo().getParticipants()[i].setCompanion(matchDto.getInfo().getParticipants()[i].getCompanion());
@@ -32,12 +40,14 @@ public class ModelConvertService {
             fullRecordDTO.getInfo().getParticipants()[i].setPuuid(matchDto.getInfo().getParticipants()[i].getPuuid());
             fullRecordDTO.getInfo().getParticipants()[i].setTime_eliminated(matchDto.getInfo().getParticipants()[i].getTime_eliminated());
             fullRecordDTO.getInfo().getParticipants()[i].setTraits(matchDto.getInfo().getParticipants()[i].getTraits());
-
-            fullRecordDTO.getInfo().getParticipants()[i].getUnits()[i].setCharacter_id(matchDto.getInfo().getParticipants()[i].getUnits()[i].getCharacter_id());
-            fullRecordDTO.getInfo().getParticipants()[i].getUnits()[i].setItemNames(matchDto.getInfo().getParticipants()[i].getUnits()[i].getItemNames());
-            fullRecordDTO.getInfo().getParticipants()[i].getUnits()[i].setItems(matchDto.getInfo().getParticipants()[i].getUnits()[i].getItems());
-            fullRecordDTO.getInfo().getParticipants()[i].getUnits()[i].setRarity(matchDto.getInfo().getParticipants()[i].getUnits()[i].getRarity());
-            fullRecordDTO.getInfo().getParticipants()[i].getUnits()[i].setTier(matchDto.getInfo().getParticipants()[i].getUnits()[i].getTier());
+            int UnitLen = matchDto.getInfo().getParticipants()[i].getUnits().length;
+            for(j=0;j<=UnitLen-1;j++){
+                fullRecordDTO.getInfo().getParticipants()[i].getUnits()[i].setCharacter_id(matchDto.getInfo().getParticipants()[i].getUnits()[i].getCharacter_id());
+                fullRecordDTO.getInfo().getParticipants()[i].getUnits()[i].setItemNames(matchDto.getInfo().getParticipants()[i].getUnits()[i].getItemNames());
+                fullRecordDTO.getInfo().getParticipants()[i].getUnits()[i].setItems(matchDto.getInfo().getParticipants()[i].getUnits()[i].getItems());
+                fullRecordDTO.getInfo().getParticipants()[i].getUnits()[i].setRarity(matchDto.getInfo().getParticipants()[i].getUnits()[i].getRarity());
+                fullRecordDTO.getInfo().getParticipants()[i].getUnits()[i].setTier(matchDto.getInfo().getParticipants()[i].getUnits()[i].getTier());
+            }
         }
         return fullRecordDTO;
     }
