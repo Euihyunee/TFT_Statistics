@@ -1,6 +1,7 @@
 package com.grassparty.tft.Controller;
 
 import com.grassparty.tft.Model.FullRecordDTO;
+import com.grassparty.tft.Model.FullRecordDTOs;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
@@ -28,8 +29,24 @@ public class Controller {
     @GetMapping("/")
     public String helloDTO(){ return "hello";}
 
-    @GetMapping("/GetMatchHistory")
-    public String GetMatchHistory(){ return "hello";}
+    // 인덱스
+    @GetMapping("/GetMatchHistory/{name}")
+    public FullRecordDTOs GetMatchHistoryByName(String name){
+        // puuid 요청
+        String puuid = summonerService.GetSummonerDTOByName(name);
+
+        summonerService.GetSummonerDtoByPuuid(puuid);
+
+        // matchid 받기
+
+        // matchID로 matchDTO 받기 x 15
+
+        // matchDTO FullMatchDTO로 받기
+
+        // FullMatchDTO list 리턴
+        FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();
+        return fullRecordDTOs;
+    }
 
 
 //    @GetMapping(path="/puuid/{puuid}")
