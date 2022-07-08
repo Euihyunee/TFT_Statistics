@@ -21,7 +21,7 @@ public class ModelConvertService {
         // Riot DTO인 MatchDTO -> FullRecordDTO 로 변환
         FullParticipantDTO fullParticipantDTO = new FullParticipantDTO();
 
-        FullInfoDTO fullInfoDTO = new FullInfoDTO(fullParticipantDTO);
+        FullInfoDTO fullInfoDTO = new FullInfoDTO();
         FullMetadataDTO fullMetadataDTO = new FullMetadataDTO();
 
         FullRecordDTO fullRecordDTO = new FullRecordDTO(fullInfoDTO, fullMetadataDTO);
@@ -58,7 +58,7 @@ public class ModelConvertService {
         // 예시 (getter, setter를 사용하지 말고 생성자로 만드는 방식)
         UnitDto sampleUnitDto = matchDto.getInfo().getParticipants()[0].getUnits()[0];
         FullUnitDTO fullUnitDTO = new FullUnitDTO(sampleUnitDto.getItems(), sampleUnitDto.getCharacter_id(), sampleUnitDto.getItemNames(), sampleUnitDto.getRarity(), sampleUnitDto.getTier());
-        
+
         return null;
     }
 

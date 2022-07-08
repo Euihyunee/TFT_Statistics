@@ -31,8 +31,8 @@ public class Controller {
 //    @GetMapping(path="/puuid/{puuid}")
 //    public SummonerDTO GetDTOByPuuid(@PathVariable String puuid){ return summonerService.GetSummonerDtoByPuuid(puuid);}
 
-    @GetMapping(path="/name/{name}")
-    public SummonerDTO GetDTOByName(@PathVariable String name){ return summonerService.GetSummonerDTOByName(name);}
+//    @GetMapping(path="/name/{name}")
+//    public SummonerDTO GetDTOByName(@PathVariable String name){ return summonerService.GetSummonerDTOByName(name);}
 
 
     // 문자열 출력 테스트
@@ -54,8 +54,14 @@ public class Controller {
     // GetFullRecordFromMatchDTO test
     @GetMapping(path="/test/GetFull")
     public FullRecordDTO testGetFullRecordFromMatchDTO(){
-        MatchDto matchDto = matchservice.GetMatchDTOByMatchId("KR_5939246621");
+        MatchDto matchDto = matchservice.GetMatchDTOByMatchId("KR_5988203332");
 
         return modelConvertService.GetFullRecordFromMatchDTO(matchDto);
     }
+//    @GetMapping(path="/name/{name}")
+//    public MatchDto GetMatchDTOByName(@PathVariable String name){
+//        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
+//        MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
+//        return matchservice.GetMatchDTOByMatchId(matchID.toString());
+//    }
 }

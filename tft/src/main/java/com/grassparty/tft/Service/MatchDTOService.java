@@ -26,7 +26,7 @@ public class MatchDTOService {
 
     public MatchID GetMatchIdByPuuid(String puuid){
         String api_query = "&api_key=";
-        String api_key = "RGAPI-0c49710a-31e5-4f66-bc0c-887b6da3b71c";
+        String api_key = "RGAPI-d7b958e1-cf0b-4648-9e13-4fec376b1843";
         String site = "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/";
         String site_query = "/ids?start=0&count=10";
         String url = site + puuid + site_query + api_query + api_key;
@@ -39,7 +39,7 @@ public class MatchDTOService {
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.set("X-Riot-Token", "RGAPI-0c49710a-31e5-4f66-bc0c-887b6da3b71c"); //헤더에 API키 추가
+            headers.set("X-Riot-Token", "RGAPI-d7b958e1-cf0b-4648-9e13-4fec376b1843"); //헤더에 API키 추가
 
             HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 
@@ -71,7 +71,7 @@ public class MatchDTOService {
     }
     public MatchDto GetMatchDTOByMatchId(String matchid) {
         String api_query = "?api_key=";
-        String api_key = "RGAPI-943a2f15-3bf8-48db-a6b9-aab38cce93bd";
+        String api_key = "RGAPI-d7b958e1-cf0b-4648-9e13-4fec376b1843";
         String site = "https://asia.api.riotgames.com/tft/match/v1/matches/";
         String url = site + matchid + api_query + api_key;
         return GetMatchDTO(url);
