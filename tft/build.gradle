@@ -29,6 +29,8 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.modelmapper/modelmapper
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.0'
 
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.0.1")
+
 }
 
 tasks.named('test') {

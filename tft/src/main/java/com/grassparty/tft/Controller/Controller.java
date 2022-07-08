@@ -28,6 +28,10 @@ public class Controller {
     @GetMapping("/")
     public String helloDTO(){ return "hello";}
 
+    @GetMapping("/GetMatchHistory")
+    public String GetMatchHistory(){ return "hello";}
+
+
 //    @GetMapping(path="/puuid/{puuid}")
 //    public SummonerDTO GetDTOByPuuid(@PathVariable String puuid){ return summonerService.GetSummonerDtoByPuuid(puuid);}
 
@@ -35,29 +39,13 @@ public class Controller {
 //    public SummonerDTO GetDTOByName(@PathVariable String name){ return summonerService.GetSummonerDTOByName(name);}
 
 
-    // 문자열 출력 테스트
-    @GetMapping(path="/test/{test}")
-    public String test(@PathVariable String test){ return test;}
-    // 메타레코드 더미데이터 테스트
-    @GetMapping(path="/test/MetaRecord")
-    public MetaRecordDTO test(){ return metaRecordService.GetDummyDTO();}
-    // UTF-8 테스트
-    @GetMapping(path="/UTF-8/{name}")
-    public String GetEncodeByName(@PathVariable String name){ return summonerService.GetEncode(name);}
-
     @GetMapping(path="/MatchID/{matchid}")
     public MatchDto GetMatchDTO(@PathVariable String matchid){return matchservice.GetMatchDTOByMatchId(matchid);}
 
     @GetMapping(path="/puuid/{puuid}")
     public MatchID GetMatchID(@PathVariable String puuid){return matchservice.GetMatchIdByPuuid(puuid);}
 
-    // GetFullRecordFromMatchDTO test
-    @GetMapping(path="/test/GetFull")
-    public FullRecordDTO testGetFullRecordFromMatchDTO(){
-        MatchDto matchDto = matchservice.GetMatchDTOByMatchId("KR_5988203332");
 
-        return modelConvertService.GetFullRecordFromMatchDTO(matchDto);
-    }
 //    @GetMapping(path="/name/{name}")
 //    public MatchDto GetMatchDTOByName(@PathVariable String name){
 //        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
