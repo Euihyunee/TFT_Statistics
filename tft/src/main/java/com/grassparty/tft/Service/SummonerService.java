@@ -10,12 +10,9 @@ import java.net.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-// api_key RGAPI-60a5827e-8baf-453c-b7b8-13ac51ca7d61
-
-// 의현 : RGAPI-60eb9a0a-89d3-472f-aacc-67af1dbcdfd1
-
 @Service
 public class SummonerService {
+    // api 키
     private String api_key = "RGAPI-1374a973-0f55-4f62-bff4-a39218465c23";
 
 
