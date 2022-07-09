@@ -1,8 +1,12 @@
 package com.grassparty.tft.Controller;
 
 import com.grassparty.tft.Model.FullRecordDTO;
+import com.grassparty.tft.Model.FullRecordDTOs;
 import com.grassparty.tft.Model.MetaRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
+import com.grassparty.tft.Model.Riot.MatchDtos;
+import com.grassparty.tft.Model.Riot.MatchID;
+import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Service.MatchDTOService;
 import com.grassparty.tft.Service.MetaRecordService;
 import com.grassparty.tft.Service.ModelConvertService;
@@ -45,6 +49,24 @@ public class TestController {
         MatchDto matchDto = matchservice.GetMatchDTOByMatchId("KR_5988203332");
 
         return modelConvertService.GetFullRecordFromMatchDTO(matchDto);
+    }
+
+    @GetMapping("/GetMatchHistory/{name}")
+    public FullRecordDTOs GetMatchHistoryByName(@PathVariable String name){
+        // puuid 요청
+        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
+
+        // matchid 받기
+        MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
+
+        // matchID로 matchDTO 받기 x 15
+        MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
+
+        // matchDTO FullMatchDTO로 받기
+
+        // FullMatchDTO list 리턴
+        FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();
+        return fullRecordDTOs;
     }
 
 }

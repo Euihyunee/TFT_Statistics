@@ -5,6 +5,7 @@ package com.grassparty.tft.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grassparty.tft.Model.Riot.MatchDto;
+import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -23,10 +24,10 @@ import java.util.List;
 
 @Service
 public class MatchDTOService {
+    private String api_key = "RGAPI-1374a973-0f55-4f62-bff4-a39218465c23";
 
     public MatchID GetMatchIdByPuuid(String puuid){
         String api_query = "&api_key=";
-        String api_key = "RGAPI-d7b958e1-cf0b-4648-9e13-4fec376b1843";
         String site = "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/";
         String site_query = "/ids?start=0&count=10";
         String url = site + puuid + site_query + api_query + api_key;
@@ -39,7 +40,7 @@ public class MatchDTOService {
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.set("X-Riot-Token", "RGAPI-d7b958e1-cf0b-4648-9e13-4fec376b1843"); //헤더에 API키 추가
+            headers.set("X-Riot-Token", "RGAPI-1374a973-0f55-4f62-bff4-a39218465c23"); //헤더에 API키 추가
 
             HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 
@@ -50,7 +51,7 @@ public class MatchDTOService {
             matches = matches.replace("]", "");
             matches = matches.replace("\"", "");
             String[] matchList = matches.split(",");
-            matchID.setMatchid(List.of(matchList));
+            matchID.setMatchid(matchList);
 //            HttpURLConnection con = (HttpURLConnection) url.openConnection();
 //            con.setRequestMethod("GET");
 
@@ -69,12 +70,31 @@ public class MatchDTOService {
         }
         return matchID;
     }
+    // 1개
     public MatchDto GetMatchDTOByMatchId(String matchid) {
         String api_query = "?api_key=";
-        String api_key = "RGAPI-d7b958e1-cf0b-4648-9e13-4fec376b1843";
         String site = "https://asia.api.riotgames.com/tft/match/v1/matches/";
         String url = site + matchid + api_query + api_key;
         return GetMatchDTO(url);
+    }
+    // 여러개
+    public MatchDtos GetMatchDTOByMatchIds(MatchID matchids) {
+        String api_query = "?api_key=";
+        String site = "https://asia.api.riotgames.com/tft/match/v1/matches/";
+        String url;
+
+        // 이거 이상함
+        MatchDtos matchDtos = new MatchDtos();
+        MatchDto matchDto = new MatchDto();
+
+        // 적제
+        for(int i =0; i< matchids.getMatchid().length; i++){
+            url = site + matchids.getMatchid()[i] + api_query + api_key;
+            matchDto = GetMatchDTO(url);
+            matchDtos.PushMatchDto(matchDto);
+        }
+
+        return matchDtos;
     }
     @ResponseBody
     private MatchDto GetMatchDTO(String matchurl){

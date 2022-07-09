@@ -7,5 +7,5 @@ import java.util.List;
 
 @Data
 public class MatchID {
-    List<String> matchid;
+    String[] matchid;
 }

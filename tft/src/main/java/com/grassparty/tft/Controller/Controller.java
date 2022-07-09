@@ -3,6 +3,7 @@ package com.grassparty.tft.Controller;
 import com.grassparty.tft.Model.FullRecordDTO;
 import com.grassparty.tft.Model.FullRecordDTOs;
 import com.grassparty.tft.Model.Riot.MatchDto;
+import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Service.MatchDTOService;
@@ -33,13 +34,13 @@ public class Controller {
     @GetMapping("/GetMatchHistory/{name}")
     public FullRecordDTOs GetMatchHistoryByName(String name){
         // puuid 요청
-        String puuid = summonerService.GetSummonerDTOByName(name);
-
-        summonerService.GetSummonerDtoByPuuid(puuid);
+        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
 
         // matchid 받기
+        MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
 
         // matchID로 matchDTO 받기 x 15
+        MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
 
         // matchDTO FullMatchDTO로 받기
 
@@ -63,10 +64,4 @@ public class Controller {
     public MatchID GetMatchID(@PathVariable String puuid){return matchservice.GetMatchIdByPuuid(puuid);}
 
 
-//    @GetMapping(path="/name/{name}")
-//    public MatchDto GetMatchDTOByName(@PathVariable String name){
-//        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
-//        MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
-//        return matchservice.GetMatchDTOByMatchId(matchID.toString());
-//    }
 }

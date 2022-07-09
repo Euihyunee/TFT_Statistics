@@ -16,10 +16,11 @@ import java.nio.charset.StandardCharsets;
 
 @Service
 public class SummonerService {
+    private String api_key = "RGAPI-1374a973-0f55-4f62-bff4-a39218465c23";
+
 
     public SummonerDTO GetSummonerDtoByPuuid(String puuid){
         String api_query = "?api_key=";
-        String api_key = "RGAPI-d7b958e1-cf0b-4648-9e13-4fec376b1843";
         String site = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/";
         String encodedUrl = site + puuid + api_query + api_key;
         return getSummonerDTO(encodedUrl);
@@ -29,7 +30,6 @@ public class SummonerService {
     public SummonerDTO GetSummonerDTOByName(String name){
         String encodedName = URLEncoder.encode(name, StandardCharsets.UTF_8);
         String api_query = "?api_key=";
-        String api_key = "RGAPI-d7b958e1-cf0b-4648-9e13-4fec376b1843";
         String site = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/";
         String encodedUrl = site + encodedName + api_query + api_key;
         return getSummonerDTO(encodedUrl);
