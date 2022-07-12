@@ -31,7 +31,7 @@ public class ModelConvertService {
 
     public FullRecordDTO GetFullRecordFromMatchDTO(MatchDto matchDto){
         // Riot DTO인 MatchDTO -> FullRecordDTO 로 변환
-        FullParticipantDTO fullParticipantDTO = new FullParticipantDTO();
+        FullParticipantDTO fullParticipantDTO;
         FullParticipantDTO[] fullParticipantDTOS = new FullParticipantDTO[8];
         FullRecordDTO fullRecordDTO = new FullRecordDTO();
 
@@ -41,6 +41,7 @@ public class ModelConvertService {
 
         int len = matchDto.getInfo().getParticipants().length;
         for(int i=0; i<len; i++){
+            fullParticipantDTO = new FullParticipantDTO();
             fullParticipantDTO.setAugments(matchDto.getInfo().getParticipants()[i].getAugments());
             fullParticipantDTO.setGold_left(matchDto.getInfo().getParticipants()[i].getGold_left());
             fullParticipantDTO.setCompanion(matchDto.getInfo().getParticipants()[i].getCompanion());
@@ -86,8 +87,30 @@ public class ModelConvertService {
 
     public MetaRecordDTO GetMetaRecordFromFullRecord(FullRecordDTO fullRecordDTO, String puuid){
         // FullRecordDTO -> MetaRecordDTO 로 변환
+        MetaRecordDTO metaRecordDTO = new MetaRecordDTO();
 
-        return null;
+        FullParticipantDTO fullParticipantDTO = GetFullParticipantDTOByPuuidFromFullRecordDTO(fullRecordDTO, puuid);
+
+        metaRecordDTO.setPlacement(fullParticipantDTO.getPlacement());
+        metaRecordDTO.setTime_eliminated(fullParticipantDTO.getTime_eliminated());
+        metaRecordDTO.setTraits(fullParticipantDTO.getTraits());
+        metaRecordDTO.setAugments(fullParticipantDTO.getAugments());
+        metaRecordDTO.setUnitDTO(fullParticipantDTO.getUnits());
+        //metaRecordDTO.setParticipantName();
+
+        return metaRecordDTO;
+    }
+
+    public FullParticipantDTO GetFullParticipantDTOByPuuidFromFullRecordDTO(FullRecordDTO fullRecordDTO, String puuid){
+        int index =0;
+        for(String id : fullRecordDTO.getParticipantsPuuid()){
+            if(puuid.equals(id)){
+                break;
+            }
+            index++;
+        }
+        return fullRecordDTO.getParticipants()[index];
+
     }
 
 }
