@@ -32,7 +32,7 @@ public class Controller {
 
     // 인덱스
     @GetMapping("/GetMatchHistory/{name}")
-    public FullRecordDTOs GetMatchHistoryByName(String name){
+    public FullRecordDTOs GetMatchHistoryByName(@PathVariable String name){
         // puuid 요청
         SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
 
@@ -43,9 +43,10 @@ public class Controller {
         MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
 
         // matchDTO FullMatchDTO로 받기
+        FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();
+        fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
 
         // FullMatchDTO list 리턴
-        FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();
         return fullRecordDTOs;
     }
 

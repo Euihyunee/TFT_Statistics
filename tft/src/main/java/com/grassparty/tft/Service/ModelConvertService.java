@@ -1,21 +1,34 @@
 package com.grassparty.tft.Service;
 
 import com.grassparty.tft.Model.FullRecordDTO;
+import com.grassparty.tft.Model.FullRecordDTOs;
 import com.grassparty.tft.Model.MetaRecordDTO;
-import com.grassparty.tft.Model.Riot.FullDTO.FullInfoDTO;
-import com.grassparty.tft.Model.Riot.FullDTO.FullMetadataDTO;
-import com.grassparty.tft.Model.Riot.FullDTO.FullParticipantDTO;
-import com.grassparty.tft.Model.Riot.FullDTO.FullUnitDTO;
+import com.grassparty.tft.Model.FullDTO.FullInfoDTO;
+import com.grassparty.tft.Model.FullDTO.FullMetadataDTO;
+import com.grassparty.tft.Model.FullDTO.FullParticipantDTO;
+import com.grassparty.tft.Model.FullDTO.FullUnitDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
-import com.grassparty.tft.Model.Riot.etc.InfoDto;
-import com.grassparty.tft.Model.Riot.etc.ParticipantDto;
+import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.etc.UnitDto;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class ModelConvertService {
+
+    public FullRecordDTOs GetFullRecordsFromMatchDTOs(MatchDtos matchDtos){
+        FullRecordDTO fullRecordDTO = new FullRecordDTO();
+        FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();
+        int count;
+        for(int i =0; i < matchDtos.getMatchDtos().toArray().length; i++){
+            fullRecordDTO = GetFullRecordFromMatchDTO(matchDtos.getMatchDtos().get(i));
+            count = fullRecordDTOs.getFullRecordDTOs().length;
+            fullRecordDTOs.getFullRecordDTOs()[count] = fullRecordDTO;
+        }
+        System.out.println("이거 실행봐나");
+
+        return fullRecordDTOs;
+    }
 
     public FullRecordDTO GetFullRecordFromMatchDTO(MatchDto matchDto){
         // Riot DTO인 MatchDTO -> FullRecordDTO 로 변환

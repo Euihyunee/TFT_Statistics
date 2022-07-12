@@ -24,7 +24,7 @@ import java.util.List;
 
 @Service
 public class MatchDTOService {
-    private String api_key = "RGAPI-1374a973-0f55-4f62-bff4-a39218465c23";
+    private String api_key = "RGAPI-81548aeb-4b9a-42b1-aad5-3583b75f425c";
 
     public MatchID GetMatchIdByPuuid(String puuid){
         String api_query = "&api_key=";
@@ -40,7 +40,7 @@ public class MatchDTOService {
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.set("X-Riot-Token", "RGAPI-1374a973-0f55-4f62-bff4-a39218465c23"); //헤더에 API키 추가
+            headers.set("X-Riot-Token", api_key); //헤더에 API키 추가
 
             HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 

@@ -51,8 +51,24 @@ public class TestController {
         return modelConvertService.GetFullRecordFromMatchDTO(matchDto);
     }
 
+    //
+    @GetMapping("/test1/{name}")
+    public SummonerDTO test1(String name) {
+        // puuid 요청
+        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
+        return summonerDTO;
+    }
+
+    @GetMapping("/test2/{name}")
+    public MatchID test1(SummonerDTO summonerDTO) {
+        // matchid 받기
+        MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
+        return matchID;
+    }
+
+    // 인덱스
     @GetMapping("/GetMatchHistory/{name}")
-    public FullRecordDTOs GetMatchHistoryByName(@PathVariable String name){
+    public FullRecordDTOs testGetMatchHistoryByName(String name){
         // puuid 요청
         SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
 
@@ -63,10 +79,10 @@ public class TestController {
         MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
 
         // matchDTO FullMatchDTO로 받기
+        FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();
+        fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
 
         // FullMatchDTO list 리턴
-        FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();
         return fullRecordDTOs;
     }
-
 }
