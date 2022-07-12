@@ -39,11 +39,11 @@ public class Controller {
         // matchid 받기
         MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
 
-        // matchID로 matchDTO 받기 x 15
+        // matchID로 matchDTO 받기 x 10
         MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
 
         // matchDTO FullMatchDTO로 받기
-        FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();
+        FullRecordDTOs fullRecordDTOs;
         fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
 
         // FullMatchDTO list 리턴

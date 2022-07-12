@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FullRecordDTOs {
-    FullRecordDTO[] fullRecordDTOs = new FullRecordDTO[20];
+    FullRecordDTO[] fullRecordDTOs = new FullRecordDTO[10];
     int count=0;
 
     public void add(FullRecordDTO fullRecordDTO){

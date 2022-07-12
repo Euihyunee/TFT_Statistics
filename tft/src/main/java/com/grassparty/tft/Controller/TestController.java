@@ -114,7 +114,7 @@ public class TestController {
 
     // 인덱스
     @GetMapping("/GetMatchHistory/{name}")
-    public FullRecordDTOs testGetMatchHistoryByName(String name){
+    public FullRecordDTOs testGetMatchHistoryByName(@PathVariable String name){
         // puuid 요청
         SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
 

@@ -9,6 +9,7 @@ import com.grassparty.tft.Model.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.FullDTO.FullUnitDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchDtos;
+import com.grassparty.tft.Model.Riot.etc.ParticipantDto;
 import com.grassparty.tft.Model.Riot.etc.UnitDto;
 import org.springframework.stereotype.Service;
 
@@ -49,30 +50,38 @@ public class ModelConvertService {
             // fullRecordDTO.getParticipants()[i].setPuuid(matchDto.getInfo().getParticipants()[i].getPuuid());
             fullParticipantDTO.setTime_eliminated(matchDto.getInfo().getParticipants()[i].getTime_eliminated());
             fullParticipantDTO.setTraits(matchDto.getInfo().getParticipants()[i].getTraits());
+
+
             int UnitLen = matchDto.getInfo().getParticipants()[i].getUnits().length;
-            /*for(int j=0; j<UnitLen; j++){
-                if(matchDto.getInfo().getParticipants()[i].getUnits()[j].getItems()!= null){
-                    fullParticipantDTO.getUnits()[j].setItems(matchDto.getInfo().getParticipants()[i].getUnits()[j].getItems());
+            FullUnitDTO[] fullUnitDTOS = new FullUnitDTO[12];
+
+            for(int j=0; j<UnitLen; j++){
+                try{
+                    fullUnitDTOS[j] = GetFullUnitDTOFromUnitDto(matchDto.getInfo().getParticipants()[i].getUnits()[j]);
                 }
-                if(matchDto.getInfo().getParticipants()[i].getUnits()[j].getCharacter_id()!= null){
-                    fullParticipantDTO.getUnits()[j].setCharacter_id(matchDto.getInfo().getParticipants()[i].getUnits()[j].getCharacter_id());
+                catch (NullPointerException e){
+
                 }
-                if(matchDto.getInfo().getParticipants()[i].getUnits()[j].getItemNames()!= null){
-                    fullParticipantDTO.getUnits()[j].setItemNames(matchDto.getInfo().getParticipants()[i].getUnits()[j].getItemNames());
-                }
-                if(matchDto.getInfo().getParticipants()[i].getUnits()[j].getItemNames() != null){
-                    fullParticipantDTO.getUnits()[j].setItemNames(matchDto.getInfo().getParticipants()[i].getUnits()[j].getItemNames());
-                }
-                if(matchDto.getInfo().getParticipants()[i].getUnits()[j].getTier() != 0){
-                    fullParticipantDTO.getUnits()[j].setTier(matchDto.getInfo().getParticipants()[i].getUnits()[j].getTier());
-                }
-            }*/
+            }
+            fullParticipantDTO.setUnits(fullUnitDTOS);
             fullParticipantDTOS[i]= fullParticipantDTO;
 
         }
         fullRecordDTO.setParticipants(fullParticipantDTOS);
 
         return fullRecordDTO;
+    }
+
+    public FullUnitDTO GetFullUnitDTOFromUnitDto(UnitDto unitDto){
+        FullUnitDTO fullUnitDTO = new FullUnitDTO();
+
+        fullUnitDTO.setItems(unitDto.getItems());
+        fullUnitDTO.setCharacter_id(unitDto.getCharacter_id());
+        fullUnitDTO.setItemNames(unitDto.getItemNames());
+        fullUnitDTO.setRarity(unitDto.getRarity());
+        fullUnitDTO.setTier(unitDto.getTier());
+
+        return fullUnitDTO;
     }
 
     public MetaRecordDTO GetMetaRecordFromFullRecord(FullRecordDTO fullRecordDTO, String puuid){
