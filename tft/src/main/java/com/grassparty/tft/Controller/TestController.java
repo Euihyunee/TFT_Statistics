@@ -53,17 +53,62 @@ public class TestController {
 
     //
     @GetMapping("/test1/{name}")
-    public SummonerDTO test1(String name) {
+    public SummonerDTO test1(@PathVariable String name) {
         // puuid 요청
         SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
         return summonerDTO;
+
+        // matchid 받기
+        //MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
+
+        // matchID로 matchDTO 받기 x 15
+        //MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
     }
 
     @GetMapping("/test2/{name}")
-    public MatchID test1(SummonerDTO summonerDTO) {
+    public MatchID test2(@PathVariable String name) {
+        // puuid 요청
+        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
+
         // matchid 받기
         MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
         return matchID;
+    }
+
+    @GetMapping("/test3/{name}")
+    public MatchDtos test3(@PathVariable String name) {
+        // puuid 요청
+        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
+
+        // matchid 받기
+        MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
+
+        // matchID로 matchDTO 받기 x 15
+        MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
+
+        return matchDtos;
+    }
+
+    @GetMapping("/test4/{name}")
+    public FullRecordDTOs test4(@PathVariable String name) {
+        // puuid 요청
+        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
+
+        // matchid 받기
+        MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
+
+        // matchID로 matchDTO 받기 x 15
+        MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
+
+        // matchDTO FullMatchDTO로 받기
+        FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();
+        FullRecordDTO fullRecordDTO;
+        // fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
+        fullRecordDTO = modelConvertService.GetFullRecordFromMatchDTO(matchDtos.getMatchDtos().get(0));
+        fullRecordDTOs.add(fullRecordDTO);
+
+        // FullMatchDTO list 리턴
+        return fullRecordDTOs;
     }
 
     // 인덱스
@@ -79,7 +124,7 @@ public class TestController {
         MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
 
         // matchDTO FullMatchDTO로 받기
-        FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();
+        FullRecordDTOs fullRecordDTOs;
         fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
 
         // FullMatchDTO list 리턴
