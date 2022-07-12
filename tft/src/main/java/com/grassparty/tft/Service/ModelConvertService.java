@@ -22,10 +22,8 @@ public class ModelConvertService {
         int count =0;
         for(int i =0; i < matchDtos.getMatchDtos().toArray().length; i++){
             fullRecordDTO = GetFullRecordFromMatchDTO(matchDtos.getMatchDtos().get(i));
-            count = fullRecordDTOs.getFullRecordDTOs().length;
-            fullRecordDTOs.getFullRecordDTOs()[count] = fullRecordDTO;
+            fullRecordDTOs.add(fullRecordDTO);
         }
-        System.out.println("이거 실행봐나");
 
         return fullRecordDTOs;
     }
@@ -41,8 +39,7 @@ public class ModelConvertService {
         fullRecordDTO.setGame_length(matchDto.getInfo().getGame_length());
 
         int len = matchDto.getInfo().getParticipants().length;
-        int i,j;
-        for(i=0; i<len; i++){
+        for(int i=0; i<len; i++){
             fullParticipantDTO.setAugments(matchDto.getInfo().getParticipants()[i].getAugments());
             fullParticipantDTO.setGold_left(matchDto.getInfo().getParticipants()[i].getGold_left());
             fullParticipantDTO.setCompanion(matchDto.getInfo().getParticipants()[i].getCompanion());
@@ -53,7 +50,7 @@ public class ModelConvertService {
             fullParticipantDTO.setTime_eliminated(matchDto.getInfo().getParticipants()[i].getTime_eliminated());
             fullParticipantDTO.setTraits(matchDto.getInfo().getParticipants()[i].getTraits());
             int UnitLen = matchDto.getInfo().getParticipants()[i].getUnits().length;
-            for(j=0; j<UnitLen; j++){
+            /*for(int j=0; j<UnitLen; j++){
                 if(matchDto.getInfo().getParticipants()[i].getUnits()[j].getItems()!= null){
                     fullParticipantDTO.getUnits()[j].setItems(matchDto.getInfo().getParticipants()[i].getUnits()[j].getItems());
                 }
@@ -69,8 +66,7 @@ public class ModelConvertService {
                 if(matchDto.getInfo().getParticipants()[i].getUnits()[j].getTier() != 0){
                     fullParticipantDTO.getUnits()[j].setTier(matchDto.getInfo().getParticipants()[i].getUnits()[j].getTier());
                 }
-
-            }
+            }*/
             fullParticipantDTOS[i]= fullParticipantDTO;
 
         }

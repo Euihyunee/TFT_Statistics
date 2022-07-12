@@ -102,10 +102,11 @@ public class TestController {
 
         // matchDTO FullMatchDTO로 받기
         FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();
-        FullRecordDTO fullRecordDTO;
-        // fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
-        fullRecordDTO = modelConvertService.GetFullRecordFromMatchDTO(matchDtos.getMatchDtos().get(0));
-        fullRecordDTOs.add(fullRecordDTO);
+        FullRecordDTO fullRecordDTO = new FullRecordDTO();
+
+        fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
+        // fullRecordDTO = modelConvertService.GetFullRecordFromMatchDTO(matchDtos.getMatchDtos().get(0));
+        // fullRecordDTOs.add(fullRecordDTO);
 
         // FullMatchDTO list 리턴
         return fullRecordDTOs;
