@@ -10,6 +10,7 @@ import com.grassparty.tft.Service.MatchDTOService;
 import com.grassparty.tft.Model.MetaRecordDTO;
 import com.grassparty.tft.Service.MetaRecordService;
 import com.grassparty.tft.Service.ModelConvertService;
+import com.grassparty.tft.Service.RepositoryService.FullRecordRepositoryCreate;
 import com.grassparty.tft.Service.SummonerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,9 @@ public class Controller {
     private MetaRecordService metaRecordService = new MetaRecordService();
     @Autowired
     private ModelConvertService modelConvertService = new ModelConvertService();
+    @Autowired
+    private FullRecordRepositoryCreate fullRecordRepositoryCreate = new FullRecordRepositoryCreate();
+
 
 
 
@@ -45,6 +49,9 @@ public class Controller {
         // matchDTO FullMatchDTO로 받기
         FullRecordDTOs fullRecordDTOs;
         fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
+
+        // FullRecord DB 저장
+        fullRecordRepositoryCreate.InsertFullRecords(fullRecordDTOs.getFullRecordDTOs());
 
         // FullMatchDTO를 MetaRecordDTO로 변환
         MetaRecordDTO[] metaRecordDTO;
