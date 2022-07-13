@@ -30,7 +30,7 @@ public class FullRecordDB {
     private String matchID;
 
     // 추가적인 필드(컬럼)이 팔요한 경우 사용 * DB 테이블에는 컬럼으로 생성되지 않는 필드의 경우 @Transient를 사용한다
-    @Column
+    @Column(length = 100000)
     private String json;
 
 }
