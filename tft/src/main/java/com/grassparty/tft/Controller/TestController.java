@@ -60,12 +60,6 @@ public class TestController {
         // puuid 요청
         SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
         return summonerDTO;
-
-        // matchid 받기
-        //MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
-
-        // matchID로 matchDTO 받기 x 15
-        //MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
     }
     // 작동
     @GetMapping("/test2/{name}")
