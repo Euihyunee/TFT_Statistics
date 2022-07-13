@@ -51,7 +51,7 @@ public class TestController {
         return modelConvertService.GetFullRecordFromMatchDTO(matchDto);
     }
 
-    //
+    // 작동
     @GetMapping("/test1/{name}")
     public SummonerDTO test1(@PathVariable String name) {
         // puuid 요청
@@ -64,7 +64,7 @@ public class TestController {
         // matchID로 matchDTO 받기 x 15
         //MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
     }
-
+    // 작동
     @GetMapping("/test2/{name}")
     public MatchID test2(@PathVariable String name) {
         // puuid 요청
@@ -74,7 +74,7 @@ public class TestController {
         MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
         return matchID;
     }
-
+    // 작동
     @GetMapping("/test3/{name}")
     public MatchDtos test3(@PathVariable String name) {
         // puuid 요청
@@ -88,7 +88,7 @@ public class TestController {
 
         return matchDtos;
     }
-
+    // 작동
     @GetMapping("/test4/{name}")
     public FullRecordDTOs test4(@PathVariable String name) {
         // puuid 요청
@@ -107,7 +107,7 @@ public class TestController {
         // FullMatchDTO list 리턴
         return fullRecordDTOs;
     }
-
+    // 작동
     @GetMapping("/test5/{name}")
     public MetaRecordDTO test5(@PathVariable String name) {
         // puuid 요청
@@ -126,6 +126,50 @@ public class TestController {
         // FullMatchDTO를 MetaRecordDTO로 변환
         MetaRecordDTO metaRecordDTO;
         metaRecordDTO = modelConvertService.GetMetaRecordFromFullRecord(fullRecordDTOs.getFullRecordDTOs()[0], summonerDTO.getPuuid());
+
+        return metaRecordDTO;
+    }
+    // 작동
+    @GetMapping("/test6/{name}")
+    public MetaRecordDTO test6(@PathVariable String name) {
+        // puuid 요청
+        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
+
+        // matchid 받기
+        MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
+
+        // matchID로 matchDTO 받기 x 15
+        MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
+
+        // matchDTO FullMatchDTO로 받기
+        FullRecordDTOs fullRecordDTOs;
+        fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
+
+        // FullMatchDTO를 MetaRecordDTO로 변환
+        MetaRecordDTO metaRecordDTO;
+        metaRecordDTO = modelConvertService.GetMetaRecordFromFullRecord(fullRecordDTOs.getFullRecordDTOs()[0], summonerDTO.getPuuid());
+
+        return metaRecordDTO;
+    }
+
+    @GetMapping("/test7/{name}")
+    public MetaRecordDTO[] test7(@PathVariable String name) {
+        // puuid 요청
+        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
+
+        // matchid 받기
+        MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
+
+        // matchID로 matchDTO 받기 x 15
+        MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
+
+        // matchDTO FullMatchDTO로 받기
+        FullRecordDTOs fullRecordDTOs;
+        fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
+
+        // FullMatchDTO를 MetaRecordDTO로 변환
+        MetaRecordDTO[] metaRecordDTO;
+        metaRecordDTO = modelConvertService.GetMetaRecordsFromFullRecords(fullRecordDTOs.getFullRecordDTOs(), summonerDTO.getPuuid());
 
         return metaRecordDTO;
     }

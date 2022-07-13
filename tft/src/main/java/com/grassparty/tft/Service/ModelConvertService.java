@@ -85,6 +85,16 @@ public class ModelConvertService {
         return fullUnitDTO;
     }
 
+    public MetaRecordDTO[] GetMetaRecordsFromFullRecords(FullRecordDTO[] fullRecordDTOs, String puuid){
+        MetaRecordDTO[] metaRecordDTOS = new MetaRecordDTO[10];
+        for(int i=0; i<fullRecordDTOs.length; i++){
+            metaRecordDTOS[i] = GetMetaRecordFromFullRecord(fullRecordDTOs[i], puuid);
+
+        }
+
+        return metaRecordDTOS;
+    }
+
     public MetaRecordDTO GetMetaRecordFromFullRecord(FullRecordDTO fullRecordDTO, String puuid){
         // FullRecordDTO -> MetaRecordDTO 로 변환
         MetaRecordDTO metaRecordDTO = new MetaRecordDTO();
