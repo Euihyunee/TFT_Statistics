@@ -32,37 +32,43 @@ public class Controller {
 
     // 인덱스
     @GetMapping("/GetMatchHistory/{name}")
-    public FullRecordDTOs GetMatchHistoryByName(@PathVariable String name){
+    public MetaRecordDTO[] GetMatchHistoryByName(@PathVariable String name){
         // puuid 요청
         SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
 
         // matchid 받기
         MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
 
-        // matchID로 matchDTO 받기 x 10
+        // matchID로 matchDTO 받기 x 15
         MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
 
         // matchDTO FullMatchDTO로 받기
         FullRecordDTOs fullRecordDTOs;
         fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
 
-        // FullMatchDTO list 리턴
-        return fullRecordDTOs;
+        // FullMatchDTO를 MetaRecordDTO로 변환
+        MetaRecordDTO[] metaRecordDTO;
+        metaRecordDTO = modelConvertService.GetMetaRecordsFromFullRecords(fullRecordDTOs.getFullRecordDTOs(), summonerDTO.getPuuid());
+
+        return metaRecordDTO;
     }
 
+    // 세부 항목 가져오기
+    @GetMapping(path="/GetRecord/{matchid}")
+    public FullRecordDTO GetRecordByMatchId(@PathVariable String matchid){
+        // matchid 로 matchDTO 받기
+        MatchDto matchDto = matchservice.GetMatchDTOByMatchId(matchid);
 
-//    @GetMapping(path="/puuid/{puuid}")
-//    public SummonerDTO GetDTOByPuuid(@PathVariable String puuid){ return summonerService.GetSummonerDtoByPuuid(puuid);}
-
-//    @GetMapping(path="/name/{name}")
-//    public SummonerDTO GetDTOByName(@PathVariable String name){ return summonerService.GetSummonerDTOByName(name);}
+        // matchDTO를 FullRecordDTo로 변환
 
 
-    @GetMapping(path="/MatchID/{matchid}")
-    public MatchDto GetMatchDTO(@PathVariable String matchid){return matchservice.GetMatchDTOByMatchId(matchid);}
+        return null;
+    }
+
+    @GetMapping(path="/MatchID/{matchId}")
+    public MatchDto GetMatchDTO(@PathVariable String matchId){return matchservice.GetMatchDTOByMatchId(matchId);}
 
     @GetMapping(path="/puuid/{puuid}")
     public MatchID GetMatchID(@PathVariable String puuid){return matchservice.GetMatchIdByPuuid(puuid);}
-
 
 }

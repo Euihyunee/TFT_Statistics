@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MetaRecordDTO {
+    String match_id;
     int placement; // 등수
     double time_eliminated; // 진행시간
     TraitDto[] traits; // 특성 (이름/ 등급)(0 = No style, 1 = 브론즈, 2 = 실버, 3 = 골드, 4 = 플레)

@@ -101,6 +101,7 @@ public class ModelConvertService {
 
         FullParticipantDTO fullParticipantDTO = GetFullParticipantDTOByPuuidFromFullRecordDTO(fullRecordDTO, puuid);
 
+        metaRecordDTO.setMatch_id(fullRecordDTO.getMatch_id());
         metaRecordDTO.setPlacement(fullParticipantDTO.getPlacement());
         metaRecordDTO.setTime_eliminated(fullParticipantDTO.getTime_eliminated());
         metaRecordDTO.setTraits(fullParticipantDTO.getTraits());
