@@ -24,7 +24,7 @@ import java.util.List;
 
 @Service
 public class MatchDTOService {
-    private String api_key = "RGAPI-eb89a560-ec61-4f1e-9cd0-90b30853ef78";
+    private String api_key = "RGAPI-ce168cfe-557e-46f8-91ff-2ed0655418b8";
 
     public MatchID GetMatchIdByPuuid(String puuid){
         String api_query = "&api_key=";

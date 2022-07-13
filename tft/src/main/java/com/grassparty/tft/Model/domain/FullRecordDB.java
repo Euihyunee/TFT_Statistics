@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import static java.awt.SystemColor.text;
+
 @Entity
 // 해당 클래스의 인스턴스들이 JPA로 관리되는 엔티티 객체라는 것을 의미한다 / 해당 어노테이션이 붙은 클래스는 오셥에 따라 자동으로 테이블 생성이 가능하고 클래스의 멤버 변수에 따라 자동으로 컬럼들도 생성된다
 
@@ -28,7 +30,7 @@ public class FullRecordDB {
     private String matchID;
 
     // 추가적인 필드(컬럼)이 팔요한 경우 사용 * DB 테이블에는 컬럼으로 생성되지 않는 필드의 경우 @Transient를 사용한다
-    @Column(length = 50000)
+    @Column
     private String json;
 
 }
