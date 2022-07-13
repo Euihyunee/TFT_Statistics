@@ -193,7 +193,10 @@ public class TestController {
         FullRecordDTOs fullRecordDTOs;
         fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
 
-        // FullMatchDTO list 리턴
+        // FullRecord DB 저장
+        fullRecordRepositoryCreate.InsertFullRecords(fullRecordDTOs.getFullRecordDTOs());
+
+        // FullRecordDTO list 리턴
         return fullRecordDTOs;
     }
     // DB insert 작동 확인

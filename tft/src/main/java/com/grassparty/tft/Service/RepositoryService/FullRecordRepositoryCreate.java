@@ -15,6 +15,12 @@ public class FullRecordRepositoryCreate {
     @Autowired
     FullRecordRepository fullRecordRepository;
 
+    public void InsertFullRecords(FullRecordDTO[] fullRecordDTOS){
+        for(FullRecordDTO fullRecordDTO : fullRecordDTOS){
+            InsertFullRecord(fullRecordDTO);
+        }
+    }
+
     public void InsertFullRecord(FullRecordDTO fullRecordDTO){
         String matchid = fullRecordDTO.getMatch_id();
 
