@@ -60,9 +60,10 @@ public class Controller {
         MatchDto matchDto = matchservice.GetMatchDTOByMatchId(matchid);
 
         // matchDTO를 FullRecordDTo로 변환
+        FullRecordDTO fullRecordDTO;
+        fullRecordDTO = modelConvertService.GetFullRecordFromMatchDTO(matchDto);
 
-
-        return null;
+        return fullRecordDTO;
     }
 
     @GetMapping(path="/MatchID/{matchId}")
