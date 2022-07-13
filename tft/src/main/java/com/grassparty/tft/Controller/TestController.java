@@ -10,9 +10,9 @@ import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Service.MatchDTOService;
 import com.grassparty.tft.Service.MetaRecordService;
 import com.grassparty.tft.Service.ModelConvertService;
+import com.grassparty.tft.Service.RepositoryService.FullRecordRepositoryCreate;
 import com.grassparty.tft.Service.SummonerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +29,9 @@ public class TestController {
     private MetaRecordService metaRecordService = new MetaRecordService();
     @Autowired
     private ModelConvertService modelConvertService = new ModelConvertService();
+    @Autowired
+    private FullRecordRepositoryCreate fullRecordRepositoryCreate = new FullRecordRepositoryCreate();
+
 
 
     // 문자열 출력 테스트
@@ -192,5 +195,27 @@ public class TestController {
 
         // FullMatchDTO list 리턴
         return fullRecordDTOs;
+    }
+    // DB insert 작동 확인
+    @GetMapping("/Database/{name}")
+    public FullRecordDTO testDBByName(@PathVariable String name){
+        // puuid 요청
+        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
+
+        // matchid 받기
+        MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
+
+        // matchID로 matchDTO 받기 x 15
+        MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
+
+        // matchDTO FullMatchDTO로 받기
+        FullRecordDTOs fullRecordDTOs;
+        fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
+
+        fullRecordRepositoryCreate.InsertFullRecord(fullRecordDTOs.getFullRecordDTOs()[0]);
+
+
+        // FullMatchDTO리턴
+        return fullRecordDTOs.getFullRecordDTOs()[0];
     }
 }
