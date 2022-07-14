@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 @Service
 public class SummonerService {
     // api 키
-    private String api_key = "RGAPI-ce168cfe-557e-46f8-91ff-2ed0655418b8";
+    private String api_key = "RGAPI-4077abc3-7c73-4882-8ecb-f61af74accc0";
 
 
     public SummonerDTO GetSummonerDtoByPuuid(String puuid){
@@ -58,7 +58,7 @@ public class SummonerService {
 
     public String GetEncode(String name){
         byte[] stringBytes = name.getBytes();
-        String EncondedString = new String(stringBytes, StandardCharsets.US_ASCII);
+        String EncondedString = new String(stringBytes, StandardCharsets.UTF_8);
         return EncondedString;
     }
 }
