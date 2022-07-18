@@ -43,21 +43,35 @@ public class Controller {
         // matchid 받기
         MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
 
-        // matchID로 matchDTO 받기 x 15
-        MatchDtos matchDtos = matchservice.GetMatchDTOByMatchIds(matchID);
-
-        // matchDTO FullMatchDTO로 받기
-        FullRecordDTOs fullRecordDTOs;
-        fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
-
-        // FullRecord DB 저장
-        fullRecordRepositoryCreate.InsertFullRecords(fullRecordDTOs.getFullRecordDTOs());
 
         // FullMatchDTO를 MetaRecordDTO로 변환
-        MetaRecordDTO[] metaRecordDTO;
-        metaRecordDTO = modelConvertService.GetMetaRecordsFromFullRecords(fullRecordDTOs.getFullRecordDTOs(), summonerDTO.getPuuid());
+        MetaRecordDTO[] metaRecordDTOs = new MetaRecordDTO[10];
 
-        return metaRecordDTO;
+
+        for(int i=0; i < matchID.getMatchid().length; i++){
+            if (fullRecordRepositoryCreate.IsExistByMatchid(matchID.getMatchid()[i])){
+
+                //             fullRecordDTO를 Matchid로 가져오기(단수)
+                FullRecordDTO fullRecordDTO = fullRecordRepositoryCreate.GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
+
+                metaRecordDTOs[i] = modelConvertService.GetMetaRecordFromFullRecord(fullRecordDTO, summonerDTO.getPuuid());
+
+            }else{ // matchid가 DB에 없을 떄 경우
+                // matchID로 matchDTO 받기 x 15
+                MatchDto matchDto = matchservice.GetMatchDTOByMatchId(matchID.getMatchid()[i]);
+
+                // matchDTO FullMatchDTO로 받기
+                FullRecordDTO fullRecordDTO;
+                fullRecordDTO = modelConvertService.GetFullRecordFromMatchDTO(matchDto);
+
+                // FullRecord DB 저장
+                fullRecordRepositoryCreate.InsertFullRecord(fullRecordDTO);
+
+                // FullMatchDTO를 MetaRecordDTO로 변환
+                metaRecordDTOs[i] = modelConvertService.GetMetaRecordFromFullRecord(fullRecordDTO, summonerDTO.getPuuid());
+            }
+        }
+        return metaRecordDTOs;
     }
 
     // 세부 항목 가져오기
