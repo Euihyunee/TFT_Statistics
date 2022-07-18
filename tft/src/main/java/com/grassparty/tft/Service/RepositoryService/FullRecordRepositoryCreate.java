@@ -1,13 +1,10 @@
 package com.grassparty.tft.Service.RepositoryService;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.grassparty.tft.Model.FullRecordDTO;
-import com.grassparty.tft.Model.domain.FullRecordDB;
+import com.grassparty.tft.Model.DB.FullRecordDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 
 @Service
 public class FullRecordRepositoryCreate {

@@ -1,4 +1,4 @@
-package com.grassparty.tft.Model.domain;
+package com.grassparty.tft.Model.DB;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
-import static java.awt.SystemColor.text;
 
 @Entity
 // 해당 클래스의 인스턴스들이 JPA로 관리되는 엔티티 객체라는 것을 의미한다 / 해당 어노테이션이 붙은 클래스는 오셥에 따라 자동으로 테이블 생성이 가능하고 클래스의 멤버 변수에 따라 자동으로 컬럼들도 생성된다
