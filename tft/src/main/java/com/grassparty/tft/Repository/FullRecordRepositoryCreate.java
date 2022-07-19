@@ -1,16 +1,15 @@
-package com.grassparty.tft.Service.RepositoryService;
+package com.grassparty.tft.Repository;
 
 import com.google.gson.Gson;
 import com.grassparty.tft.Model.FullRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.DB.FullRecordDB;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
-@Service
+@Repository
 public class FullRecordRepositoryCreate {
 
     @Autowired

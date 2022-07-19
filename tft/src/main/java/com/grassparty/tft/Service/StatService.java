@@ -1,14 +1,12 @@
 package com.grassparty.tft.Service;
 
-import com.grassparty.tft.Model.DB.FullRecordDB;
 import com.grassparty.tft.Model.DB.StatValidationTable;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
-import com.grassparty.tft.Service.RepositoryService.FullRecordRepository;
-import com.grassparty.tft.Service.RepositoryService.FullRecordRepositoryCreate;
+import com.grassparty.tft.Repository.FullRecordRepository;
+import com.grassparty.tft.Repository.FullRecordRepositoryCreate;
+import com.grassparty.tft.Repository.StatVaildationTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class StatService {

@@ -1,10 +1,20 @@
 package com.grassparty.tft.Service;
 
+import com.grassparty.tft.Repository.FullRecordRepository;
+import com.grassparty.tft.Repository.FullRecordRepositoryCreate;
+import com.grassparty.tft.Repository.StatVaildationTableRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ScheduleService {
+    @Autowired
+    FullRecordRepositoryCreate fullRecordRepositoryCreate;
+    @Autowired
+    StatVaildationTableRepository statVaildationTableRepository;
+    @Autowired
+    FullRecordRepository fullRecordRepository;
 
     @Scheduled(fixedDelay = 300000)
     public void testMethod2(){
