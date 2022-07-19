@@ -7,6 +7,8 @@ import com.grassparty.tft.Model.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.FullDTO.FullUnitDTO;
 import com.grassparty.tft.Model.FullRecordDTO;
 import com.grassparty.tft.Repository.FullRecordRepository;
+import com.grassparty.tft.Repository.JPA.StatRepositoryJPA;
+import com.grassparty.tft.Repository.StatRepository;
 import com.grassparty.tft.Repository.StatValidationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -24,6 +26,8 @@ public class ScheduleService {
     FullRecordRepository fullRecordRepository;
     @Autowired
     StatValidationRepository statValidationRepository;
+    @Autowired
+    StatRepository statRepository;
 
     @Scheduled(fixedDelay = 300000)
     public void testMethod2(){
@@ -39,13 +43,11 @@ public class ScheduleService {
 
     public boolean exec(){
         // matchId를 DB Statvalidation 테이블에서 가져오기
-        if(statValidationRepository.GetMatchIdFromStatValidation()==null){
-            return false;
-        }
         String matchid = statValidationRepository.GetMatchIdFromStatValidation();
 
         // DB에서 FullRecordDB 가져오기
         if(matchid == null){
+            System.out.println("매치아이디 널임");
             return false;
         }
         FullRecordDB fullRecordDB = fullRecordRepository.GetFullRecordDBByMatchId(matchid);
@@ -56,33 +58,8 @@ public class ScheduleService {
         FullRecordDTO fullRecordDTO = gson.fromJson(fullRecordDB.getJson(), FullRecordDTO.class);
 
         // FullRecordDTO에서 StatTable로 변환 (*)
-        ArrayList<String> charaterName = new ArrayList<>();
-        StatTable statTable = new StatTable();
-        
-        for(FullParticipantDTO fp : fullRecordDTO.getParticipants()){
-            for(FullUnitDTO unit : fp.getUnits()){
-                if(unit == null){
-                    break;
-                }
-                charaterName.add(unit.getCharacter_id());
-                // System.out.println(unit.getCharacter_id());
-            }
-            // StatTable을 DB에 저장
-            System.out.println(charaterName);
-            for(int i =0; i< charaterName.size(); i++){
-                MappingTable(statTable, charaterName.get(i));
-            }
-
-
-
-
-            // 초기화
-            charaterName.clear();
-        }
-
-
-
-        
+        ConvertStatTableFromFullRecordDTO(fullRecordDTO);
+        System.out.println("몇회실행됬는지 확인점");
 
         return true;
     }
@@ -102,7 +79,38 @@ public class ScheduleService {
 
     }
 
-    public void MappingTable(StatTable statTable, String charaterName){
+    public void ConvertStatTableFromFullRecordDTO(FullRecordDTO fullRecordDTO){
+        ArrayList<String> charaterName = new ArrayList<>();
+
+        for(FullParticipantDTO fp : fullRecordDTO.getParticipants()){
+            StatTable statTable = new StatTable();
+            for(FullUnitDTO unit : fp.getUnits()){
+                if(unit == null){
+                    break;
+                }
+                charaterName.add(unit.getCharacter_id());
+                // System.out.println(unit.getCharacter_id());
+            }
+            // 캐릭터 이름 맵핑
+            System.out.println(charaterName);
+            for(int i =0; i< charaterName.size(); i++){
+                statTable = MappingTable(statTable, charaterName.get(i));
+            }
+            // 등수 삽입
+            statTable.setPlacement(fp.getPlacement());
+
+            // valid = false
+            statTable.setValid(false);
+
+            // StatTable을 DB에 저장
+            statRepository.save(statTable);
+
+            // 초기화
+            charaterName.clear();
+        }
+    }
+
+    public StatTable MappingTable(StatTable statTable, String charaterName){
         switch (charaterName) {
             case "TFT7_Nidalee":
                 statTable.setTFT7_Nidalee(1);
@@ -286,6 +294,7 @@ public class ScheduleService {
 
         }
 
+        return statTable;
     }
 
 }
