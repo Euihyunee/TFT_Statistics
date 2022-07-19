@@ -28,7 +28,8 @@ public class TestController {
     private ModelConvertService modelConvertService = new ModelConvertService();
     @Autowired
     private FullRecordRepositoryCreate fullRecordRepositoryCreate = new FullRecordRepositoryCreate();
-
+    @Autowired
+    private StatService statService = new StatService();
 
     // 문자열 출력 테스트
     @GetMapping(path = "/{test}")
@@ -248,5 +249,11 @@ public class TestController {
 
         fullRecordRepositoryCreate.IsExistByMatchid(puuid);
 
+    }
+    // statService 테스트입니당
+    @GetMapping("/DBTest1/{matchid}")
+    public void testDBTest1(@PathVariable String matchid){
+
+        statService.StatisticsByMatchId(matchid);
     }
 }
