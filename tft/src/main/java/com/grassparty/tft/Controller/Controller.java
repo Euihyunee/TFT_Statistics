@@ -6,28 +6,20 @@ import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
-import com.grassparty.tft.Service.MatchDTOService;
+import com.grassparty.tft.Service.*;
 import com.grassparty.tft.Model.MetaRecordDTO;
-import com.grassparty.tft.Service.MetaRecordService;
-import com.grassparty.tft.Service.ModelConvertService;
+import com.grassparty.tft.Service.RepositoryService.FullRecordRepository;
 import com.grassparty.tft.Service.RepositoryService.FullRecordRepositoryCreate;
-import com.grassparty.tft.Service.SummonerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
-    @Autowired
-    private SummonerService summonerService = new SummonerService();
-    @Autowired
-    private MatchDTOService matchservice = new MatchDTOService();
-    @Autowired
-    private MetaRecordService metaRecordService = new MetaRecordService();
-    @Autowired
-    private ModelConvertService modelConvertService = new ModelConvertService();
-    @Autowired
-    private FullRecordRepositoryCreate fullRecordRepositoryCreate = new FullRecordRepositoryCreate();
-
+    @Autowired SummonerService summonerService;
+    @Autowired MatchDTOService matchservice;
+    @Autowired MetaRecordService metaRecordService;
+    @Autowired ModelConvertService modelConvertService;
+    @Autowired FullRecordRepositoryCreate fullRecordRepositoryCreate;
 
 
 

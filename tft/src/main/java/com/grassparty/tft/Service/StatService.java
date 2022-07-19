@@ -12,21 +12,13 @@ import java.util.Optional;
 
 @Service
 public class StatService {
-    @Autowired
-    private SummonerService summonerService = new SummonerService();
-    @Autowired
-    private MatchDTOService matchservice = new MatchDTOService();
-    @Autowired
-    private MetaRecordService metaRecordService = new MetaRecordService();
-    @Autowired
-    private ModelConvertService modelConvertService = new ModelConvertService();
-    @Autowired
-    private FullRecordRepositoryCreate fullRecordRepositoryCreate =
-            new FullRecordRepositoryCreate();
-    @Autowired
-    StatVaildationTableRepository statVaildationTableRepository;
-    @Autowired
-    FullRecordRepository fullRecordRepository;
+    @Autowired SummonerService summonerService;
+    @Autowired MatchDTOService matchservice;
+    @Autowired MetaRecordService metaRecordService;
+    @Autowired ModelConvertService modelConvertService;
+    @Autowired FullRecordRepositoryCreate fullRecordRepositoryCreate;
+    @Autowired StatVaildationTableRepository statVaildationTableRepository;
+    @Autowired FullRecordRepository fullRecordRepository;
 
     public void StatisticsByName(String name){
         // 이름을 받아서 puuid 얻음

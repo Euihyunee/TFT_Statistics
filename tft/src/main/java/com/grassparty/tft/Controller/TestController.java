@@ -18,18 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/test")
 public class TestController {
-    @Autowired
-    private SummonerService summonerService = new SummonerService();
-    @Autowired
-    private MatchDTOService matchservice = new MatchDTOService();
-    @Autowired
-    private MetaRecordService metaRecordService = new MetaRecordService();
-    @Autowired
-    private ModelConvertService modelConvertService = new ModelConvertService();
-    @Autowired
-    private FullRecordRepositoryCreate fullRecordRepositoryCreate = new FullRecordRepositoryCreate();
-    @Autowired
-    private StatService statService = new StatService();
+    @Autowired SummonerService summonerService;
+    @Autowired MatchDTOService matchservice;
+    @Autowired MetaRecordService metaRecordService;
+    @Autowired ModelConvertService modelConvertService;
+    @Autowired FullRecordRepositoryCreate fullRecordRepositoryCreate;
+    @Autowired StatService statService;
 
     // 문자열 출력 테스트
     @GetMapping(path = "/{test}")
