@@ -14,6 +14,10 @@ public class StatTable {
     @Id
     @Column
     private int deckId;
+    @Column
+    private int placement;
+    @Column
+    private boolean valid;
 
     // 1코스트
     @Column
