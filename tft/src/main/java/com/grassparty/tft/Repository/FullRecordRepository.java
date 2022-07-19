@@ -63,4 +63,8 @@ public class FullRecordRepository {
         return fullRecordDTO;
     }
 
+    public FullRecordDB GetFullRecordDBByMatchId(String matchId){
+        return fullRecordRepositoryJPA.getById(matchId);
+    }
+
 }
