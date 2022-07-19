@@ -30,6 +30,12 @@ public class StatService {
     public void StatisticsByMatchId(String matchId){
         // 밸리데이션 체크
 
+        // 기존에 데이터 저장되어있는지 체크
+
+        // 저장되어있다면 PASS
+
+        // 저장되어 있지 않다면 ? RIOT 요청
+
 
     }
 
