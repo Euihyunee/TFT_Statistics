@@ -6,9 +6,11 @@ import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Service.RepositoryService.FullRecordRepository;
 import com.grassparty.tft.Service.RepositoryService.FullRecordRepositoryCreate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class StatService {
     @Autowired
     private SummonerService summonerService = new SummonerService();
@@ -42,23 +44,26 @@ public class StatService {
 
     public void StatisticsByMatchId(String matchId){
         // 밸리데이션 체크
-        Optional<StatValidationTable> statValidationTable =
-                statVaildationTableRepository.findById(matchId);
+        InsertStatVaildation(matchId);
 
         // 기존에 데이터 저장되어있는지 체크
-        boolean statVaild = fullRecordRepository.existsById(
-                statValidationTable.get().getMatchID());
-
-        // 저장되어있다면 PASS
-        if(statVaild == false){
+        boolean isMatchIdExist =
+                fullRecordRepository.existsById(matchId);
+        if(!isMatchIdExist){
+            // fullrecordDTO받아오기
             fullRecordRepositoryCreate.InsertFullRecord(
                     modelConvertService.GetFullRecordFromMatchDTO(
-                    matchservice.GetMatchDTOByMatchId(matchId)));
+                            matchservice.GetMatchDTOByMatchId(matchId))
+            );
         }
-        // 저장되어 있지 않다면 ? RIOT 요청
 
     }
-
-
+    public void InsertStatVaildation(String matchId){
+        StatValidationTable statValidationTable = StatValidationTable.builder()
+                .matchID(matchId)
+                .valid(false)
+                .build();
+        statVaildationTableRepository.save(statValidationTable);
+    }
 
 }

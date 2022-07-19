@@ -7,11 +7,8 @@ import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
-import com.grassparty.tft.Service.MatchDTOService;
-import com.grassparty.tft.Service.MetaRecordService;
-import com.grassparty.tft.Service.ModelConvertService;
+import com.grassparty.tft.Service.*;
 import com.grassparty.tft.Service.RepositoryService.FullRecordRepositoryCreate;
-import com.grassparty.tft.Service.SummonerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +28,8 @@ public class TestController {
     private ModelConvertService modelConvertService = new ModelConvertService();
     @Autowired
     private FullRecordRepositoryCreate fullRecordRepositoryCreate = new FullRecordRepositoryCreate();
-
+    @Autowired
+    private StatService statService = new StatService();
 
     // 문자열 출력 테스트
     @GetMapping(path = "/{test}")
@@ -251,5 +249,11 @@ public class TestController {
 
         fullRecordRepositoryCreate.IsExistByMatchid(puuid);
 
+    }
+    // statService 테스트입니당
+    @GetMapping("/DBTest1/{matchid}")
+    public void testDBTest1(@PathVariable String matchid){
+
+        statService.StatisticsByMatchId(matchid);
     }
 }
