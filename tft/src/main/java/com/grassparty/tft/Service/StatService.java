@@ -2,9 +2,9 @@ package com.grassparty.tft.Service;
 
 import com.grassparty.tft.Model.DB.StatValidationTable;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
+import com.grassparty.tft.Repository.FullRecordRepositoryJPA;
 import com.grassparty.tft.Repository.FullRecordRepository;
-import com.grassparty.tft.Repository.FullRecordRepositoryCreate;
-import com.grassparty.tft.Repository.StatVaildationTableRepository;
+import com.grassparty.tft.Repository.StatVaildationRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +14,12 @@ public class StatService {
     @Autowired MatchDTOService matchservice;
     @Autowired MetaRecordService metaRecordService;
     @Autowired ModelConvertService modelConvertService;
-    @Autowired FullRecordRepositoryCreate fullRecordRepositoryCreate;
-    @Autowired StatVaildationTableRepository statVaildationTableRepository;
-    @Autowired FullRecordRepository fullRecordRepository;
+    @Autowired
+    FullRecordRepository fullRecordRepository;
+    @Autowired
+    StatVaildationRepositoryJPA statVaildationRepositoryJPA;
+    @Autowired
+    FullRecordRepositoryJPA fullRecordRepositoryJPA;
 
     public void StatisticsByName(String name){
         // 이름을 받아서 puuid 얻음
@@ -38,10 +41,10 @@ public class StatService {
 
         // 기존에 데이터 저장되어있는지 체크
         boolean isMatchIdExist =
-                fullRecordRepository.existsById(matchId);
+                fullRecordRepositoryJPA.existsById(matchId);
         if(!isMatchIdExist){
             // fullrecordDTO받아오기
-            fullRecordRepositoryCreate.InsertFullRecord(
+            fullRecordRepository.InsertFullRecord(
                     modelConvertService.GetFullRecordFromMatchDTO(
                             matchservice.GetMatchDTOByMatchId(matchId))
             );
@@ -53,7 +56,7 @@ public class StatService {
                 .matchID(matchId)
                 .valid(false)
                 .build();
-        statVaildationTableRepository.save(statValidationTable);
+        statVaildationRepositoryJPA.save(statValidationTable);
     }
 
 }

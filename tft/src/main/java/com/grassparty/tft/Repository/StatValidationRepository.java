@@ -1,12 +1,12 @@
 package com.grassparty.tft.Repository;
 
-import com.grassparty.tft.Model.DB.StatValidationTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class StatValidationRepository {
-    @Autowired StatVaildationTableRepository statVaildationTableRepository;
+    @Autowired
+    StatVaildationRepositoryJPA statVaildationRepositoryJPA;
 
     // matchId[]를 DB Statvalidation 테이블에서 가져오기
     public String[] GetMatchIdsFromStatValidation(){

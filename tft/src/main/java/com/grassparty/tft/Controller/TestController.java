@@ -8,7 +8,7 @@ import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Service.*;
-import com.grassparty.tft.Repository.FullRecordRepositoryCreate;
+import com.grassparty.tft.Repository.FullRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +22,8 @@ public class TestController {
     @Autowired MatchDTOService matchservice;
     @Autowired MetaRecordService metaRecordService;
     @Autowired ModelConvertService modelConvertService;
-    @Autowired FullRecordRepositoryCreate fullRecordRepositoryCreate;
+    @Autowired
+    FullRecordRepository fullRecordRepository;
     @Autowired StatService statService;
 
     // 문자열 출력 테스트
@@ -190,7 +191,7 @@ public class TestController {
         fullRecordDTOs = modelConvertService.GetFullRecordsFromMatchDTOs(matchDtos);
 
         // FullRecord DB 저장
-        fullRecordRepositoryCreate.InsertFullRecords(fullRecordDTOs.getFullRecordDTOs());
+        fullRecordRepository.InsertFullRecords(fullRecordDTOs.getFullRecordDTOs());
 
         // FullRecordDTO list 리턴
         return fullRecordDTOs;
@@ -213,10 +214,10 @@ public class TestController {
 
 
         for(int i=0; i < matchID.getMatchid().length; i++){
-            if (fullRecordRepositoryCreate.IsExistByMatchid(matchID.getMatchid()[i])){
+            if (fullRecordRepository.IsExistByMatchid(matchID.getMatchid()[i])){
 
     //             fullRecordDTO를 Matchid로 가져오기(단수)
-                FullRecordDTO fullRecordDTO = fullRecordRepositoryCreate.GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
+                FullRecordDTO fullRecordDTO = fullRecordRepository.GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
 
                 metaRecordDTOs[i] = modelConvertService.GetMetaRecordFromFullRecord(fullRecordDTO, summonerDTO.getPuuid());
 
@@ -229,7 +230,7 @@ public class TestController {
                 fullRecordDTO = modelConvertService.GetFullRecordFromMatchDTO(matchDto);
 
                 // FullRecord DB 저장
-                fullRecordRepositoryCreate.InsertFullRecord(fullRecordDTO);
+                fullRecordRepository.InsertFullRecord(fullRecordDTO);
 
                 // FullMatchDTO를 MetaRecordDTO로 변환
                 metaRecordDTOs[i] = modelConvertService.GetMetaRecordFromFullRecord(fullRecordDTO, summonerDTO.getPuuid());
@@ -241,7 +242,7 @@ public class TestController {
     @GetMapping("/dbselect/{puuid}")
     public void testselect(@PathVariable String puuid) {
 
-        fullRecordRepositoryCreate.IsExistByMatchid(puuid);
+        fullRecordRepository.IsExistByMatchid(puuid);
 
     }
     // statService 테스트입니당

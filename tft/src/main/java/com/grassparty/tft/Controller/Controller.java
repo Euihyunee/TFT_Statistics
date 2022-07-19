@@ -6,7 +6,7 @@ import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Service.*;
 import com.grassparty.tft.Model.MetaRecordDTO;
-import com.grassparty.tft.Repository.FullRecordRepositoryCreate;
+import com.grassparty.tft.Repository.FullRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,8 @@ public class Controller {
     @Autowired MatchDTOService matchservice;
     @Autowired MetaRecordService metaRecordService;
     @Autowired ModelConvertService modelConvertService;
-    @Autowired FullRecordRepositoryCreate fullRecordRepositoryCreate;
+    @Autowired
+    FullRecordRepository fullRecordRepository;
 
 
 
@@ -38,10 +39,10 @@ public class Controller {
 
 
         for(int i=0; i < matchID.getMatchid().length; i++){
-            if (fullRecordRepositoryCreate.IsExistByMatchid(matchID.getMatchid()[i])){
+            if (fullRecordRepository.IsExistByMatchid(matchID.getMatchid()[i])){
 
                 //             fullRecordDTO를 Matchid로 가져오기(단수)
-                FullRecordDTO fullRecordDTO = fullRecordRepositoryCreate.GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
+                FullRecordDTO fullRecordDTO = fullRecordRepository.GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
 
                 metaRecordDTOs[i] = modelConvertService.GetMetaRecordFromFullRecord(fullRecordDTO, summonerDTO.getPuuid());
 
@@ -54,7 +55,7 @@ public class Controller {
                 fullRecordDTO = modelConvertService.GetFullRecordFromMatchDTO(matchDto);
 
                 // FullRecord DB 저장
-                fullRecordRepositoryCreate.InsertFullRecord(fullRecordDTO);
+                fullRecordRepository.InsertFullRecord(fullRecordDTO);
 
                 // FullMatchDTO를 MetaRecordDTO로 변환
                 metaRecordDTOs[i] = modelConvertService.GetMetaRecordFromFullRecord(fullRecordDTO, summonerDTO.getPuuid());

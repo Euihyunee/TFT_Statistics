@@ -1,8 +1,6 @@
 package com.grassparty.tft.Service;
 
 import com.grassparty.tft.Repository.FullRecordRepository;
-import com.grassparty.tft.Repository.FullRecordRepositoryCreate;
-import com.grassparty.tft.Repository.StatVaildationTableRepository;
 import com.grassparty.tft.Repository.StatValidationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -10,10 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ScheduleService {
-    @Autowired
-    FullRecordRepositoryCreate fullRecordRepositoryCreate;
-    @Autowired
-    StatVaildationTableRepository statVaildationTableRepository;
     @Autowired
     FullRecordRepository fullRecordRepository;
     @Autowired
@@ -47,6 +41,8 @@ public class ScheduleService {
     @Scheduled(fixedDelay = 300000)
     public void testMethod3(){
         System.out.println("3번 기능 5분에 한번 실행");
+
+        //
 
         //
 
