@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.grassparty.tft.Model.FullRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.DB.FullRecordDB;
+import com.grassparty.tft.Repository.JPA.FullRecordRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

@@ -1,5 +1,6 @@
 package com.grassparty.tft.Repository;
 
+import com.grassparty.tft.Repository.JPA.StatVaildationRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

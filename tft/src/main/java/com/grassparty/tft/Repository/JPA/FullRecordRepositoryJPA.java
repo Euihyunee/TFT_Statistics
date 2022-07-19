@@ -1,4 +1,4 @@
-package com.grassparty.tft.Repository;
+package com.grassparty.tft.Repository.JPA;
 
 import com.grassparty.tft.Model.DB.FullRecordDB;
 import org.springframework.data.jpa.repository.JpaRepository;
