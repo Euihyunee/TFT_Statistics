@@ -14,4 +14,9 @@ public class StatValidationTable {
     @Id
     @Column
     private String matchID;
+    
+    // date 추가 예정
+
+    @Column
+    private Boolean valid;
 }
