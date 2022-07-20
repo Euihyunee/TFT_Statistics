@@ -32,7 +32,7 @@ public class ScheduleService {
     @Autowired
     CustomQueryRepository customQueryRepository;
 
-    @Scheduled(fixedDelay = 300000)
+    @Scheduled(fixedDelay = 3000000)
     public void testMethod2(){
         System.out.println("2번 기능 5분에 한번 실행");
 
@@ -68,50 +68,91 @@ public class ScheduleService {
     }
 
 
-    @Scheduled(fixedDelay = 300000)
+    @Scheduled(fixedDelay = 3000000)
     public void testMethod3(){
         System.out.println("3번 기능 5분에 한번 실행");
-        
+
         // 걍 쿼리를 쓰자
         // GroupBy 챔피언 해서 테이블 만들기
-        StatPreServiceInterface preService = customQueryRepository.GetQuery().get(3);
-        System.out.println(preService.getDeckId());
-        System.out.println(preService.getCount());
-        System.out.println(preService.getPlacement());
-        System.out.println(preService.getTFT7_AoShin());
-        System.out.println(preService.getTFT7_AurelionSol());
-        System.out.println(preService.getTFT7_Bard());
-        System.out.println(preService.getTFT7_DragonBlue());
-        System.out.println(preService.getTFT7_DragonGold());
-        System.out.println(preService.getTFT7_DragonGreen());
-        System.out.println(preService.getTFT7_DragonPurple());
-        System.out.println(preService.getTFT7_Hecarim());
-        System.out.println(preService.getTFT7_Pyke());
-        System.out.println(preService.getTFT7_Shyvana());
-        System.out.println(preService.getTFT7_Zoe());
-        System.out.println(preService.getTFT7_Talon());
-        System.out.println(preService.getTFT7_Soraka());
-        System.out.println(preService.getTFT7_Yasuo());
-        System.out.println(preService.getTFT7_TrainerDragon());
-        System.out.println(preService.getTFT7_Anivia());
-        System.out.println(preService.getTFT7_Aatrox());
-        System.out.println(preService.getTFT7_Jinx());
-        System.out.println(preService.getTFT7_Corki());
-        System.out.println(preService.getTFT7_Gnar());
-        System.out.println(preService.getTFT7_Illaoi());
-        System.out.println(preService.getTFT7_Lillia());
-        System.out.println(preService.getTFT7_Sylas());
+        for(int i = 0 ; i < customQueryRepository.GetQuery().size(); i++){
+            StatPreServiceInterface preService = customQueryRepository.GetQuery().get(i);
+
+            // preService를 DBTable에 맞추기
+            StatPreServiceTable statPreServiceTable = GetStatPreServiceTableFromStatPreServiceInterface(preService);
+
+            // preService 저장하기
+            customQueryRepository.save(statPreServiceTable);
+        }
+    }
 
 
+    public StatPreServiceTable GetStatPreServiceTableFromStatPreServiceInterface(StatPreServiceInterface statPreServiceInterface){
+        StatPreServiceTable statPreServiceTable = StatPreServiceTable.builder()
+                .deckId(statPreServiceInterface.getDeckId())
+                .placement(statPreServiceInterface.getPlacement())
+                .count(statPreServiceInterface.getCount())
+                .TFT7_Aatrox(statPreServiceInterface.getTFT7_Aatrox())
+                .TFT7_Anivia(statPreServiceInterface.getTFT7_Anivia())
+                .TFT7_AoShin(statPreServiceInterface.getTFT7_AoShin())
+                .TFT7_Ashe(statPreServiceInterface.getTFT7_Ashe())
+                .TFT7_AurelionSol(statPreServiceInterface.getTFT7_AurelionSol())
+                .TFT7_Bard(statPreServiceInterface.getTFT7_Bard())
+                .TFT7_Braum(statPreServiceInterface.getTFT7_Braum())
+                .TFT7_Corki(statPreServiceInterface.getTFT7_Corki())
+                .TFT7_Diana(statPreServiceInterface.getTFT7_Diana())
+                .TFT7_DragonBlue(statPreServiceInterface.getTFT7_DragonBlue())
+                .TFT7_DragonGold(statPreServiceInterface.getTFT7_DragonGold())
+                .TFT7_DragonGreen(statPreServiceInterface.getTFT7_DragonGreen())
+                .TFT7_DragonPurple(statPreServiceInterface.getTFT7_DragonPurple())
+                .TFT7_Elise(statPreServiceInterface.getTFT7_Elise())
+                .TFT7_Ezreal(statPreServiceInterface.getTFT7_Ezreal())
+                .TFT7_Gnar(statPreServiceInterface.getTFT7_Gnar())
+                .TFT7_Hecarim(statPreServiceInterface.getTFT7_Hecarim())
+                .TFT7_Heimerdinger(statPreServiceInterface.getTFT7_Heimerdinger())
+                .TFT7_Illaoi(statPreServiceInterface.getTFT7_Illaoi())
+                .TFT7_Jinx(statPreServiceInterface.getTFT7_Jinx())
+                .TFT7_Karma(statPreServiceInterface.getTFT7_Karma())
+                .TFT7_Kayn(statPreServiceInterface.getTFT7_Kayn())
+                .TFT7_LeeSin(statPreServiceInterface.getTFT7_LeeSin())
+                .TFT7_Leona(statPreServiceInterface.getTFT7_Leona())
+                .TFT7_Lillia(statPreServiceInterface.getTFT7_Lillia())
+                .TFT7_Lulu(statPreServiceInterface.getTFT7_Lulu())
+                .TFT7_Nami(statPreServiceInterface.getTFT7_Nami())
+                .TFT7_Neeko(statPreServiceInterface.getTFT7_Neeko())
+                .TFT7_Nidalee(statPreServiceInterface.getTFT7_Nidalee())
+                .TFT7_Nunu(statPreServiceInterface.getTFT7_Nunu())
+                .TFT7_Olaf(statPreServiceInterface.getTFT7_Olaf())
+                .TFT7_Ornn(statPreServiceInterface.getTFT7_Ornn())
+                .TFT7_Pyke(statPreServiceInterface.getTFT7_Pyke())
+                .TFT7_Qiyana(statPreServiceInterface.getTFT7_Qiyana())
+                .TFT7_Ryze(statPreServiceInterface.getTFT7_Ryze())
+                .TFT7_Sejuani(statPreServiceInterface.getTFT7_Sejuani())
+                .TFT7_Senna(statPreServiceInterface.getTFT7_Senna())
+                .TFT7_Sett(statPreServiceInterface.getTFT7_Sett())
+                .TFT7_Shen(statPreServiceInterface.getTFT7_Shen())
+                .TFT7_Shyvana(statPreServiceInterface.getTFT7_Shyvana())
+                .TFT7_Skarner(statPreServiceInterface.getTFT7_Skarner())
+                .TFT7_Sona(statPreServiceInterface.getTFT7_Sona())
+                .TFT7_Soraka(statPreServiceInterface.getTFT7_Soraka())
+                .TFT7_Swain(statPreServiceInterface.getTFT7_Swain())
+                .TFT7_Sylas(statPreServiceInterface.getTFT7_Sylas())
+                .TFT7_TahmKench(statPreServiceInterface.getTFT7_TahmKench())
+                .TFT7_Talon(statPreServiceInterface.getTFT7_Talon())
+                .TFT7_Taric(statPreServiceInterface.getTFT7_Taric())
+                .TFT7_Thresh(statPreServiceInterface.getTFT7_Thresh())
+                .TFT7_TrainerDragon(statPreServiceInterface.getTFT7_TrainerDragon())
+                .TFT7_Tristana(statPreServiceInterface.getTFT7_Tristana())
+                .TFT7_Twitch(statPreServiceInterface.getTFT7_Twitch())
+                .TFT7_Varus(statPreServiceInterface.getTFT7_Varus())
+                .TFT7_Vladimir(statPreServiceInterface.getTFT7_Vladimir())
+                .TFT7_Volibear(statPreServiceInterface.getTFT7_Volibear())
+                .TFT7_Xayah(statPreServiceInterface.getTFT7_Xayah())
+                .TFT7_Yasuo(statPreServiceInterface.getTFT7_Yasuo())
+                .TFT7_Yone(statPreServiceInterface.getTFT7_Yone())
+                .TFT7_Zoe(statPreServiceInterface.getTFT7_Zoe())
+                .build();
 
-
-
-
-
-
-
-        // 테이블을 PreStatService 예시
-
+        return statPreServiceTable;
     }
 
     public void ConvertStatTableFromFullRecordDTO(FullRecordDTO fullRecordDTO){
@@ -324,9 +365,6 @@ public class ScheduleService {
             case "TFT7_Shyvana":
                 statTable.setTFT7_Shyvana(1);
                 break;
-
-
-
         }
 
         return statTable;

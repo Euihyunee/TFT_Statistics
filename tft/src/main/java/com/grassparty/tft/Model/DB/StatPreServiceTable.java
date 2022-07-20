@@ -1,6 +1,9 @@
 package com.grassparty.tft.Model.DB;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +12,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_statpreservice")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class StatPreServiceTable {
     @Id

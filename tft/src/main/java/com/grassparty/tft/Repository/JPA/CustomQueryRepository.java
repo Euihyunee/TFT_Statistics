@@ -35,7 +35,7 @@ public interface CustomQueryRepository extends JpaRepository<StatPreServiceTable
                     ", tft7_jinx AS TFT7_Jinx" +
                     ", tft7_karma AS TFT7_Karma" +
                     ", tft7_kayn AS TFT7_Kayn" +
-                    ", tft7_lee_sin AS TFT7_Lee_sin" +
+                    ", tft7_lee_sin AS TFT7_LeeSin" +
                     ", tft7_leona AS TFT7_Leona" +
                     ", tft7_lillia AS TFT7_Lillia" +
                     ", tft7_lulu AS TFT7_Lulu" +
