@@ -13,16 +13,14 @@ import com.grassparty.tft.Repository.JPA.CustomQueryRepository;
 import com.grassparty.tft.Service.*;
 import com.grassparty.tft.Repository.FullRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/test")
+@CrossOrigin("*")
 public class TestController {
     @Autowired SummonerService summonerService;
     @Autowired MatchDTOService matchservice;
@@ -263,14 +261,18 @@ public class TestController {
     @GetMapping("/mockdoridomabem")
     public ArrayList<StatisticDTO> mockdoridomabem(){
         ArrayList<StatisticDTO> statisticDTOs = new ArrayList<StatisticDTO>();
-        StatisticDTO statisticDTO = new StatisticDTO();
         List<StatPreServiceTable> preServiceTables = customQueryRepository.findAll();
         StatPreServiceTable dummy;
         for(int i=0; i< preServiceTables.size(); i++){
+            StatisticDTO statisticDTO = new StatisticDTO();
             dummy = preServiceTables.get(i);
             statisticDTO.setPlacementRate(dummy.getPlacement() / dummy.getCount());
             statisticDTO.setCharacter_id(FuckThatShit(dummy));
+            statisticDTOs.add(statisticDTO);
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         }
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println(statisticDTOs);
 
 
 
@@ -455,6 +457,9 @@ public class TestController {
         if(statPreServiceTable.getTFT7_Shyvana() == 1){
             sexsex.add("TFT7_Shyvana");
         }
+
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.println(sexsex);
 
 
         String[] sex = sexsex.toArray(new String[sexsex.size()]);

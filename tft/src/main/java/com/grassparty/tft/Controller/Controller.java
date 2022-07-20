@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin("*")
 public class Controller {
     @Autowired SummonerService summonerService;
     @Autowired MatchDTOService matchservice;
     @Autowired MetaRecordService metaRecordService;
+    @Autowired StatService statService;
     @Autowired ModelConvertService modelConvertService;
     @Autowired
     FullRecordRepository fullRecordRepository;
@@ -82,5 +84,11 @@ public class Controller {
 
     @GetMapping(path="/puuid/{puuid}")
     public MatchID GetMatchID(@PathVariable String puuid){return matchservice.GetMatchIdByPuuid(puuid);}
+
+    @GetMapping(path="/stat/{name}")
+    public void StartStatistic(@PathVariable String name){ statService.StatisticsByName(name);}
+
+
+
 
 }

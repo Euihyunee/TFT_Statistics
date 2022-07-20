@@ -1,6 +1,7 @@
 package com.grassparty.tft.Service;
 
 import com.grassparty.tft.Model.DB.StatValidationTable;
+import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Repository.JPA.FullRecordRepositoryJPA;
 import com.grassparty.tft.Repository.FullRecordRepository;
@@ -30,9 +31,14 @@ public class StatService {
     }
 
     public void StatisticsByPuuid(String puuid){
-        SummonerDTO summonerDTO = summonerService.GetSummonerDtoByPuuid(puuid);
+        // matchID 받아오기
+        MatchID matchID = matchservice.GetMatchIdByPuuid(puuid);
 
-        matchservice.GetMatchIdByPuuid(puuid);
+        // matchID로 통계돌리기
+        for(String id : matchID.getMatchid()){
+            StatisticsByMatchId(id);
+        }
+
     }
 
     public void StatisticsByMatchId(String matchId){

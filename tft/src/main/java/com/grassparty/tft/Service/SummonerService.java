@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 @Service
 public class SummonerService {
     // api 키
-    private String api_key = "RGAPI-552a2b4e-8a36-4b22-bab2-3617d97a6bc0";
+    private String api_key = "RGAPI-2d7b1b99-820a-4352-acf3-b3eb7d28af18";
 
 
     public SummonerDTO GetSummonerDtoByPuuid(String puuid){
