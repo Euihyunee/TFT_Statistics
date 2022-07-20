@@ -1,5 +1,6 @@
 package com.grassparty.tft.Controller;
 
+import com.grassparty.tft.Model.DB.StatPreServiceTable;
 import com.grassparty.tft.Model.FullRecordDTO;
 import com.grassparty.tft.Model.FullRecordDTOs;
 import com.grassparty.tft.Model.MetaRecordDTO;
@@ -7,6 +8,8 @@ import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
+import com.grassparty.tft.Model.StatisticDTO;
+import com.grassparty.tft.Repository.JPA.CustomQueryRepository;
 import com.grassparty.tft.Service.*;
 import com.grassparty.tft.Repository.FullRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/test")
@@ -25,6 +31,8 @@ public class TestController {
     @Autowired
     FullRecordRepository fullRecordRepository;
     @Autowired StatService statService;
+    @Autowired
+    CustomQueryRepository customQueryRepository;
 
     // 문자열 출력 테스트
     @GetMapping(path = "/{test}")
@@ -250,5 +258,50 @@ public class TestController {
     public void testDBTest1(@PathVariable String matchid){
 
         statService.StatisticsByMatchId(matchid);
+    }
+
+    @GetMapping("/mockdoridomabem")
+    public ArrayList<StatisticDTO> mockdoridomabem(){
+        ArrayList<StatisticDTO> statisticDTOs = new ArrayList<StatisticDTO>();
+        StatisticDTO statisticDTO = new StatisticDTO();
+        List<StatPreServiceTable> preServiceTables = customQueryRepository.findAll();
+        StatPreServiceTable dummy;
+        for(int i=0; i< preServiceTables.size(); i++){
+            dummy = preServiceTables.get(i);
+            statisticDTO.setPlacementRate(dummy.getPlacement() / dummy.getCount());
+            statisticDTO.setCharacter_id(FuckThatShit(dummy));
+        }
+
+
+
+        return statisticDTOs;
+    }
+    public String[] FuckThatShit(StatPreServiceTable statPreServiceTable){
+        ArrayList<String> sexsex = new ArrayList<String>();
+        if(statPreServiceTable.getTFT7_Aatrox() == 1){
+            sexsex.add("TFT7_Aatrox");
+        }
+        if(statPreServiceTable.getTFT7_Aatrox() == 1){
+            sexsex.add("TFT7_Aatrox");
+        }
+        if(statPreServiceTable.getTFT7_Aatrox() == 1){
+            sexsex.add("TFT7_Aatrox");
+        }
+        if(statPreServiceTable.getTFT7_Aatrox() == 1){
+            sexsex.add("TFT7_Aatrox");
+        }
+        if(statPreServiceTable.getTFT7_Aatrox() == 1){
+            sexsex.add("TFT7_Aatrox");
+        }
+        if(statPreServiceTable.getTFT7_Aatrox() == 1){
+            sexsex.add("TFT7_Aatrox");
+        }
+        if(statPreServiceTable.getTFT7_Aatrox() == 1){
+            sexsex.add("TFT7_Aatrox");
+        }
+
+
+        String[] sex = sexsex.toArray(new String[sexsex.size()]);
+        return sex;
     }
 }
