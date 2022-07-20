@@ -72,9 +72,8 @@ public interface CustomQueryRepository extends JpaRepository<StatPreServiceTable
                     ", tft7_yasuo AS TFT7_Yasuo" +
                     ", tft7_yone AS TFT7_Yone" +
                     ", tft7_zoe AS TFT7_Zoe" +
-                    ", " +
                     ", SUM(placement) AS placement" +
-            ", COUNT(deck_id) AS count\n" +
+                    ", COUNT(deck_id) AS count\n" +
             "        from tbl_stat        \n" +
             "        group BY tft7_aatrox, tft7_anivia, tft7_ao_shin, tft7_ashe, tft7_aurelion_sol, tft7_bard, tft7_braum, tft7_corki, tft7_diana, tft7_dragon_blue, tft7_dragon_gold, tft7_dragon_green, tft7_dragon_purple, tft7_elise,\n" +
             "        tft7_ezreal, tft7_gnar, tft7_hecarim, tft7_heimerdinger, tft7_illaoi, tft7_jinx, tft7_karma, tft7_kayn, tft7_lee_sin, tft7_leona, tft7_lillia, tft7_lulu, tft7_nami, tft7_neeko, tft7_nidalee, tft7_nunu, tft7_olaf,\n" +
