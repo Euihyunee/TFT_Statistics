@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,7 +25,8 @@ import java.util.List;
 
 @Service
 public class MatchDTOService {
-    private String api_key = "RGAPI-2d7b1b99-820a-4352-acf3-b3eb7d28af18";
+    @Value("${api_key}")
+    private String api_key;
 
     public MatchID GetMatchIdByPuuid(String puuid){
         String api_query = "&api_key=";

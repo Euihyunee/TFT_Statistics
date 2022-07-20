@@ -2,6 +2,7 @@ package com.grassparty.tft.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -12,8 +13,8 @@ import java.nio.charset.StandardCharsets;
 
 @Service
 public class SummonerService {
-    // api 키
-    private String api_key = "RGAPI-2d7b1b99-820a-4352-acf3-b3eb7d28af18";
+    @Value("${api_key}")
+    private String api_key;
 
 
     public SummonerDTO GetSummonerDtoByPuuid(String puuid){
