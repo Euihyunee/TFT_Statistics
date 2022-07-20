@@ -1,16 +1,17 @@
 package com.grassparty.tft.Service;
 
 import com.google.gson.Gson;
-import com.grassparty.tft.Model.DB.FullRecordDB;
-import com.grassparty.tft.Model.DB.StatTable;
+import com.grassparty.tft.Model.DB.*;
 import com.grassparty.tft.Model.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.FullDTO.FullUnitDTO;
 import com.grassparty.tft.Model.FullRecordDTO;
 import com.grassparty.tft.Repository.FullRecordRepository;
+import com.grassparty.tft.Repository.JPA.CustomQueryRepository;
 import com.grassparty.tft.Repository.JPA.StatRepositoryJPA;
 import com.grassparty.tft.Repository.StatRepository;
 import com.grassparty.tft.Repository.StatValidationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,8 @@ public class ScheduleService {
     StatValidationRepository statValidationRepository;
     @Autowired
     StatRepository statRepository;
+    @Autowired
+    CustomQueryRepository customQueryRepository;
 
     @Scheduled(fixedDelay = 300000)
     public void testMethod2(){
@@ -68,12 +71,44 @@ public class ScheduleService {
     @Scheduled(fixedDelay = 300000)
     public void testMethod3(){
         System.out.println("3번 기능 5분에 한번 실행");
-
-
         
         // 걍 쿼리를 쓰자
-
         // GroupBy 챔피언 해서 테이블 만들기
+        StatPreServiceInterface preService = customQueryRepository.GetQuery().get(3);
+        System.out.println(preService.getDeckId());
+        System.out.println(preService.getCount());
+        System.out.println(preService.getPlacement());
+        System.out.println(preService.getTFT7_AoShin());
+        System.out.println(preService.getTFT7_AurelionSol());
+        System.out.println(preService.getTFT7_Bard());
+        System.out.println(preService.getTFT7_DragonBlue());
+        System.out.println(preService.getTFT7_DragonGold());
+        System.out.println(preService.getTFT7_DragonGreen());
+        System.out.println(preService.getTFT7_DragonPurple());
+        System.out.println(preService.getTFT7_Hecarim());
+        System.out.println(preService.getTFT7_Pyke());
+        System.out.println(preService.getTFT7_Shyvana());
+        System.out.println(preService.getTFT7_Zoe());
+        System.out.println(preService.getTFT7_Talon());
+        System.out.println(preService.getTFT7_Soraka());
+        System.out.println(preService.getTFT7_Yasuo());
+        System.out.println(preService.getTFT7_TrainerDragon());
+        System.out.println(preService.getTFT7_Anivia());
+        System.out.println(preService.getTFT7_Aatrox());
+        System.out.println(preService.getTFT7_Jinx());
+        System.out.println(preService.getTFT7_Corki());
+        System.out.println(preService.getTFT7_Gnar());
+        System.out.println(preService.getTFT7_Illaoi());
+        System.out.println(preService.getTFT7_Lillia());
+        System.out.println(preService.getTFT7_Sylas());
+
+
+
+
+
+
+
+
 
         // 테이블을 PreStatService 예시
 
