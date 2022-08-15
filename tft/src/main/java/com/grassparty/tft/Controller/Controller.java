@@ -18,8 +18,7 @@ public class Controller {
     @Autowired MetaRecordService metaRecordService;
     @Autowired StatService statService;
     @Autowired ModelConvertService modelConvertService;
-    @Autowired
-    FullRecordRepository fullRecordRepository;
+    @Autowired FullRecordRepository fullRecordRepository;
 
 
 

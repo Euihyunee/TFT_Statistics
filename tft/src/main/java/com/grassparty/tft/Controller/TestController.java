@@ -26,11 +26,9 @@ public class TestController {
     @Autowired MatchDTOService matchservice;
     @Autowired MetaRecordService metaRecordService;
     @Autowired ModelConvertService modelConvertService;
-    @Autowired
-    FullRecordRepository fullRecordRepository;
+    @Autowired FullRecordRepository fullRecordRepository;
     @Autowired StatService statService;
-    @Autowired
-    CustomQueryRepository customQueryRepository;
+    @Autowired CustomQueryRepository customQueryRepository;
 
     // 문자열 출력 테스트
     @GetMapping(path = "/{test}")

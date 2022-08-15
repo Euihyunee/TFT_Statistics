@@ -18,14 +18,10 @@ import java.util.ArrayList;
 
 @Service
 public class ScheduleService {
-    @Autowired
-    FullRecordRepository fullRecordRepository;
-    @Autowired
-    StatValidationRepository statValidationRepository;
-    @Autowired
-    StatRepository statRepository;
-    @Autowired
-    CustomQueryRepository customQueryRepository;
+    @Autowired FullRecordRepository fullRecordRepository;
+    @Autowired StatValidationRepository statValidationRepository;
+    @Autowired StatRepository statRepository;
+    @Autowired CustomQueryRepository customQueryRepository;
 
     @Scheduled(fixedDelay = 3000000)
     public void testMethod2(){

@@ -15,12 +15,9 @@ public class StatService {
     @Autowired MatchDTOService matchservice;
     @Autowired MetaRecordService metaRecordService;
     @Autowired ModelConvertService modelConvertService;
-    @Autowired
-    FullRecordRepository fullRecordRepository;
-    @Autowired
-    StatVaildationRepositoryJPA statVaildationRepositoryJPA;
-    @Autowired
-    FullRecordRepositoryJPA fullRecordRepositoryJPA;
+    @Autowired FullRecordRepository fullRecordRepository;
+    @Autowired StatVaildationRepositoryJPA statVaildationRepositoryJPA;
+    @Autowired FullRecordRepositoryJPA fullRecordRepositoryJPA;
 
     public void StatisticsByName(String name){
         // 이름을 받아서 puuid 얻음
