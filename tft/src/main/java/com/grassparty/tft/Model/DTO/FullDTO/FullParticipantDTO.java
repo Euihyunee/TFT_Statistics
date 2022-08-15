@@ -1,8 +1,7 @@
-package com.grassparty.tft.Model.FullDTO;
+package com.grassparty.tft.Model.DTO.FullDTO;
 
 import com.grassparty.tft.Model.Riot.etc.CompanionDto;
 import com.grassparty.tft.Model.Riot.etc.TraitDto;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

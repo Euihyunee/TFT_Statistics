@@ -54,19 +54,7 @@ public class MatchDTOService {
             matches = matches.replace("\"", "");
             String[] matchList = matches.split(",");
             matchID.setMatchid(matchList);
-//            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//            con.setRequestMethod("GET");
 
-//            InputStream responseStream = con.getInputStream();
-//
-//            // Manually converting the response body InputStream to summonerDTO using Jackson
-//            ObjectMapper mapper = new ObjectMapper();
-//            matchID = mapper.readValue(responseStream, MatchID.class);
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         } catch (RestClientException e) {
             e.printStackTrace();
         }

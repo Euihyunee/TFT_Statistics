@@ -1,8 +1,6 @@
-package com.grassparty.tft.Model;
+package com.grassparty.tft.Model.DTO;
 
-import com.grassparty.tft.Model.FullDTO.FullInfoDTO;
-import com.grassparty.tft.Model.FullDTO.FullMetadataDTO;
-import com.grassparty.tft.Model.FullDTO.FullParticipantDTO;
+import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

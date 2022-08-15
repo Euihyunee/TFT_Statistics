@@ -1,7 +1,6 @@
 package com.grassparty.tft.Service;
 
-import com.grassparty.tft.Model.MetaRecordDTO;
-import com.grassparty.tft.Model.Riot.etc.UnitDto;
+import com.grassparty.tft.Model.DTO.MetaRecordDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

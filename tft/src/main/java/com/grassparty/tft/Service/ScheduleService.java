@@ -2,22 +2,17 @@ package com.grassparty.tft.Service;
 
 import com.google.gson.Gson;
 import com.grassparty.tft.Model.DB.*;
-import com.grassparty.tft.Model.FullDTO.FullParticipantDTO;
-import com.grassparty.tft.Model.FullDTO.FullUnitDTO;
-import com.grassparty.tft.Model.FullRecordDTO;
+import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
+import com.grassparty.tft.Model.DTO.FullDTO.FullUnitDTO;
+import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Repository.FullRecordRepository;
 import com.grassparty.tft.Repository.JPA.CustomQueryRepository;
-import com.grassparty.tft.Repository.JPA.StatRepositoryJPA;
 import com.grassparty.tft.Repository.StatRepository;
 import com.grassparty.tft.Repository.StatValidationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 

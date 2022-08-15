@@ -1,4 +1,4 @@
-package com.grassparty.tft.Model;
+package com.grassparty.tft.Model.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,15 +1,12 @@
 package com.grassparty.tft.Service;
 
-import com.grassparty.tft.Model.FullRecordDTO;
-import com.grassparty.tft.Model.FullRecordDTOs;
-import com.grassparty.tft.Model.MetaRecordDTO;
-import com.grassparty.tft.Model.FullDTO.FullInfoDTO;
-import com.grassparty.tft.Model.FullDTO.FullMetadataDTO;
-import com.grassparty.tft.Model.FullDTO.FullParticipantDTO;
-import com.grassparty.tft.Model.FullDTO.FullUnitDTO;
+import com.grassparty.tft.Model.DTO.FullRecordDTO;
+import com.grassparty.tft.Model.DTO.FullRecordDTOs;
+import com.grassparty.tft.Model.DTO.MetaRecordDTO;
+import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
+import com.grassparty.tft.Model.DTO.FullDTO.FullUnitDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchDtos;
-import com.grassparty.tft.Model.Riot.etc.ParticipantDto;
 import com.grassparty.tft.Model.Riot.etc.UnitDto;
 import org.springframework.stereotype.Service;
 
