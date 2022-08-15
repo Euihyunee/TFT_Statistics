@@ -86,7 +86,7 @@ public class MatchDTOService {
 
         return matchDtos;
     }
-    @ResponseBody
+
     private MatchDto GetMatchDTO(String matchurl){
         MatchDto matchDto = null;
         try {
