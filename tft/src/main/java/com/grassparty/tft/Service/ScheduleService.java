@@ -6,6 +6,7 @@ import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.DTO.FullDTO.FullUnitDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Repository.FullRecordRepository;
+import com.grassparty.tft.Repository.JPA.CustomPreQueryRepository;
 import com.grassparty.tft.Repository.JPA.CustomQueryRepository;
 import com.grassparty.tft.Repository.StatRepository;
 import com.grassparty.tft.Repository.StatValidationRepository;
@@ -22,34 +23,57 @@ public class ScheduleService {
     @Autowired StatValidationRepository statValidationRepository;
     @Autowired StatRepository statRepository;
     @Autowired CustomQueryRepository customQueryRepository;
+    @Autowired CustomPreQueryRepository customPreQueryRepository;
 
+    // 매치아이디 밸리데이션 데이블 돌면서 통계에 들어가지않은 애들 1000개씩 통계에 추가
     @Scheduled(fixedDelay = 3000000)
     public void testMethod2(){
-        System.out.println("2번 기능 5분에 한번 실행");
+        System.out.println("1번 기능 5분에 한번 실행----------------------------------------");
 
         // 1000번 실행
         for(int i=0; i<1000; i++){
             // 실행할 매치가 없으면 중단
             if(!exec()){ break; }
         }
-
     }
 
+    // stat테이블에서 preService테이블로 데이터 넘기기
     @Scheduled(fixedDelay = 3000000)
     public void testMethod3(){
-        System.out.println("3번 기능 5분에 한번 실행");
+        System.out.println("2번 기능 5분에 한번 실행----------------------------------------");
 
         // 걍 쿼리를 쓰자
         // GroupBy 챔피언 해서 테이블 만들기
-        for(int i = 0 ; i < customQueryRepository.GetQuery().size(); i++){
-            StatPreServiceInterface preService = customQueryRepository.GetQuery().get(i);
+        for(int i = 0 ; i < customPreQueryRepository.GetQuery().size(); i++){
+            StatPreServiceInterface preService = customPreQueryRepository.GetQuery().get(i);
 
             // preService를 DBTable에 맞추기
             StatPreServiceTable statPreServiceTable = GetStatPreServiceTableFromStatPreServiceInterface(preService);
 
             // preService 저장하기
-            customQueryRepository.save(statPreServiceTable);
+            customPreQueryRepository.save(statPreServiceTable);
         }
+    }
+
+    // preService테이블에서 Service테이블로 데이터 넘기기
+    // StatServiceInterface 미구현
+    @Scheduled(fixedDelay = 3000000)
+    public void PreToServiceTable(){
+        System.out.println("3번 기능 5분에 한번 실행----------------------------------------");
+        for(int i = 0 ; i < customQueryRepository.GetQuery().size(); i++) {
+            StatServiceInterface service = customQueryRepository.GetQuery().get(i);
+
+            // Service를 DBTable에 맞추기
+            StatServiceTable serviceTable = GetServiceFromServiceInterface(service);
+
+            customQueryRepository.save(serviceTable);
+        }
+    }
+
+    private StatServiceTable GetServiceFromServiceInterface(StatServiceInterface service) {
+        // 미구현
+        StatServiceTable statServiceTable = new StatServiceTable();
+        return statServiceTable;
     }
 
     public boolean exec(){
