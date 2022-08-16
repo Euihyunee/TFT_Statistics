@@ -54,6 +54,8 @@ public class StatService {
         }
 
     }
+
+    // matchId를 DB 저장
     public void InsertStatVaildation(String matchId){
         StatValidationTable statValidationTable = StatValidationTable.builder()
                 .matchID(matchId)

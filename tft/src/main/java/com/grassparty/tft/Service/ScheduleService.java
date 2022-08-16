@@ -35,6 +35,23 @@ public class ScheduleService {
 
     }
 
+    @Scheduled(fixedDelay = 3000000)
+    public void testMethod3(){
+        System.out.println("3번 기능 5분에 한번 실행");
+
+        // 걍 쿼리를 쓰자
+        // GroupBy 챔피언 해서 테이블 만들기
+        for(int i = 0 ; i < customQueryRepository.GetQuery().size(); i++){
+            StatPreServiceInterface preService = customQueryRepository.GetQuery().get(i);
+
+            // preService를 DBTable에 맞추기
+            StatPreServiceTable statPreServiceTable = GetStatPreServiceTableFromStatPreServiceInterface(preService);
+
+            // preService 저장하기
+            customQueryRepository.save(statPreServiceTable);
+        }
+    }
+
     public boolean exec(){
         // matchId를 DB Statvalidation 테이블에서 가져오기
         String matchid = statValidationRepository.GetMatchIdFromStatValidation();
@@ -56,24 +73,6 @@ public class ScheduleService {
         System.out.println("몇회실행됬는지 확인점");
 
         return true;
-    }
-
-
-    @Scheduled(fixedDelay = 3000000)
-    public void testMethod3(){
-        System.out.println("3번 기능 5분에 한번 실행");
-
-        // 걍 쿼리를 쓰자
-        // GroupBy 챔피언 해서 테이블 만들기
-        for(int i = 0 ; i < customQueryRepository.GetQuery().size(); i++){
-            StatPreServiceInterface preService = customQueryRepository.GetQuery().get(i);
-
-            // preService를 DBTable에 맞추기
-            StatPreServiceTable statPreServiceTable = GetStatPreServiceTableFromStatPreServiceInterface(preService);
-
-            // preService 저장하기
-            customQueryRepository.save(statPreServiceTable);
-        }
     }
 
 
