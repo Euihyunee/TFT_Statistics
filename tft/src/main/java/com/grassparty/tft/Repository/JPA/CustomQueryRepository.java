@@ -11,6 +11,6 @@ import java.util.List;
 
 public interface CustomQueryRepository extends JpaRepository<StatServiceTable, Integer> {
 
-    @Query(value ="")
-    List<StatServiceInterface> GetQuery();
+/*    @Query(value ="")
+    List<StatServiceInterface> GetQuery();*/
 }
