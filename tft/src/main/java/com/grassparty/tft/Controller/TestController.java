@@ -30,8 +30,7 @@ public class TestController {
     @Autowired FullRecordRepository fullRecordRepository;
     @Autowired StatService statService;
     @Autowired CustomQueryRepository customQueryRepository;
-    @Autowired
-    CustomPreQueryRepository customPreQueryRepository;
+    @Autowired CustomPreQueryRepository customPreQueryRepository;
 
     // 문자열 출력 테스트
     @GetMapping(path = "/{test}")
