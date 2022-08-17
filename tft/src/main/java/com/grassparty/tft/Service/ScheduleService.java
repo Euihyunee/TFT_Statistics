@@ -48,7 +48,8 @@ public class ScheduleService {
             StatPreServiceInterface preService = customPreQueryRepository.GetQuery().get(i);
 
             // preService를 DBTable에 맞추기
-            StatPreServiceTable statPreServiceTable = GetStatPreServiceTableFromStatPreServiceInterface(preService);
+            StatPreServiceTable statPreServiceTable =
+                    GetStatPreServiceTableFromStatPreServiceInterface(preService);
 
             // preService 저장하기
             customPreQueryRepository.save(statPreServiceTable);
@@ -60,14 +61,14 @@ public class ScheduleService {
     @Scheduled(fixedDelay = 3000000)
     public void PreToServiceTable(){
         System.out.println("3번 기능 5분에 한번 실행----------------------------------------");
-        for(int i = 0 ; i < customQueryRepository.GetQuery().size(); i++) {
-            StatServiceInterface service = customQueryRepository.GetQuery().get(i);
-
-            // Service를 DBTable에 맞추기
-            StatServiceTable serviceTable = GetServiceFromServiceInterface(service);
-
-            customQueryRepository.save(serviceTable);
-        }
+//        for(int i = 0 ; i < customQueryRepository.GetQuery().size(); i++) {
+//            StatServiceInterface service = customQueryRepository.GetQuery().get(i);
+//
+//            // Service를 DBTable에 맞추기
+//            StatServiceTable serviceTable = GetServiceFromServiceInterface(service);
+//
+//            customQueryRepository.save(serviceTable);
+//        }
     }
 
     private StatServiceTable GetServiceFromServiceInterface(StatServiceInterface service) {

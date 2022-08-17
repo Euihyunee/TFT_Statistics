@@ -13,8 +13,9 @@ import javax.persistence.Table;
 public class StatServiceTable {
     @Id
     @Column
-    private int deckId;
-
+    private int serviceDeckId;
+    @Column(columnDefinition = "integer default 0")
+    private int serviceId;
     @Column
     private int placement;
     @Column
