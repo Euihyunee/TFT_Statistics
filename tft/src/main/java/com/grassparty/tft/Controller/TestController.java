@@ -9,6 +9,7 @@ import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Model.DTO.StatisticDTO;
+import com.grassparty.tft.Repository.JPA.CustomPreQueryRepository;
 import com.grassparty.tft.Repository.JPA.CustomQueryRepository;
 import com.grassparty.tft.Service.*;
 import com.grassparty.tft.Repository.FullRecordRepository;
@@ -29,6 +30,7 @@ public class TestController {
     @Autowired FullRecordRepository fullRecordRepository;
     @Autowired StatService statService;
     @Autowired CustomQueryRepository customQueryRepository;
+    @Autowired CustomPreQueryRepository customPreQueryRepository;
 
     // 문자열 출력 테스트
     @GetMapping(path = "/{test}")
@@ -259,7 +261,7 @@ public class TestController {
     @GetMapping("/mockdoridomabem")
     public ArrayList<StatisticDTO> mockdoridomabem(){
         ArrayList<StatisticDTO> statisticDTOs = new ArrayList<StatisticDTO>();
-        List<StatPreServiceTable> preServiceTables = customQueryRepository.findAll();
+        List<StatPreServiceTable> preServiceTables = customPreQueryRepository.findAll();
         StatPreServiceTable dummy;
         for(int i=0; i< preServiceTables.size(); i++){
             StatisticDTO statisticDTO = new StatisticDTO();
