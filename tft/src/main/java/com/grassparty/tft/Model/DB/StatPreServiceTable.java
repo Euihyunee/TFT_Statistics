@@ -18,14 +18,14 @@ public class StatPreServiceTable {
     @Id
     @Column
     private int deckId;
-
-    @Column(columnDefinition = "integer default 0")
-    private int serviceDeckId;
     @Column
     private int placement;
     @Column
     private int count;
 
+    @ManyToOne
+    @JoinColumn(name = "statPreServiceTables")
+    private StatServiceTable statServiceTable;
 
 
     // 1코스트

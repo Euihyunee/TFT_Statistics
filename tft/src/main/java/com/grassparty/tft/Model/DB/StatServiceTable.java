@@ -2,10 +2,9 @@ package com.grassparty.tft.Model.DB;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_statservice")
@@ -14,12 +13,17 @@ public class StatServiceTable {
     @Id
     @Column
     private int serviceDeckId;
-    @Column(columnDefinition = "integer default 0")
-    private int serviceId;
     @Column
     private int placement;
     @Column
     private int count;
+
+    @ManyToOne
+    @JoinColumn(name = "serviceId")
+    private StatEndServiceTable statEndServiceTable;
+
+    @OneToMany
+    private List<StatPreServiceTable> statPreServiceTables = new ArrayList<>();
 
 
 
