@@ -1,6 +1,8 @@
 package com.grassparty.tft.Model.DB;
 
+import lombok.Builder;
 import lombok.Data;
+import org.hibernate.annotations.Generated;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -9,8 +11,9 @@ import java.util.List;
 @Entity
 @Table(name = "tbl_statservice")
 @Data
+@Builder
 public class StatServiceTable {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private int serviceDeckId;
     @Column
