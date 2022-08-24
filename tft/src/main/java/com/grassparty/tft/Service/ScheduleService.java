@@ -106,6 +106,7 @@ public class ScheduleService {
                 .deckId(statPreServiceInterface.getDeckId())
                 .placement(statPreServiceInterface.getPlacement())
                 .count(statPreServiceInterface.getCount())
+                .valid(false)
                 .TFT7_Aatrox(statPreServiceInterface.getTFT7_Aatrox())
                 .TFT7_Anivia(statPreServiceInterface.getTFT7_Anivia())
                 .TFT7_AoShin(statPreServiceInterface.getTFT7_AoShin())

@@ -22,7 +22,7 @@ public class StatServiceTable {
     @JoinColumn(name = "serviceId")
     private StatEndServiceTable statEndServiceTable;
 
-    @OneToMany
+    @OneToMany(mappedBy = "statServiceTable")
     private List<StatPreServiceTable> statPreServiceTables = new ArrayList<>();
 
 

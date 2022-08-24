@@ -5,9 +5,10 @@ import java.math.BigDecimal;
 
 public interface StatPreServiceInterface {
     // Integer
-    Integer getDeckId();
+    Long getDeckId();
     Integer getPlacement();
     Integer getCount();
+    Boolean getValid();
 
     // 1코스트
     Integer getTFT7_Nidalee();

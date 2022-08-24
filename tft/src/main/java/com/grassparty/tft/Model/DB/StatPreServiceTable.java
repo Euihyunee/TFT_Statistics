@@ -17,14 +17,16 @@ import javax.persistence.*;
 public class StatPreServiceTable {
     @Id
     @Column
-    private int deckId;
+    private long deckId;
     @Column
     private int placement;
     @Column
     private int count;
+    @Column
+    private boolean valid;
 
     @ManyToOne
-    @JoinColumn(name = "statPreServiceTables")
+    @JoinColumn(name = "serviceDeckId")
     private StatServiceTable statServiceTable;
 
 
