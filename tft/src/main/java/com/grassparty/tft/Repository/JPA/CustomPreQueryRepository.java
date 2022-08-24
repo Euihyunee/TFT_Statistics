@@ -78,5 +78,9 @@ public interface CustomPreQueryRepository extends JpaRepository<StatPreServiceTa
                     "        tft7_trainer_dragon, tft7_tristana, tft7_twitch, tft7_varus, tft7_vladimir, tft7_volibear, tft7_xayah, tft7_yasuo, tft7_zoe"
             , nativeQuery = true)
     List<StatPreServiceInterface> GetQuery();
+
+    @Query(value = "select * from tbl_statpreservice where count = " +
+            " (select max(count) from tbl_statpreservice)", nativeQuery = true)
+    StatPreServiceTable getMaxCountRow();
     //, SUM(placement), COUNT(deck_id)
 }

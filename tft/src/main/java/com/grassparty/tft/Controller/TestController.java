@@ -11,6 +11,7 @@ import com.grassparty.tft.Model.Riot.SummonerDTO;
 import com.grassparty.tft.Model.DTO.StatisticDTO;
 import com.grassparty.tft.Repository.JPA.CustomPreQueryRepository;
 import com.grassparty.tft.Repository.JPA.CustomQueryRepository;
+import com.grassparty.tft.Repository.StatPreServiceRepository;
 import com.grassparty.tft.Service.*;
 import com.grassparty.tft.Repository.FullRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,10 @@ public class TestController {
     @Autowired StatService statService;
     @Autowired CustomQueryRepository customQueryRepository;
     @Autowired CustomPreQueryRepository customPreQueryRepository;
+    @Autowired StatPreServiceRepository statPreServiceRepository;
+
+    @GetMapping("/test1111")
+    public StatPreServiceTable test1111(){return statPreServiceRepository.testPrintCount();}
 
     // 문자열 출력 테스트
     @GetMapping(path = "/{test}")
