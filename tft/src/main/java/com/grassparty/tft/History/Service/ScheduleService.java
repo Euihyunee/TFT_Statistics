@@ -34,7 +34,7 @@ public class ScheduleService {
 
     // preService테이블에서 Service테이블로 데이터 넘기기
     // StatServiceInterface 미구현
-    @Scheduled(fixedDelay = 3000000)
+    // @Scheduled(fixedDelay = 3000000)
     public void PreToServiceTable(){
         System.out.println("3번 기능 5분에 한번 실행----------------------------------------");
         ClassifyDeckBean.exec();
