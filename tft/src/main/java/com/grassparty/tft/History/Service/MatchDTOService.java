@@ -4,10 +4,7 @@ package com.grassparty.tft.History.Service;
 // matchid : "KR_5927958808"
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grassparty.tft.Bean.GetMatchDTOBean;
-import com.grassparty.tft.Bean.GetMatchIDBean;
-import com.grassparty.tft.Bean.GetUrlByMatchIdBean;
-import com.grassparty.tft.Bean.GetUrlByPuuidBean;
+import com.grassparty.tft.Bean.*;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;
@@ -49,16 +46,9 @@ public class MatchDTOService {
 
     // 여러개
     public MatchDtos GetMatchDTOByMatchIds(MatchID matchids) {
-        MatchDtos matchDtos = new MatchDtos();
-        MatchDto matchDto;
+        GetMatchDTOByMatchIdsBean GetMatchDTOByMatchIdsBean = new GetMatchDTOByMatchIdsBean();
 
-        // 적제
-        for(int i =0; i< matchids.getMatchid().length; i++){
-            matchDto = GetMatchDTO(matchids.getMatchid()[i]);
-            matchDtos.PushMatchDto(matchDto);
-        }
-
-        return matchDtos;
+        return GetMatchDTOByMatchIdsBean.exec(matchids);
     }
 
     private MatchDto GetMatchDTO(String matchid){
