@@ -13,11 +13,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ScheduleService {
-
-    @Autowired CustomQueryRepository customQueryRepository;
-    @Autowired CustomPreQueryRepository customPreQueryRepository;
-
-
     FirstScheduleBean FirstScheduleBean = new FirstScheduleBean();
     SecondScheduleBean SecondScheduleBean = new SecondScheduleBean();
     ClassifyDeckBean ClassifyDeckBean = new ClassifyDeckBean();
