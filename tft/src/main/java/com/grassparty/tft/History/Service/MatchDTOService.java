@@ -4,6 +4,8 @@ package com.grassparty.tft.History.Service;
 // matchid : "KR_5927958808"
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grassparty.tft.Bean.GetMatchIDBean;
+import com.grassparty.tft.Bean.GetUrlByPuuidBean;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;
@@ -29,36 +31,14 @@ public class MatchDTOService {
     private String api_key;
 
     public MatchID GetMatchIdByPuuid(String puuid){
-        String api_query = "&api_key=";
-        String site = "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/";
-        String site_query = "/ids?start=0&count=10";
-        String url = site + puuid + site_query + api_query + api_key;
-        return GetMatchID(url);
+        GetUrlByPuuidBean GetUrlByPuuidBean = new GetUrlByPuuidBean();
+        GetMatchIDBean GetMatchIDBean = new GetMatchIDBean();
+        return GetMatchIDBean.exec(GetUrlByPuuidBean.exec(puuid));
     }
 
-    private MatchID GetMatchID(String matchurl) {
-        MatchID matchID = new MatchID();
-        try {
-            RestTemplate restTemplate = new RestTemplate();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.set("X-Riot-Token", api_key); //헤더에 API키 추가
-
-            HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-
-            ResponseEntity<String> response = restTemplate.exchange(matchurl, HttpMethod.GET, entity, String.class); //요청을 보내어 결과를 받아옴
-
-            String matches = response.getBody().toString();
-            matches = matches.replace("[", "");
-            matches = matches.replace("]", "");
-            matches = matches.replace("\"", "");
-            String[] matchList = matches.split(",");
-            matchID.setMatchid(matchList);
-
-        } catch (RestClientException e) {
-            e.printStackTrace();
-        }
-        return matchID;
+    private MatchID GetMatchID(String puuid) {
+        GetMatchIDBean GetMatchIDBean = new GetMatchIDBean();
+        return GetMatchIDBean.exec(puuid);
     }
     // 1개
     public MatchDto GetMatchDTOByMatchId(String matchid) {
