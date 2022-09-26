@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 public class StatService {
     @Autowired SummonerService summonerService;
     @Autowired MatchDTOService matchservice;
-    @Autowired MetaRecordService metaRecordService;
     @Autowired ModelConvertService modelConvertService;
     @Autowired FullRecordRepository fullRecordRepository;
     @Autowired StatVaildationRepositoryJPA statVaildationRepositoryJPA;

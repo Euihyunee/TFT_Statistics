@@ -2,7 +2,6 @@ package com.grassparty.tft.History.Controller;
 
 import com.grassparty.tft.History.Repository.FullRecordRepository;
 import com.grassparty.tft.History.Service.MatchDTOService;
-import com.grassparty.tft.History.Service.MetaRecordService;
 import com.grassparty.tft.History.Service.ModelConvertService;
 import com.grassparty.tft.History.Service.SummonerService;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
@@ -19,8 +18,6 @@ public class HistoryController {
     SummonerService summonerService;
     @Autowired
     MatchDTOService matchservice;
-    @Autowired
-    MetaRecordService metaRecordService;
     @Autowired
     ModelConvertService modelConvertService;
     @Autowired

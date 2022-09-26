@@ -18,8 +18,6 @@ public class Controller {
     @Autowired
     MatchDTOService matchservice;
     @Autowired
-    MetaRecordService metaRecordService;
-    @Autowired
     StatService statService;
     @Autowired
     ModelConvertService modelConvertService;
