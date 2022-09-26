@@ -1,4 +1,4 @@
-package com.grassparty.tft.Service;
+package com.grassparty.tft.History.Service;
 
 import com.grassparty.tft.Model.DB.StatValidationTable;
 import com.grassparty.tft.Model.Riot.MatchID;

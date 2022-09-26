@@ -83,4 +83,8 @@ public interface CustomPreQueryRepository extends JpaRepository<StatPreServiceTa
             " (select max(count) from tbl_statpreservice)", nativeQuery = true)
     StatPreServiceTable getMaxCountRow();
     //, SUM(placement), COUNT(deck_id)
+
+    @Query(value = "select * from tbl_statpreservice where count = " +
+            " (select max(count) from tbl_statpreservice)", nativeQuery = true)
+    StatPreServiceTable getCountDesc();
 }

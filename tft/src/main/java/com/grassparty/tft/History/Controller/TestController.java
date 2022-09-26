@@ -1,5 +1,6 @@
-package com.grassparty.tft.Controller;
+package com.grassparty.tft.History.Controller;
 
+import com.grassparty.tft.History.Service.*;
 import com.grassparty.tft.Model.DB.StatPreServiceTable;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTOs;
@@ -24,12 +25,17 @@ import java.util.List;
 @RequestMapping("/test")
 @CrossOrigin("*")
 public class TestController {
-    @Autowired SummonerService summonerService;
-    @Autowired MatchDTOService matchservice;
-    @Autowired MetaRecordService metaRecordService;
-    @Autowired ModelConvertService modelConvertService;
+    @Autowired
+    SummonerService summonerService;
+    @Autowired
+    MatchDTOService matchservice;
+    @Autowired
+    MetaRecordService metaRecordService;
+    @Autowired
+    ModelConvertService modelConvertService;
     @Autowired FullRecordRepository fullRecordRepository;
-    @Autowired StatService statService;
+    @Autowired
+    StatService statService;
     @Autowired CustomQueryRepository customQueryRepository;
     @Autowired CustomPreQueryRepository customPreQueryRepository;
     @Autowired StatPreServiceRepository statPreServiceRepository;

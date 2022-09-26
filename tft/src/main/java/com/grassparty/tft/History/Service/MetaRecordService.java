@@ -1,4 +1,4 @@
-package com.grassparty.tft.Service;
+package com.grassparty.tft.History.Service;
 
 import com.grassparty.tft.Model.DTO.MetaRecordDTO;
 import org.springframework.stereotype.Service;
