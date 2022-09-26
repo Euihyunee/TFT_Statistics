@@ -10,7 +10,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-public class getSummonerDTOBean {
+public class GetSummonerDTOBean {
 
     public SummonerDTO exec(String encodedUrl){
         URL url;

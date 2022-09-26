@@ -1,6 +1,10 @@
 package com.grassparty.tft.History.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grassparty.tft.Bean.GetEncodeBean;
+import com.grassparty.tft.Bean.GetSummonerDTOBean;
+import com.grassparty.tft.Bean.GetSummonerDTOByNameBean;
+import com.grassparty.tft.Bean.GetSummonerDtoByPuuidBean;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,48 +22,24 @@ public class SummonerService {
 
 
     public SummonerDTO GetSummonerDtoByPuuid(String puuid){
-        String api_query = "?api_key=";
-        String site = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/";
-        String encodedUrl = site + puuid + api_query + api_key;
-        return getSummonerDTO(encodedUrl);
+        GetSummonerDtoByPuuidBean getSummonerDtoByPuuidBean = new GetSummonerDtoByPuuidBean();
+        return getSummonerDtoByPuuidBean.exec(puuid);
     }
 
 
     public SummonerDTO GetSummonerDTOByName(String name){
-        String encodedName = GetEncode(name);
-        String api_query = "?api_key=";
-        String site = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/";
-        String encodedUrl = site + encodedName + api_query + api_key;
-        return getSummonerDTO(encodedUrl);
+        GetSummonerDTOByNameBean getSummonerDTOByNameBean = new GetSummonerDTOByNameBean();
+        return getSummonerDTOByNameBean.exec(name);
     }
 
 
-    private SummonerDTO getSummonerDTO(String encodedUrl) {
-        URL url;
-        SummonerDTO summonerDTO = null;
-        try {
-            url = new URL(encodedUrl);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
-
-            InputStream responseStream = con.getInputStream();
-
-            // Manually converting the response body InputStream to summonerDTO using Jackson
-            ObjectMapper mapper = new ObjectMapper();
-            summonerDTO = mapper.readValue(responseStream, SummonerDTO.class);
-        } catch (MalformedURLException | ProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        return summonerDTO;
+    private SummonerDTO GetSummonerDTO(String encodedUrl) {
+        GetSummonerDTOBean getSummonerDTOBean = new GetSummonerDTOBean();
+        return getSummonerDTOBean.exec(encodedUrl);
     }
 
     public String GetEncode(String name){
-        byte[] stringBytes = name.getBytes();
-        String EncondedString = new String(stringBytes, StandardCharsets.UTF_8);
-        return EncondedString;
+        GetEncodeBean getEncodeBean = new GetEncodeBean();
+        return getEncodeBean.exec(name);
     }
 }
