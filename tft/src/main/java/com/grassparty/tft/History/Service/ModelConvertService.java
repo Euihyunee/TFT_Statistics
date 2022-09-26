@@ -1,8 +1,6 @@
 package com.grassparty.tft.History.Service;
 
-import com.grassparty.tft.Bean.GetFullRecordFromMatchDTOBean;
-import com.grassparty.tft.Bean.GetFullRecordsFromMatchDTOsBean;
-import com.grassparty.tft.Bean.GetFullUnitDTOFromUnitDtoBean;
+import com.grassparty.tft.Bean.*;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTOs;
 import com.grassparty.tft.Model.DTO.MetaRecordDTO;
@@ -36,42 +34,21 @@ public class ModelConvertService {
     }
 
     public MetaRecordDTO[] GetMetaRecordsFromFullRecords(FullRecordDTO[] fullRecordDTOs, String puuid){
-        MetaRecordDTO[] metaRecordDTOS = new MetaRecordDTO[10];
-        for(int i=0; i<fullRecordDTOs.length; i++){
-            metaRecordDTOS[i] = GetMetaRecordFromFullRecord(fullRecordDTOs[i], puuid);
+        GetMetaRecordsFromFullRecordsBean GetMetaRecordsFromFullRecordsBean = new GetMetaRecordsFromFullRecordsBean();
 
-        }
-
-        return metaRecordDTOS;
+        return GetMetaRecordsFromFullRecordsBean.exec(fullRecordDTOs, puuid);
     }
 
     public MetaRecordDTO GetMetaRecordFromFullRecord(FullRecordDTO fullRecordDTO, String puuid){
-        // FullRecordDTO -> MetaRecordDTO 로 변환
-        MetaRecordDTO metaRecordDTO = new MetaRecordDTO();
+        GetMetaRecordFromFullRecordBean GetMetaRecordFromFullRecordBean = new GetMetaRecordFromFullRecordBean();
 
-        FullParticipantDTO fullParticipantDTO = GetFullParticipantDTOByPuuidFromFullRecordDTO(fullRecordDTO, puuid);
-
-        metaRecordDTO.setMatch_id(fullRecordDTO.getMatch_id());
-        metaRecordDTO.setPlacement(fullParticipantDTO.getPlacement());
-        metaRecordDTO.setTime_eliminated(fullParticipantDTO.getTime_eliminated());
-        metaRecordDTO.setTraits(fullParticipantDTO.getTraits());
-        metaRecordDTO.setAugments(fullParticipantDTO.getAugments());
-        metaRecordDTO.setUnitDTO(fullParticipantDTO.getUnits());
-        //metaRecordDTO.setParticipantName();
-
-        return metaRecordDTO;
+        return GetMetaRecordFromFullRecordBean.exec(fullRecordDTO, puuid);
     }
 
     public FullParticipantDTO GetFullParticipantDTOByPuuidFromFullRecordDTO(FullRecordDTO fullRecordDTO, String puuid){
-        int index =0;
-        for(String id : fullRecordDTO.getParticipantsPuuid()){
-            if(puuid.equals(id)){
-                break;
-            }
-            index++;
-        }
-        return fullRecordDTO.getParticipants()[index];
+        GetFullParticipantDTOByPuuidFromFullRecordDTOBean GetFullParticipantDTOByPuuidFromFullRecordDTOBean = new GetFullParticipantDTOByPuuidFromFullRecordDTOBean();
 
+        return GetFullParticipantDTOByPuuidFromFullRecordDTOBean.exec(fullRecordDTO, puuid);
     }
 
 }
