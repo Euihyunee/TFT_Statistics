@@ -4,7 +4,9 @@ package com.grassparty.tft.History.Service;
 // matchid : "KR_5927958808"
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grassparty.tft.Bean.GetMatchDTOBean;
 import com.grassparty.tft.Bean.GetMatchIDBean;
+import com.grassparty.tft.Bean.GetUrlByMatchIdBean;
 import com.grassparty.tft.Bean.GetUrlByPuuidBean;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchDtos;
@@ -33,58 +35,35 @@ public class MatchDTOService {
     public MatchID GetMatchIdByPuuid(String puuid){
         GetUrlByPuuidBean GetUrlByPuuidBean = new GetUrlByPuuidBean();
         GetMatchIDBean GetMatchIDBean = new GetMatchIDBean();
+
         return GetMatchIDBean.exec(GetUrlByPuuidBean.exec(puuid));
     }
 
-    private MatchID GetMatchID(String puuid) {
-        GetMatchIDBean GetMatchIDBean = new GetMatchIDBean();
-        return GetMatchIDBean.exec(puuid);
-    }
     // 1개
     public MatchDto GetMatchDTOByMatchId(String matchid) {
-        String api_query = "?api_key=";
-        String site = "https://asia.api.riotgames.com/tft/match/v1/matches/";
-        String url = site + matchid + api_query + api_key;
-        return GetMatchDTO(url);
+        GetUrlByMatchIdBean GetUrlByMatchIdBean = new GetUrlByMatchIdBean();
+        GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
+
+        return GetMatchDTOBean.exec(GetUrlByMatchIdBean.exec(matchid));
     }
+
     // 여러개
     public MatchDtos GetMatchDTOByMatchIds(MatchID matchids) {
-        String api_query = "?api_key=";
-        String site = "https://asia.api.riotgames.com/tft/match/v1/matches/";
-        String url;
-
-        // 이거 이상함
         MatchDtos matchDtos = new MatchDtos();
-        MatchDto matchDto = new MatchDto();
+        MatchDto matchDto;
 
         // 적제
         for(int i =0; i< matchids.getMatchid().length; i++){
-            url = site + matchids.getMatchid()[i] + api_query + api_key;
-            matchDto = GetMatchDTO(url);
+            matchDto = GetMatchDTO(matchids.getMatchid()[i]);
             matchDtos.PushMatchDto(matchDto);
         }
 
         return matchDtos;
     }
 
-    private MatchDto GetMatchDTO(String matchurl){
-        MatchDto matchDto = null;
-        try {
-            URL url = new URL(matchurl);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
+    private MatchDto GetMatchDTO(String matchid){
+        GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
 
-            InputStream responseStream = con.getInputStream();
-
-            // Manually converting the response body InputStream to summonerDTO using Jackson
-            ObjectMapper mapper = new ObjectMapper();
-            matchDto = mapper.readValue(responseStream, MatchDto.class);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return matchDto;
+        return GetMatchDTOBean.exec(matchid);
     }
 }
