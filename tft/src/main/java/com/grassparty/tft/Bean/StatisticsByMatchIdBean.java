@@ -22,8 +22,8 @@ public class StatisticsByMatchIdBean {
     StatVaildationRepositoryJPA statVaildationRepositoryJPA;
 
     public void exec(String matchId){
-        // 밸리데이션 체크
-        InsertStatVaildation(matchId);
+//        // 밸리데이션 체크
+//        InsertStatVaildation(matchId);
 
         // 기존에 데이터 저장되어있는지 체크
         boolean isMatchIdExist =
@@ -36,11 +36,11 @@ public class StatisticsByMatchIdBean {
             );
         }
     }
-    public void InsertStatVaildation(String matchId){
-        StatValidationTable statValidationTable = StatValidationTable.builder()
-                .matchID(matchId)
-                .valid(false)
-                .build();
-        statVaildationRepositoryJPA.save(statValidationTable);
-    }
+//    public void InsertStatVaildation(String matchId){
+//        StatValidationTable statValidationTable = StatValidationTable.builder()
+//                .matchID(matchId)
+//                .valid(false)
+//                .build();
+//        statVaildationRepositoryJPA.save(statValidationTable);
+//    }
 }

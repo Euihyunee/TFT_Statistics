@@ -10,13 +10,13 @@ public class StatisticsByPuuidBean {
     MatchDTOService matchservice;
 
     public void exec(String puuid) {
-        // matchID 받아오기
-        MatchID matchID = matchservice.GetMatchIdByPuuid(puuid);
-
+        GetMatchIDBean getMatchIDBean = new GetMatchIDBean();
+        MatchID matchID = getMatchIDBean.exec(puuid);
+        StatisticsByMatchIdBean statisticsByMatchIdBean = new StatisticsByMatchIdBean();
         // matchID로 통계돌리기
         for (String id : matchID.getMatchid()) {
             // return 구간에 함수 호출 때문에 분리 못시키는 중
-            StatisticsByMatchId(id);
+            statisticsByMatchIdBean.exec(id);
 
         }
     }
