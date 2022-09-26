@@ -3,9 +3,9 @@ package com.grassparty.tft.History.Service;
 import com.grassparty.tft.Model.DB.StatValidationTable;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
-import com.grassparty.tft.Repository.JPA.FullRecordRepositoryJPA;
-import com.grassparty.tft.Repository.FullRecordRepository;
-import com.grassparty.tft.Repository.JPA.StatVaildationRepositoryJPA;
+import com.grassparty.tft.History.Repository.JPA.FullRecordRepositoryJPA;
+import com.grassparty.tft.History.Repository.FullRecordRepository;
+import com.grassparty.tft.History.Repository.JPA.StatVaildationRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

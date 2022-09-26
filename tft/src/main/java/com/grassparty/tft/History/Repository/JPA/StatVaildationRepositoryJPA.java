@@ -1,4 +1,4 @@
-package com.grassparty.tft.Repository.JPA;
+package com.grassparty.tft.History.Repository.JPA;
 
 import com.grassparty.tft.Model.DB.StatValidationTable;
 import org.springframework.data.jpa.repository.JpaRepository;

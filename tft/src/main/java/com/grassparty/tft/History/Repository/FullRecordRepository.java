@@ -1,14 +1,11 @@
-package com.grassparty.tft.Repository;
+package com.grassparty.tft.History.Repository;
 
 import com.google.gson.Gson;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
-import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.DB.FullRecordDB;
-import com.grassparty.tft.Repository.JPA.FullRecordRepositoryJPA;
+import com.grassparty.tft.History.Repository.JPA.FullRecordRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 public class FullRecordRepository {

@@ -1,7 +1,7 @@
-package com.grassparty.tft.Repository;
+package com.grassparty.tft.History.Repository;
 
 import com.grassparty.tft.Model.DB.StatValidationTable;
-import com.grassparty.tft.Repository.JPA.StatVaildationRepositoryJPA;
+import com.grassparty.tft.History.Repository.JPA.StatVaildationRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
