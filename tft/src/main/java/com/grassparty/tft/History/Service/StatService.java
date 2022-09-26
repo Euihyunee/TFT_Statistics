@@ -13,6 +13,7 @@ public class StatService {
 
     public void StatisticsByPuuid(String puuid){
         StatisticsByPuuidBean statisticsByPuuidBean = new StatisticsByPuuidBean();
+
         statisticsByPuuidBean.exec(puuid);
     }
 
@@ -27,6 +28,7 @@ public class StatService {
     // matchId를 DB 저장
     public void InsertStatVaildation(String matchId){
         InsertStatVaildationBean insertStatVaildationBean = new InsertStatVaildationBean();
+
         insertStatVaildationBean.exec(matchId);
     }
 

@@ -23,23 +23,27 @@ public class SummonerService {
 
     public SummonerDTO GetSummonerDtoByPuuid(String puuid){
         GetSummonerDtoByPuuidBean getSummonerDtoByPuuidBean = new GetSummonerDtoByPuuidBean();
+
         return getSummonerDtoByPuuidBean.exec(puuid);
     }
 
 
     public SummonerDTO GetSummonerDTOByName(String name){
         GetSummonerDTOByNameBean getSummonerDTOByNameBean = new GetSummonerDTOByNameBean();
+
         return getSummonerDTOByNameBean.exec(name);
     }
 
 
     private SummonerDTO GetSummonerDTO(String encodedUrl) {
         GetSummonerDTOBean getSummonerDTOBean = new GetSummonerDTOBean();
+
         return getSummonerDTOBean.exec(encodedUrl);
     }
 
     public String GetEncode(String name){
         GetEncodeBean getEncodeBean = new GetEncodeBean();
+
         return getEncodeBean.exec(name);
     }
 }
