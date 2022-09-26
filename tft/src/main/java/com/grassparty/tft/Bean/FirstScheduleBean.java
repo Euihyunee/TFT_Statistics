@@ -16,7 +16,6 @@ public class FirstScheduleBean {
 
 
     public void exec(){
-        System.out.println("1번 기능 5분에 한번 실행----------------------------------------");
         // 1000번 실행
         for(int i=0; i<1000; i++){
             // 실행할 매치가 없으면 중단
