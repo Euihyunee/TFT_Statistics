@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class StatisticsByNameBean {
 
+    // Service Autowired하면 안 됨
     @Autowired
     SummonerService summonerService;
 
