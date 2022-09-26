@@ -1,6 +1,6 @@
-package com.grassparty.tft.History.Repository;
+package com.grassparty.tft.Repository;
 
-import com.grassparty.tft.History.Repository.JPA.StatRepositoryJPA;
+import com.grassparty.tft.Repository.JPA.StatRepositoryJPA;
 import com.grassparty.tft.Model.DB.StatTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

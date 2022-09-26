@@ -4,10 +4,6 @@ import com.grassparty.tft.Bean.ClassifyDeckBean;
 import com.grassparty.tft.Bean.FirstScheduleBean;
 import com.grassparty.tft.Bean.SecondScheduleBean;
 import com.grassparty.tft.Model.DB.*;
-import com.grassparty.tft.History.Repository.JPA.CustomPreQueryRepository;
-import com.grassparty.tft.History.Repository.JPA.CustomQueryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 

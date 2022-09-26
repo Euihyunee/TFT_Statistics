@@ -2,7 +2,7 @@ package com.grassparty.tft.Bean;
 
 import com.grassparty.tft.Model.DB.StatTable;
 
-public class MappingStatTable {
+public class MappingStatTableBean {
     public StatTable exec(StatTable statTable, String charaterName){
         switch (charaterName) {
             case "TFT7_Nidalee":

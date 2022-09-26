@@ -1,4 +1,4 @@
-package com.grassparty.tft.History.Repository.JPA;
+package com.grassparty.tft.Repository.JPA;
 
 import com.grassparty.tft.Model.DB.StatPreServiceInterface;
 import com.grassparty.tft.Model.DB.StatPreServiceTable;

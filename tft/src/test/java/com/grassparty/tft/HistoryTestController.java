@@ -1,6 +1,6 @@
 package com.grassparty.tft;
 
-import com.grassparty.tft.History.Repository.FullRecordRepository;
+import com.grassparty.tft.Repository.FullRecordRepository;
 import com.grassparty.tft.History.Service.MatchDTOService;
 import com.grassparty.tft.History.Service.ModelConvertService;
 import com.grassparty.tft.History.Service.SummonerService;

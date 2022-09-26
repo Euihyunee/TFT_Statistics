@@ -1,7 +1,7 @@
 package com.grassparty.tft.Bean;
 
-import com.grassparty.tft.History.Repository.JPA.CustomPreQueryRepository;
-import com.grassparty.tft.History.Repository.JPA.CustomQueryRepository;
+import com.grassparty.tft.Repository.JPA.CustomPreQueryRepository;
+import com.grassparty.tft.Repository.JPA.CustomQueryRepository;
 import com.grassparty.tft.Model.DB.StatPreServiceTable;
 import com.grassparty.tft.Model.DB.StatServiceTable;
 import org.springframework.beans.factory.annotation.Autowired;

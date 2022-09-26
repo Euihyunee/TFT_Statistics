@@ -1,8 +1,8 @@
 package com.grassparty.tft.Bean;
 
 import com.google.gson.Gson;
-import com.grassparty.tft.History.Repository.FullRecordRepository;
-import com.grassparty.tft.History.Repository.StatValidationRepository;
+import com.grassparty.tft.Repository.FullRecordRepository;
+import com.grassparty.tft.Repository.StatValidationRepository;
 import com.grassparty.tft.Model.DB.FullRecordDB;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import org.springframework.beans.factory.annotation.Autowired;

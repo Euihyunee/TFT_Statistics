@@ -1,11 +1,10 @@
 package com.grassparty.tft.Bean;
 
-import com.grassparty.tft.History.Repository.FullRecordRepository;
-import com.grassparty.tft.History.Repository.JPA.FullRecordRepositoryJPA;
-import com.grassparty.tft.History.Repository.JPA.StatVaildationRepositoryJPA;
+import com.grassparty.tft.Repository.FullRecordRepository;
+import com.grassparty.tft.Repository.JPA.FullRecordRepositoryJPA;
+import com.grassparty.tft.Repository.JPA.StatVaildationRepositoryJPA;
 import com.grassparty.tft.History.Service.MatchDTOService;
 import com.grassparty.tft.History.Service.ModelConvertService;
-import com.grassparty.tft.Model.DB.StatValidationTable;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class StatisticsByMatchIdBean {

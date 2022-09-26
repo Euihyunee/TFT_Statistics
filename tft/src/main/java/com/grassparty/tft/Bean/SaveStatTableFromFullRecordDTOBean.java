@@ -1,6 +1,6 @@
 package com.grassparty.tft.Bean;
 
-import com.grassparty.tft.History.Repository.StatRepository;
+import com.grassparty.tft.Repository.StatRepository;
 import com.grassparty.tft.Model.DB.StatTable;
 import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.DTO.FullDTO.FullUnitDTO;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class SaveStatTableFromFullRecordDTOBean { // 더작게 ?
     @Autowired
     StatRepository statRepository;
-    MappingStatTable MappingStatTable = new MappingStatTable();
+    MappingStatTableBean MappingStatTableBean = new MappingStatTableBean();
 
     public void exec(FullRecordDTO fullRecordDTO){
         ArrayList<String> charaterName = new ArrayList<>();
@@ -29,7 +29,7 @@ public class SaveStatTableFromFullRecordDTOBean { // 더작게 ?
             // 캐릭터 이름 맵핑
             System.out.println(charaterName);
             for(int i =0; i< charaterName.size(); i++){
-                statTable = MappingStatTable.exec(statTable, charaterName.get(i));
+                statTable = MappingStatTableBean.exec(statTable, charaterName.get(i));
             }
             // 등수 삽입
             statTable.setPlacement(fp.getPlacement());
