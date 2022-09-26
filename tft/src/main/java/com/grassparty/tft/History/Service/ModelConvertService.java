@@ -1,6 +1,7 @@
 package com.grassparty.tft.History.Service;
 
 import com.grassparty.tft.Bean.GetFullRecordFromMatchDTOBean;
+import com.grassparty.tft.Bean.GetFullRecordsFromMatchDTOsBean;
 import com.grassparty.tft.Bean.GetFullUnitDTOFromUnitDtoBean;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTOs;
@@ -17,15 +18,9 @@ import org.springframework.stereotype.Service;
 public class ModelConvertService {
 
     public FullRecordDTOs GetFullRecordsFromMatchDTOs(MatchDtos matchDtos){
-        FullRecordDTO fullRecordDTO;
-        FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();
-        int count =0;
-        for(int i =0; i < matchDtos.getMatchDtos().toArray().length; i++){
-            fullRecordDTO = GetFullRecordFromMatchDTO(matchDtos.getMatchDtos().get(i));
-            fullRecordDTOs.add(fullRecordDTO);
-        }
+        GetFullRecordsFromMatchDTOsBean GetFullRecordsFromMatchDTOsBean = new GetFullRecordsFromMatchDTOsBean();
 
-        return fullRecordDTOs;
+        return GetFullRecordsFromMatchDTOsBean.exec(matchDtos);
     }
 
     public FullRecordDTO GetFullRecordFromMatchDTO(MatchDto matchDto){
