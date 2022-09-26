@@ -1,5 +1,6 @@
 package com.grassparty.tft.History.Service;
 
+import com.grassparty.tft.Bean.*;
 import com.grassparty.tft.Model.DB.StatValidationTable;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
@@ -11,56 +12,29 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class StatService {
-    @Autowired SummonerService summonerService;
-    @Autowired MatchDTOService matchservice;
-    @Autowired ModelConvertService modelConvertService;
-    @Autowired FullRecordRepository fullRecordRepository;
-    @Autowired StatVaildationRepositoryJPA statVaildationRepositoryJPA;
-    @Autowired FullRecordRepositoryJPA fullRecordRepositoryJPA;
+    public String StatisticsByName(String name){
+        StatisticsByNameBean statisticsByNameBean = new StatisticsByNameBean();
 
-    public void StatisticsByName(String name){
-        // 이름을 받아서 puuid 얻음
-        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
-
-        // puuid로 통계로직에 들어감
-        StatisticsByPuuid(summonerDTO.getPuuid());
+        return statisticsByNameBean.exec(name);
     }
 
     public void StatisticsByPuuid(String puuid){
-        // matchID 받아오기
-        MatchID matchID = matchservice.GetMatchIdByPuuid(puuid);
-
-        // matchID로 통계돌리기
-        for(String id : matchID.getMatchid()){
-            StatisticsByMatchId(id);
-        }
-
+        StatisticsByPuuidBean statisticsByPuuidBean = new StatisticsByPuuidBean();
+        statisticsByPuuidBean.exec(puuid);
     }
 
     public void StatisticsByMatchId(String matchId){
-        // 밸리데이션 체크
-        InsertStatVaildation(matchId);
+        StatisticsByMatchIdBean statisticsByMatchIdBean = new StatisticsByMatchIdBean();
+        InsertStatVaildationBean insertStatVaildationBean = new InsertStatVaildationBean();
 
-        // 기존에 데이터 저장되어있는지 체크
-        boolean isMatchIdExist =
-                fullRecordRepositoryJPA.existsById(matchId);
-        if(!isMatchIdExist){
-            // fullrecordDTO받아오기
-            fullRecordRepository.InsertFullRecord(
-                    modelConvertService.GetFullRecordFromMatchDTO(
-                            matchservice.GetMatchDTOByMatchId(matchId))
-            );
-        }
-
+        insertStatVaildationBean.exec(matchId);
+        statisticsByMatchIdBean.exec(matchId);
     }
 
     // matchId를 DB 저장
     public void InsertStatVaildation(String matchId){
-        StatValidationTable statValidationTable = StatValidationTable.builder()
-                .matchID(matchId)
-                .valid(false)
-                .build();
-        statVaildationRepositoryJPA.save(statValidationTable);
+        InsertStatVaildationBean insertStatVaildationBean = new InsertStatVaildationBean();
+        insertStatVaildationBean.exec(matchId);
     }
 
 }
