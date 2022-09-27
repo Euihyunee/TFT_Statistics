@@ -1,6 +1,7 @@
-package com.grassparty.tft.Bean.Small;
+package com.grassparty.tft.Bean;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grassparty.tft.Bean.Small.GetUrlByMatchIdBean;
 import com.grassparty.tft.Model.Riot.MatchDto;
 
 import java.io.IOException;

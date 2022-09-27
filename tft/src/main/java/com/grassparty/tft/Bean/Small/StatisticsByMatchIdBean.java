@@ -1,5 +1,6 @@
 package com.grassparty.tft.Bean.Small;
 
+import com.grassparty.tft.Bean.GetMatchDTOBean;
 import com.grassparty.tft.Repository.FullRecordRepository;
 import com.grassparty.tft.Repository.JPA.FullRecordRepositoryJPA;
 import com.grassparty.tft.Repository.JPA.StatVaildationRepositoryJPA;
@@ -14,7 +15,7 @@ public class StatisticsByMatchIdBean {
     StatVaildationRepositoryJPA statVaildationRepositoryJPA;
 
     GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean = new GetFullRecordFromMatchDTOBean();
-    GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
+    com.grassparty.tft.Bean.GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
 
 
     public void exec(String matchId){

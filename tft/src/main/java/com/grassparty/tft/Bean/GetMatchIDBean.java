@@ -1,5 +1,6 @@
-package com.grassparty.tft.Bean.Small;
+package com.grassparty.tft.Bean;
 
+import com.grassparty.tft.Bean.Small.GetUrlByPuuidBean;
 import com.grassparty.tft.Model.Riot.MatchID;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;

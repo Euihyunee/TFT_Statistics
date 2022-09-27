@@ -1,5 +1,6 @@
 package com.grassparty.tft.Bean.Small;
 
+import com.grassparty.tft.Bean.GetMatchDTOBean;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;

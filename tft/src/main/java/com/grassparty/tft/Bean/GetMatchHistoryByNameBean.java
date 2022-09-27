@@ -14,9 +14,9 @@ public class GetMatchHistoryByNameBean {
     FullRecordRepository fullRecordRepository;
 
     GetSummonerDTOByNameBean getSummonerDTOByNameBean = new GetSummonerDTOByNameBean();
-    com.grassparty.tft.Bean.Small.GetMatchIDBean GetMatchIDBean = new GetMatchIDBean();
+    com.grassparty.tft.Bean.GetMatchIDBean GetMatchIDBean = new GetMatchIDBean();
     com.grassparty.tft.Bean.Small.GetMetaRecordFromFullRecordBean GetMetaRecordFromFullRecordBean = new GetMetaRecordFromFullRecordBean();
-    com.grassparty.tft.Bean.Small.GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
+    com.grassparty.tft.Bean.GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
     com.grassparty.tft.Bean.Small.GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean = new GetFullRecordFromMatchDTOBean();
 
 

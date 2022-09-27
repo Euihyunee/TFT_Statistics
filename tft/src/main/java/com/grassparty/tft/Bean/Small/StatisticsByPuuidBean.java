@@ -1,5 +1,6 @@
 package com.grassparty.tft.Bean.Small;
 
+import com.grassparty.tft.Bean.GetMatchIDBean;
 import com.grassparty.tft.Model.Riot.MatchID;
 
 public class StatisticsByPuuidBean {
