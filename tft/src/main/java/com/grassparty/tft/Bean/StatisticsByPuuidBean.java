@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class StatisticsByPuuidBean {
 
-    @Autowired
-    MatchDTOService matchservice;
-
     public void exec(String puuid) {
         GetMatchIDBean getMatchIDBean = new GetMatchIDBean();
         MatchID matchID = getMatchIDBean.exec(puuid);

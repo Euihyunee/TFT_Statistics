@@ -8,17 +8,16 @@ import com.grassparty.tft.History.Service.ModelConvertService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class StatisticsByMatchIdBean {
-
-    @Autowired
-    MatchDTOService matchservice;
-    @Autowired
-    ModelConvertService modelConvertService;
     @Autowired
     FullRecordRepositoryJPA fullRecordRepositoryJPA;
     @Autowired
     FullRecordRepository fullRecordRepository;
     @Autowired
     StatVaildationRepositoryJPA statVaildationRepositoryJPA;
+
+    GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean = new GetFullRecordFromMatchDTOBean();
+    GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
+
 
     public void exec(String matchId){
 //        // 밸리데이션 체크
@@ -30,8 +29,7 @@ public class StatisticsByMatchIdBean {
         if(!isMatchIdExist){
             // fullrecordDTO받아오기
             fullRecordRepository.InsertFullRecord(
-                    modelConvertService.GetFullRecordFromMatchDTO(
-                            matchservice.GetMatchDTOByMatchId(matchId))
+                    GetFullRecordFromMatchDTOBean.exec(GetMatchDTOBean.exec(matchId))
             );
         }
     }
