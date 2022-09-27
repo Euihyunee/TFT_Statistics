@@ -1,4 +1,4 @@
-package com.grassparty.tft.History.Service;
+package com.grassparty.tft.legacy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grassparty.tft.Bean.GetEncodeBean;

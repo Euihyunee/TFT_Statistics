@@ -1,9 +1,6 @@
 package com.grassparty.tft.History.Service;
 
-import com.grassparty.tft.Bean.GetMatchHistoryByNameBean;
-import com.grassparty.tft.Bean.GetMatchIDBean;
-import com.grassparty.tft.Bean.GetRecordByMatchIdBean;
-import com.grassparty.tft.Bean.GetSummonerDTOByNameBean;
+import com.grassparty.tft.Bean.*;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.DTO.MetaRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
@@ -26,5 +23,19 @@ public class HistoryService {
 
     public FullRecordDTO GetRecordByMatchId(String matchid){
         return GetRecordByMatchIdBean.exec(matchid);
+    }
+
+    public MatchDto GetMatchDTOByMatchId(String matchid) {
+        GetUrlByMatchIdBean GetUrlByMatchIdBean = new GetUrlByMatchIdBean();
+        GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
+
+        return GetMatchDTOBean.exec(GetUrlByMatchIdBean.exec(matchid));
+    }
+
+    public MatchID GetMatchIdByPuuid(String puuid){
+        GetUrlByPuuidBean GetUrlByPuuidBean = new GetUrlByPuuidBean();
+        GetMatchIDBean GetMatchIDBean = new GetMatchIDBean();
+
+        return GetMatchIDBean.exec(GetUrlByPuuidBean.exec(puuid));
     }
 }

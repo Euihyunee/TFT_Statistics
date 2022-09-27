@@ -1,4 +1,4 @@
-package com.grassparty.tft.History.Service;
+package com.grassparty.tft.legacy;
 
 import com.grassparty.tft.Bean.*;
 import org.springframework.stereotype.Service;

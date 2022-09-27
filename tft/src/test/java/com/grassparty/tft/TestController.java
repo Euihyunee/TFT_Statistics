@@ -1,7 +1,6 @@
 package com.grassparty.tft;
 
-import com.grassparty.tft.History.Service.SummonerService;
-import com.grassparty.tft.Model.DTO.MetaRecordDTO;
+import com.grassparty.tft.legacy.SummonerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

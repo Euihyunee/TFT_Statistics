@@ -1,15 +1,10 @@
 package com.grassparty.tft.History.Controller;
 
 import com.grassparty.tft.History.Service.HistoryService;
-import com.grassparty.tft.Repository.FullRecordRepository;
-import com.grassparty.tft.History.Service.MatchDTOService;
-import com.grassparty.tft.History.Service.ModelConvertService;
-import com.grassparty.tft.History.Service.SummonerService;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.DTO.MetaRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchID;
-import com.grassparty.tft.Model.Riot.SummonerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/his")
 @CrossOrigin("*")
 public class HistoryController {
-    @Autowired
-    MatchDTOService matchservice;
     @Autowired
     HistoryService historyService;
 
@@ -33,11 +26,11 @@ public class HistoryController {
 
     // matchId를 가지고 matchDto를 받아오는 Controller
     @GetMapping(path="/MatchID/{matchId}")
-    public MatchDto GetMatchDTO(@PathVariable String matchId){return matchservice.GetMatchDTOByMatchId(matchId);}
+    public MatchDto GetMatchDTO(@PathVariable String matchId){return historyService.GetMatchDTOByMatchId(matchId);}
 
     // puuid로 matchID받아오는 Controller
     @GetMapping(path="/puuid/{puuid}")
-    public MatchID GetMatchID(@PathVariable String puuid){return matchservice.GetMatchIdByPuuid(puuid);}
+    public MatchID GetMatchID(@PathVariable String puuid){return historyService.GetMatchIdByPuuid(puuid);}
 
 
 
