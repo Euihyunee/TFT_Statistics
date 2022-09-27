@@ -4,12 +4,15 @@ import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.DTO.FullDTO.FullUnitDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetFullRecordFromMatchDTOBean {
+
+    @Autowired
+    GetFullUnitDTOFromUnitDtoBean GetFullUnitDTOFromUnitDtoBean;
     public FullRecordDTO exec(MatchDto matchDto){
-        GetFullUnitDTOFromUnitDtoBean GetFullUnitDTOFromUnitDtoBean = new GetFullUnitDTOFromUnitDtoBean();
         // 로직
         // Riot DTO인 MatchDTO -> FullRecordDTO 로 변환
         FullParticipantDTO fullParticipantDTO;

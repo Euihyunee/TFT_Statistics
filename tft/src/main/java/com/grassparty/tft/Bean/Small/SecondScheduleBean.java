@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 public class SecondScheduleBean {
     @Autowired
     CustomPreQueryRepository customPreQueryRepository;
-
-    GetStatPreServiceTableFromStatPreServiceInterfaceBean GetStatPreServiceTableFromStatPreServiceInterfaceBean = new GetStatPreServiceTableFromStatPreServiceInterfaceBean();
+    @Autowired
+    GetStatPreServiceTableFromStatPreServiceInterfaceBean GetStatPreServiceTableFromStatPreServiceInterfaceBean;
 
     public void exec(){
         // 로직

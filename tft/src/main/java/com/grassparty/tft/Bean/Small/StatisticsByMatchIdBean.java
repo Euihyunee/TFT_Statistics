@@ -15,10 +15,10 @@ public class StatisticsByMatchIdBean {
     FullRecordRepository fullRecordRepository;
     @Autowired
     StatVaildationRepositoryJPA statVaildationRepositoryJPA;
-
-    GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean = new GetFullRecordFromMatchDTOBean();
-    com.grassparty.tft.Bean.GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
-
+    @Autowired
+    GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean;
+    @Autowired
+    GetMatchDTOBean GetMatchDTOBean;
 
     public void exec(String matchId){
 //        // 밸리데이션 체크

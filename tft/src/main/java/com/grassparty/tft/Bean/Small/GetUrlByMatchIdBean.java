@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GetUrlByMatchIdBean {
+
     @Value("${api_key}")
     private static String api_key;
-
 
     public String exec(String matchid){
         String api_query = "?api_key=";

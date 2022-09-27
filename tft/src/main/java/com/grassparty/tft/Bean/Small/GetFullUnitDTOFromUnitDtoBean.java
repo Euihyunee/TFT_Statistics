@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GetFullUnitDTOFromUnitDtoBean {
+
+
     public FullUnitDTO exec(UnitDto unitDto){
         FullUnitDTO fullUnitDTO = new FullUnitDTO();
 

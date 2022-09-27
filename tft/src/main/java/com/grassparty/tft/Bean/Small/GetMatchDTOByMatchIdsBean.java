@@ -4,13 +4,16 @@ import com.grassparty.tft.Bean.GetMatchDTOBean;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetMatchDTOByMatchIdsBean {
-    public MatchDtos exec(MatchID matchids){
-        GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
 
+    @Autowired
+    GetMatchDTOBean GetMatchDTOBean;
+
+    public MatchDtos exec(MatchID matchids){
         // 로직
         MatchDtos matchDtos = new MatchDtos();
         MatchDto matchDto;

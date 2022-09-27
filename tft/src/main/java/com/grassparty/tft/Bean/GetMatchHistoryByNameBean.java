@@ -14,13 +14,16 @@ import org.springframework.stereotype.Component;
 public class GetMatchHistoryByNameBean {
     @Autowired
     FullRecordRepository fullRecordRepository;
-
-    GetSummonerDTOByNameBean getSummonerDTOByNameBean = new GetSummonerDTOByNameBean();
-    com.grassparty.tft.Bean.GetMatchIDBean GetMatchIDBean = new GetMatchIDBean();
-    com.grassparty.tft.Bean.Small.GetMetaRecordFromFullRecordBean GetMetaRecordFromFullRecordBean = new GetMetaRecordFromFullRecordBean();
-    com.grassparty.tft.Bean.GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
-    com.grassparty.tft.Bean.Small.GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean = new GetFullRecordFromMatchDTOBean();
-
+    @Autowired
+    GetSummonerDTOByNameBean getSummonerDTOByNameBean;
+    @Autowired
+    GetMatchIDBean GetMatchIDBean;
+    @Autowired
+    GetMetaRecordFromFullRecordBean GetMetaRecordFromFullRecordBean;
+    @Autowired
+    GetMatchDTOBean GetMatchDTOBean;
+    @Autowired
+    GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean;
 
 
     public MetaRecordDTO[] exec(String name){

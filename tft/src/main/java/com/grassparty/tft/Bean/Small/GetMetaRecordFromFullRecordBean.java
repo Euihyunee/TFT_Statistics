@@ -3,13 +3,16 @@ package com.grassparty.tft.Bean.Small;
 import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.DTO.MetaRecordDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetMetaRecordFromFullRecordBean {
-    public MetaRecordDTO exec(FullRecordDTO fullRecordDTO, String puuid){
-        GetFullParticipantDTOByPuuidFromFullRecordDTOBean GetFullParticipantDTOByPuuidFromFullRecordDTOBean = new GetFullParticipantDTOByPuuidFromFullRecordDTOBean();
 
+    @Autowired
+    GetFullParticipantDTOByPuuidFromFullRecordDTOBean GetFullParticipantDTOByPuuidFromFullRecordDTOBean;
+
+    public MetaRecordDTO exec(FullRecordDTO fullRecordDTO, String puuid){
         // 로직
         // FullRecordDTO -> MetaRecordDTO 로 변환
         MetaRecordDTO metaRecordDTO = new MetaRecordDTO();

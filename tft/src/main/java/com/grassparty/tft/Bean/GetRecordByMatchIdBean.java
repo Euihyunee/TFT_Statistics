@@ -3,12 +3,16 @@ package com.grassparty.tft.Bean;
 import com.grassparty.tft.Bean.Small.GetFullRecordFromMatchDTOBean;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetRecordByMatchIdBean {
-    com.grassparty.tft.Bean.GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
-    com.grassparty.tft.Bean.Small.GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean = new GetFullRecordFromMatchDTOBean();
+
+    @Autowired
+    GetMatchDTOBean GetMatchDTOBean;
+    @Autowired
+    GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean;
 
     public FullRecordDTO exec(String matchid){
         // matchid 로 matchDTO 받기

@@ -3,12 +3,16 @@ package com.grassparty.tft.Bean.Small;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTOs;
 import com.grassparty.tft.Model.Riot.MatchDtos;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetFullRecordsFromMatchDTOsBean {
+
+    @Autowired
+    GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean;
+
     public FullRecordDTOs exec(MatchDtos matchDtos){
-        GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean = new GetFullRecordFromMatchDTOBean();
         // 로직
         FullRecordDTO fullRecordDTO;
         FullRecordDTOs fullRecordDTOs = new FullRecordDTOs();

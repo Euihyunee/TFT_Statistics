@@ -2,6 +2,7 @@ package com.grassparty.tft.Bean;
 
 import com.grassparty.tft.Bean.Small.GetUrlByPuuidBean;
 import com.grassparty.tft.Model.Riot.MatchID;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
@@ -10,11 +11,13 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class GetMatchIDBean {
+
     @Value("${api_key}")
     private static String api_key;
+    @Autowired
+    GetUrlByPuuidBean getUrlByPuuidBean;
 
     public MatchID exec(String puuid){
-        GetUrlByPuuidBean getUrlByPuuidBean = new GetUrlByPuuidBean();
         // 로직
         String matchurl = GetUrlByPuuidBean.exec(puuid);
 
