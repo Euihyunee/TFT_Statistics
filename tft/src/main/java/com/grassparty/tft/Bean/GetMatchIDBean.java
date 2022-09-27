@@ -4,6 +4,7 @@ import com.grassparty.tft.Bean.Small.GetUrlByPuuidBean;
 import com.grassparty.tft.Model.Riot.MatchID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
@@ -12,8 +13,8 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class GetMatchIDBean {
 
-    @Value("${api_key}")
-    private static String api_key;
+    @Autowired
+    private Environment env;
     @Autowired
     GetUrlByPuuidBean getUrlByPuuidBean;
 
@@ -26,7 +27,7 @@ public class GetMatchIDBean {
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.set("X-Riot-Token", api_key); //헤더에 API키 추가
+            headers.set("X-Riot-Token", env.getProperty("api_key")); //헤더에 API키 추가
 
             HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 
