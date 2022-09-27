@@ -10,9 +10,11 @@ import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping("/his")
+@CrossOrigin("*")
 public class HistoryController {
     @Autowired
     SummonerService summonerService;

@@ -2,9 +2,11 @@ package com.grassparty.tft.Stat.Controller;
 
 import com.grassparty.tft.History.Service.StatService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping("/stat")
+@CrossOrigin("*")
 public class StatController {
     @Autowired
     StatService statService;
