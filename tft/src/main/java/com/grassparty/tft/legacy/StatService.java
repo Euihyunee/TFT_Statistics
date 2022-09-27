@@ -1,6 +1,9 @@
 package com.grassparty.tft.legacy;
 
-import com.grassparty.tft.Bean.*;
+import com.grassparty.tft.Bean.Small.InsertStatVaildationBean;
+import com.grassparty.tft.Bean.Small.StatisticsByMatchIdBean;
+import com.grassparty.tft.Bean.Small.StatisticsByNameBean;
+import com.grassparty.tft.Bean.Small.StatisticsByPuuidBean;
 import org.springframework.stereotype.Service;
 
 @Service

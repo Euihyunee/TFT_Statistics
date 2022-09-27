@@ -1,4 +1,4 @@
-package com.grassparty.tft.Bean;
+package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Model.Riot.MatchID;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,4 +1,4 @@
-package com.grassparty.tft.Bean;
+package com.grassparty.tft.Bean.Small;
 
 import java.nio.charset.StandardCharsets;
 

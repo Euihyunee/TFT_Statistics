@@ -1,4 +1,4 @@
-package com.grassparty.tft.Bean;
+package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Model.DTO.FullDTO.FullUnitDTO;
 import com.grassparty.tft.Model.Riot.etc.UnitDto;

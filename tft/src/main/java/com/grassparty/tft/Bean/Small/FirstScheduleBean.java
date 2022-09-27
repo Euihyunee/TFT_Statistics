@@ -1,4 +1,4 @@
-package com.grassparty.tft.Bean;
+package com.grassparty.tft.Bean.Small;
 
 import com.google.gson.Gson;
 import com.grassparty.tft.Repository.FullRecordRepository;

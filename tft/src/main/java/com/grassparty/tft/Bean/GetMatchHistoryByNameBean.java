@@ -1,5 +1,6 @@
 package com.grassparty.tft.Bean;
 
+import com.grassparty.tft.Bean.Small.*;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.DTO.MetaRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
@@ -13,10 +14,10 @@ public class GetMatchHistoryByNameBean {
     FullRecordRepository fullRecordRepository;
 
     GetSummonerDTOByNameBean getSummonerDTOByNameBean = new GetSummonerDTOByNameBean();
-    GetMatchIDBean GetMatchIDBean = new GetMatchIDBean();
-    GetMetaRecordFromFullRecordBean GetMetaRecordFromFullRecordBean = new GetMetaRecordFromFullRecordBean();
-    GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
-    GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean = new GetFullRecordFromMatchDTOBean();
+    com.grassparty.tft.Bean.Small.GetMatchIDBean GetMatchIDBean = new GetMatchIDBean();
+    com.grassparty.tft.Bean.Small.GetMetaRecordFromFullRecordBean GetMetaRecordFromFullRecordBean = new GetMetaRecordFromFullRecordBean();
+    com.grassparty.tft.Bean.Small.GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();
+    com.grassparty.tft.Bean.Small.GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean = new GetFullRecordFromMatchDTOBean();
 
 
 

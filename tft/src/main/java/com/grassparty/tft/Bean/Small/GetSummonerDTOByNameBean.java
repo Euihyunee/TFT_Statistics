@@ -1,9 +1,7 @@
-package com.grassparty.tft.Bean;
+package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import org.springframework.beans.factory.annotation.Value;
-
-import java.nio.charset.StandardCharsets;
 
 public class GetSummonerDTOByNameBean {
 

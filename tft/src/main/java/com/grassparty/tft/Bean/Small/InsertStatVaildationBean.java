@@ -1,4 +1,4 @@
-package com.grassparty.tft.Bean;
+package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Repository.JPA.StatVaildationRepositoryJPA;
 import com.grassparty.tft.Model.DB.StatValidationTable;

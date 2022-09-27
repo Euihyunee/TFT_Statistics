@@ -1,15 +1,15 @@
 package com.grassparty.tft.History.Service;
 
 import com.grassparty.tft.Bean.*;
+import com.grassparty.tft.Bean.Small.GetMatchDTOBean;
+import com.grassparty.tft.Bean.Small.GetMatchIDBean;
+import com.grassparty.tft.Bean.Small.GetUrlByMatchIdBean;
+import com.grassparty.tft.Bean.Small.GetUrlByPuuidBean;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.DTO.MetaRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchID;
-import com.grassparty.tft.Model.Riot.SummonerDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class HistoryService {

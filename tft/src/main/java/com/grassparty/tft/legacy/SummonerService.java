@@ -1,19 +1,12 @@
 package com.grassparty.tft.legacy;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grassparty.tft.Bean.GetEncodeBean;
-import com.grassparty.tft.Bean.GetSummonerDTOBean;
-import com.grassparty.tft.Bean.GetSummonerDTOByNameBean;
-import com.grassparty.tft.Bean.GetSummonerDtoByPuuidBean;
+import com.grassparty.tft.Bean.Small.GetEncodeBean;
+import com.grassparty.tft.Bean.Small.GetSummonerDTOBean;
+import com.grassparty.tft.Bean.Small.GetSummonerDTOByNameBean;
+import com.grassparty.tft.Bean.Small.GetSummonerDtoByPuuidBean;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.*;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 
 @Service
 public class SummonerService {

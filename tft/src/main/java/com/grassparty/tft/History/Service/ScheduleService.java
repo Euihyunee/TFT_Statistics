@@ -1,8 +1,8 @@
 package com.grassparty.tft.History.Service;
 
-import com.grassparty.tft.Bean.ClassifyDeckBean;
-import com.grassparty.tft.Bean.FirstScheduleBean;
-import com.grassparty.tft.Bean.SecondScheduleBean;
+import com.grassparty.tft.Bean.Small.ClassifyDeckBean;
+import com.grassparty.tft.Bean.Small.FirstScheduleBean;
+import com.grassparty.tft.Bean.Small.SecondScheduleBean;
 import com.grassparty.tft.Model.DB.*;
 import org.springframework.stereotype.Service;
 

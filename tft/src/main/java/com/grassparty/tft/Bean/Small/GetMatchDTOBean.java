@@ -1,22 +1,23 @@
-package com.grassparty.tft.Bean;
+package com.grassparty.tft.Bean.Small;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grassparty.tft.Model.Riot.SummonerDTO;
+import com.grassparty.tft.Model.Riot.MatchDto;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
-public class GetSummonerDTOBean {
+public class GetMatchDTOBean {
 
-    public SummonerDTO exec(String encodedUrl){
-        URL url;
-        SummonerDTO summonerDTO = null;
+    public MatchDto exec(String matchid){
+        GetUrlByMatchIdBean GetUrlByMatchIdBean = new GetUrlByMatchIdBean();
+        String matchurl = GetUrlByMatchIdBean.exec(matchid);
+
+        MatchDto matchDto = null;
         try {
-            url = new URL(encodedUrl);
+            URL url = new URL(matchurl);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
 
@@ -24,13 +25,13 @@ public class GetSummonerDTOBean {
 
             // Manually converting the response body InputStream to summonerDTO using Jackson
             ObjectMapper mapper = new ObjectMapper();
-            summonerDTO = mapper.readValue(responseStream, SummonerDTO.class);
-        } catch (MalformedURLException | ProtocolException e) {
+            matchDto = mapper.readValue(responseStream, MatchDto.class);
+        } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return summonerDTO;
+        return matchDto;
     }
 }

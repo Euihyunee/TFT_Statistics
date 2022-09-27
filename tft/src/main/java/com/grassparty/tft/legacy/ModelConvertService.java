@@ -1,6 +1,6 @@
 package com.grassparty.tft.legacy;
 
-import com.grassparty.tft.Bean.*;
+import com.grassparty.tft.Bean.Small.*;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTOs;
 import com.grassparty.tft.Model.DTO.MetaRecordDTO;
