@@ -3,6 +3,7 @@ package com.grassparty.tft.Bean;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grassparty.tft.Bean.Small.GetUrlByMatchIdBean;
 import com.grassparty.tft.Model.Riot.MatchDto;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+@Component
 public class GetMatchDTOBean {
 
     public MatchDto exec(String matchid){

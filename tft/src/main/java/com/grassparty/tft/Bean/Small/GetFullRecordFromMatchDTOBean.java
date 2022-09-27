@@ -4,7 +4,9 @@ import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.DTO.FullDTO.FullUnitDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GetFullRecordFromMatchDTOBean {
     public FullRecordDTO exec(MatchDto matchDto){
         GetFullUnitDTOFromUnitDtoBean GetFullUnitDTOFromUnitDtoBean = new GetFullUnitDTOFromUnitDtoBean();

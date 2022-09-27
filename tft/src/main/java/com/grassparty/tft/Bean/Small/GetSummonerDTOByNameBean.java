@@ -2,7 +2,9 @@ package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GetSummonerDTOByNameBean {
 
     @Value("${api_key}")

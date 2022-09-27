@@ -4,7 +4,9 @@ import com.grassparty.tft.Bean.GetMatchDTOBean;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchDtos;
 import com.grassparty.tft.Model.Riot.MatchID;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GetMatchDTOByMatchIdsBean {
     public MatchDtos exec(MatchID matchids){
         GetMatchDTOBean GetMatchDTOBean = new GetMatchDTOBean();

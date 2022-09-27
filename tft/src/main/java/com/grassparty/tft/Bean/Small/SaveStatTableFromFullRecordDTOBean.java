@@ -6,9 +6,11 @@ import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.DTO.FullDTO.FullUnitDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+@Component
 public class SaveStatTableFromFullRecordDTOBean { // 더작게 ?
     @Autowired
     StatRepository statRepository;

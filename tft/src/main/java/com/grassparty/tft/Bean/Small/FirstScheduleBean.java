@@ -6,8 +6,10 @@ import com.grassparty.tft.Repository.StatValidationRepository;
 import com.grassparty.tft.Model.DB.FullRecordDB;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 // 매치아이디 밸리데이션 데이블 돌면서 통계에 들어가지않은 애들 1000개씩 통계에 추가
+@Component
 public class FirstScheduleBean {
     @Autowired
     FullRecordRepository fullRecordRepository;

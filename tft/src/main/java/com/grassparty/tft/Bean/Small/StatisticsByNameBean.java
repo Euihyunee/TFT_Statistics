@@ -1,7 +1,9 @@
 package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Model.Riot.SummonerDTO;
+import org.springframework.stereotype.Component;
 
+@Component
 public class StatisticsByNameBean {
     GetSummonerDTOByNameBean GetSummonerDTOByNameBean = new GetSummonerDTOByNameBean();
 

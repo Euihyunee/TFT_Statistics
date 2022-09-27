@@ -2,7 +2,9 @@ package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GetFullParticipantDTOByPuuidFromFullRecordDTOBean {
     public FullParticipantDTO exec(FullRecordDTO fullRecordDTO, String puuid){
         // 로직

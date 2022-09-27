@@ -3,7 +3,9 @@ package com.grassparty.tft.Bean.Small;
 import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.DTO.MetaRecordDTO;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GetMetaRecordFromFullRecordBean {
     public MetaRecordDTO exec(FullRecordDTO fullRecordDTO, String puuid){
         GetFullParticipantDTOByPuuidFromFullRecordDTOBean GetFullParticipantDTOByPuuidFromFullRecordDTOBean = new GetFullParticipantDTOByPuuidFromFullRecordDTOBean();

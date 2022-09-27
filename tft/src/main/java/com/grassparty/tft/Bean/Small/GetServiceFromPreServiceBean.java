@@ -2,7 +2,9 @@ package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Model.DB.StatPreServiceTable;
 import com.grassparty.tft.Model.DB.StatServiceTable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GetServiceFromPreServiceBean {
     public StatServiceTable exec(StatPreServiceTable perService){
         StatServiceTable service = StatServiceTable.builder()

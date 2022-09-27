@@ -1,7 +1,9 @@
 package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Model.DB.StatTable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MappingStatTableBean {
     public StatTable exec(StatTable statTable, String charaterName){
         switch (charaterName) {

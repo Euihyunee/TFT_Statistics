@@ -2,6 +2,7 @@ package com.grassparty.tft.Bean.Small;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +11,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+@Component
 public class GetSummonerDTOBean {
 
     public SummonerDTO exec(String encodedUrl){

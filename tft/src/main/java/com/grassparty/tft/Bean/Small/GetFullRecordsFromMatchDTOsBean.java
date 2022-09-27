@@ -3,7 +3,9 @@ package com.grassparty.tft.Bean.Small;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTOs;
 import com.grassparty.tft.Model.Riot.MatchDtos;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GetFullRecordsFromMatchDTOsBean {
     public FullRecordDTOs exec(MatchDtos matchDtos){
         GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean = new GetFullRecordFromMatchDTOBean();

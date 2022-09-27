@@ -5,7 +5,9 @@ import com.grassparty.tft.Repository.FullRecordRepository;
 import com.grassparty.tft.Repository.JPA.FullRecordRepositoryJPA;
 import com.grassparty.tft.Repository.JPA.StatVaildationRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class StatisticsByMatchIdBean {
     @Autowired
     FullRecordRepositoryJPA fullRecordRepositoryJPA;
