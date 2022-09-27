@@ -1,5 +1,6 @@
 package com.grassparty.tft.History.Controller;
 
+import com.grassparty.tft.History.Service.HistoryService;
 import com.grassparty.tft.Repository.FullRecordRepository;
 import com.grassparty.tft.History.Service.MatchDTOService;
 import com.grassparty.tft.History.Service.ModelConvertService;
@@ -17,66 +18,18 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 public class HistoryController {
     @Autowired
-    SummonerService summonerService;
-    @Autowired
     MatchDTOService matchservice;
     @Autowired
-    ModelConvertService modelConvertService;
-    @Autowired
-    FullRecordRepository fullRecordRepository;
+    HistoryService historyService;
+
 
     // MetaRecordDTOs 닉네임으로 얻기
     @GetMapping("/GetMatchHistory/{name}")
-    public MetaRecordDTO[] GetMatchHistoryByName(@PathVariable String name){
-        // puuid 요청
-        SummonerDTO summonerDTO = summonerService.GetSummonerDTOByName(name);
-
-        // matchid 받기
-        MatchID matchID = matchservice.GetMatchIdByPuuid(summonerDTO.getPuuid());
-
-
-        // FullMatchDTO를 MetaRecordDTO로 변환
-        MetaRecordDTO[] metaRecordDTOs = new MetaRecordDTO[10];
-
-
-        for(int i=0; i < matchID.getMatchid().length; i++){
-            if (fullRecordRepository.IsExistByMatchid(matchID.getMatchid()[i])){
-
-                // fullRecordDTO를 Matchid로 가져오기(단수)
-                FullRecordDTO fullRecordDTO = fullRecordRepository.GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
-
-                metaRecordDTOs[i] = modelConvertService.GetMetaRecordFromFullRecord(fullRecordDTO, summonerDTO.getPuuid());
-
-            }else{ // matchid가 DB에 없을 떄 경우
-                // matchID로 matchDTO 받기 x 15
-                MatchDto matchDto = matchservice.GetMatchDTOByMatchId(matchID.getMatchid()[i]);
-
-                // matchDTO FullMatchDTO로 받기
-                FullRecordDTO fullRecordDTO;
-                fullRecordDTO = modelConvertService.GetFullRecordFromMatchDTO(matchDto);
-
-                // FullRecord DB 저장
-                fullRecordRepository.InsertFullRecord(fullRecordDTO);
-
-                // FullMatchDTO를 MetaRecordDTO로 변환
-                metaRecordDTOs[i] = modelConvertService.GetMetaRecordFromFullRecord(fullRecordDTO, summonerDTO.getPuuid());
-            }
-        }
-        return metaRecordDTOs;
-    }
+    public MetaRecordDTO[] GetMatchHistoryByName(@PathVariable String name){return historyService.GetMatchHistoryByName(name);}
 
     // matchId로 matchDto를 받아오고 이를 FullRecordDTO로 변환하는 Controller
     @GetMapping(path="/GetRecord/{matchid}")
-    public FullRecordDTO GetRecordByMatchId(@PathVariable String matchid){
-        // matchid 로 matchDTO 받기
-        MatchDto matchDto = matchservice.GetMatchDTOByMatchId(matchid);
-
-        // matchDTO를 FullRecordDTo로 변환
-        FullRecordDTO fullRecordDTO;
-        fullRecordDTO = modelConvertService.GetFullRecordFromMatchDTO(matchDto);
-
-        return fullRecordDTO;
-    }
+    public FullRecordDTO GetRecordByMatchId(@PathVariable String matchid){return historyService.GetRecordByMatchId(matchid);}
 
     // matchId를 가지고 matchDto를 받아오는 Controller
     @GetMapping(path="/MatchID/{matchId}")
