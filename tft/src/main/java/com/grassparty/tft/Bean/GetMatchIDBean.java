@@ -20,7 +20,9 @@ public class GetMatchIDBean {
 
     public MatchID exec(String puuid){
         // 로직
-        String matchurl = GetUrlByPuuidBean.exec(puuid);
+        String matchurl = getUrlByPuuidBean.exec(puuid);
+        System.out.println("matchurl 찍음");
+        System.out.println(matchurl);
 
         MatchID matchID = new MatchID();
         try {

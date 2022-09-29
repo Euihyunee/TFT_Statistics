@@ -8,13 +8,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class GetUrlByPuuidBean {
     @Autowired
-    private static Environment env;
+    private Environment env;
 
-    public static String exec(String puuid){
-        String api_query = "&api_key=";
+    public String exec(String puuid){
         String site = "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/";
         String site_query = "/ids?start=0&count=10";
+        String api_query = "&api_key=";
         String url = site + puuid + site_query + api_query + env.getProperty("api_key");
+        System.out.println("url 찍음");
+        System.out.println(url);
         return url;
     }
 }
