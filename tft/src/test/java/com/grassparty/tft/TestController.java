@@ -1,6 +1,5 @@
 package com.grassparty.tft;
 
-import com.grassparty.tft.legacy.SummonerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 public class TestController {
 
     @Autowired
-    SummonerService summonerService;
+    TestService testService;
 
 
     // 문자열 출력 테스트
@@ -22,6 +21,6 @@ public class TestController {
     // UTF-8 테스트
     @GetMapping(path = "/UTF-8/{name}")
     public String GetEncodeByName(@PathVariable String name) {
-        return summonerService.GetEncode(name);
+        return testService.GetEncodeByName(name);
     }
 }

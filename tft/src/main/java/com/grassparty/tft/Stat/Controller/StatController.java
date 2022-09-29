@@ -1,6 +1,6 @@
 package com.grassparty.tft.Stat.Controller;
 
-import com.grassparty.tft.legacy.StatService;
+import com.grassparty.tft.Stat.Service.StatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

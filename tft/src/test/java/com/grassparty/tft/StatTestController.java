@@ -3,7 +3,7 @@ package com.grassparty.tft;
 import com.grassparty.tft.Repository.JPA.CustomPreQueryRepository;
 import com.grassparty.tft.Repository.JPA.CustomQueryRepository;
 import com.grassparty.tft.Repository.StatPreServiceRepository;
-import com.grassparty.tft.legacy.StatService;
+import com.grassparty.tft.Stat.Service.StatService;
 import com.grassparty.tft.Model.DB.StatPreServiceTable;
 import com.grassparty.tft.Model.DTO.StatisticDTO;
 import org.springframework.beans.factory.annotation.Autowired;

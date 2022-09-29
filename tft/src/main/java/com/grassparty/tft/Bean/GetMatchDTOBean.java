@@ -1,7 +1,7 @@
 package com.grassparty.tft.Bean;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grassparty.tft.Bean.Small.GetUrlByMatchIdBean;
+import com.grassparty.tft.Bean.Small.GetUrl.GetUrlByMatchIdBean;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
