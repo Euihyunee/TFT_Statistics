@@ -15,6 +15,8 @@ public class FirstScheduleBean {
     FullRecordRepository fullRecordRepository;
     @Autowired
     StatValidationRepository statValidationRepository;
+    @Autowired
+    SaveStatTableFromFullRecordDTOBean saveStatTableFromFullRecordDTOBean;
 
 
     public void exec(){
@@ -24,7 +26,6 @@ public class FirstScheduleBean {
             if(!method()){ break; }
         }
     }
-    SaveStatTableFromFullRecordDTOBean SaveConvertStatTableFromFullRecordDTOBean = new SaveStatTableFromFullRecordDTOBean();
 
     private boolean method(){
         // matchId를 DB Statvalidation 테이블에서 가져오기
@@ -43,7 +44,7 @@ public class FirstScheduleBean {
         FullRecordDTO fullRecordDTO = gson.fromJson(fullRecordDB.getJson(), FullRecordDTO.class);
 
         // FullRecordDTO에서 StatTable로 변환 (*)
-        SaveConvertStatTableFromFullRecordDTOBean.exec(fullRecordDTO);
+        saveStatTableFromFullRecordDTOBean.exec(fullRecordDTO);
         System.out.println("몇회실행됬는지 확인점");
 
         return true;

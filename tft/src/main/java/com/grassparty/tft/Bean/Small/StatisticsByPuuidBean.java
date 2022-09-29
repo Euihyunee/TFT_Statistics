@@ -10,10 +10,11 @@ public class StatisticsByPuuidBean {
 
     @Autowired
     GetMatchIDBean getMatchIDBean;
+    @Autowired
+    StatisticsByMatchIdBean statisticsByMatchIdBean;
 
     public void exec(String puuid) {
         MatchID matchID = getMatchIDBean.exec(puuid);
-        StatisticsByMatchIdBean statisticsByMatchIdBean = new StatisticsByMatchIdBean();
         // matchID로 통계돌리기
         for (String id : matchID.getMatchid()) {
             // return 구간에 함수 호출 때문에 분리 못시키는 중

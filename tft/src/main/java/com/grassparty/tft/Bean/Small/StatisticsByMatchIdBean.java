@@ -16,9 +16,9 @@ public class StatisticsByMatchIdBean {
     @Autowired
     StatVaildationRepositoryJPA statVaildationRepositoryJPA;
     @Autowired
-    GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean;
+    GetFullRecordFromMatchDTOBean getFullRecordFromMatchDTOBean;
     @Autowired
-    GetMatchDTOBean GetMatchDTOBean;
+    GetMatchDTOBean getMatchDTOBean;
 
     public void exec(String matchId){
 //        // 밸리데이션 체크
@@ -30,7 +30,7 @@ public class StatisticsByMatchIdBean {
         if(!isMatchIdExist){
             // fullrecordDTO받아오기
             fullRecordRepository.InsertFullRecord(
-                    GetFullRecordFromMatchDTOBean.exec(GetMatchDTOBean.exec(matchId))
+                    getFullRecordFromMatchDTOBean.exec(getMatchDTOBean.exec(matchId))
             );
         }
     }

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class GetMatchDTOByMatchIdsBean {
 
     @Autowired
-    GetMatchDTOBean GetMatchDTOBean;
+    GetMatchDTOBean getMatchDTOBean;
 
     public MatchDtos exec(MatchID matchids){
         // 로직
@@ -20,7 +20,7 @@ public class GetMatchDTOByMatchIdsBean {
 
         // 적제
         for(int i =0; i< matchids.getMatchid().length; i++){
-            matchDto = GetMatchDTOBean.exec(matchids.getMatchid()[i]);
+            matchDto = getMatchDTOBean.exec(matchids.getMatchid()[i]);
             matchDtos.PushMatchDto(matchDto);
         }
 

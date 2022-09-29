@@ -17,13 +17,13 @@ public class GetMatchHistoryByNameBean {
     @Autowired
     GetSummonerDTOByNameBean getSummonerDTOByNameBean;
     @Autowired
-    GetMatchIDBean GetMatchIDBean;
+    GetMatchIDBean getMatchIDBean;
     @Autowired
-    GetMetaRecordFromFullRecordBean GetMetaRecordFromFullRecordBean;
+    GetMetaRecordFromFullRecordBean getMetaRecordFromFullRecordBean;
     @Autowired
-    GetMatchDTOBean GetMatchDTOBean;
+    GetMatchDTOBean getMatchDTOBean;
     @Autowired
-    GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean;
+    GetFullRecordFromMatchDTOBean getFullRecordFromMatchDTOBean;
 
 
     public MetaRecordDTO[] exec(String name){
@@ -33,7 +33,7 @@ public class GetMatchHistoryByNameBean {
         System.out.println(summonerDTO.getPuuid());
 
         // matchid 받기
-        MatchID matchID = GetMatchIDBean.exec(summonerDTO.getPuuid());
+        MatchID matchID = getMatchIDBean.exec(summonerDTO.getPuuid());
         System.out.println("matchID 찍음");
         System.out.println(matchID);
 
@@ -47,21 +47,21 @@ public class GetMatchHistoryByNameBean {
                 // fullRecordDTO를 Matchid로 가져오기(단수)
                 FullRecordDTO fullRecordDTO = fullRecordRepository.GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
 
-                metaRecordDTOs[i] = GetMetaRecordFromFullRecordBean.exec(fullRecordDTO, summonerDTO.getPuuid());
+                metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(fullRecordDTO, summonerDTO.getPuuid());
 
             }else{ // matchid가 DB에 없을 떄 경우
                 // matchID로 matchDTO 받기 x 15
-                MatchDto matchDto = GetMatchDTOBean.exec(matchID.getMatchid()[i]);
+                MatchDto matchDto = getMatchDTOBean.exec(matchID.getMatchid()[i]);
 
                 // matchDTO FullMatchDTO로 받기
                 FullRecordDTO fullRecordDTO;
-                fullRecordDTO = GetFullRecordFromMatchDTOBean.exec(matchDto);
+                fullRecordDTO = getFullRecordFromMatchDTOBean.exec(matchDto);
 
                 // FullRecord DB 저장
                 fullRecordRepository.InsertFullRecord(fullRecordDTO);
 
                 // FullMatchDTO를 MetaRecordDTO로 변환
-                metaRecordDTOs[i] = GetMetaRecordFromFullRecordBean.exec(fullRecordDTO, summonerDTO.getPuuid());
+                metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(fullRecordDTO, summonerDTO.getPuuid());
             }
         }
         return metaRecordDTOs;

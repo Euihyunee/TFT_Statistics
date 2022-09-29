@@ -14,7 +14,8 @@ import java.util.ArrayList;
 public class SaveStatTableFromFullRecordDTOBean { // 더작게 ?
     @Autowired
     StatRepository statRepository;
-    MappingStatTableBean MappingStatTableBean = new MappingStatTableBean();
+    @Autowired
+    MappingStatTableBean mappingStatTableBean;
 
     public void exec(FullRecordDTO fullRecordDTO){
         ArrayList<String> charaterName = new ArrayList<>();
@@ -31,7 +32,7 @@ public class SaveStatTableFromFullRecordDTOBean { // 더작게 ?
             // 캐릭터 이름 맵핑
             System.out.println(charaterName);
             for(int i =0; i< charaterName.size(); i++){
-                statTable = MappingStatTableBean.exec(statTable, charaterName.get(i));
+                statTable = mappingStatTableBean.exec(statTable, charaterName.get(i));
             }
             // 등수 삽입
             statTable.setPlacement(fp.getPlacement());

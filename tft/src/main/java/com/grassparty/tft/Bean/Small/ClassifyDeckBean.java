@@ -13,8 +13,8 @@ public class ClassifyDeckBean {
     CustomQueryRepository customQueryRepository;
     @Autowired
     CustomPreQueryRepository customPreQueryRepository;
-
-    GetServiceFromPreServiceBean GetServiceFromPreServiceBean = new GetServiceFromPreServiceBean();
+    @Autowired
+    GetServiceFromPreServiceBean getServiceFromPreServiceBean;
 
     public void exec(){
         // 로직
@@ -22,7 +22,7 @@ public class ClassifyDeckBean {
         StatPreServiceTable perService = customPreQueryRepository.getMaxCountRow();
 
         // 첫번째 덱 덱리스트(serviceTable)에 저장하기
-        StatServiceTable service = GetServiceFromPreServiceBean.exec(perService);
+        StatServiceTable service = getServiceFromPreServiceBean.exec(perService);
         customQueryRepository.save(service);
     }
 }

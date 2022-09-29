@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 public class StatisticsByNameBean {
 
     @Autowired
-    GetSummonerDTOByNameBean GetSummonerDTOByNameBean;
+    GetSummonerDTOByNameBean getSummonerDTOByNameBean;
 
     public String exec(String name){
         // 이름을 받아서 puuid 얻음
-        SummonerDTO summonerDTO = GetSummonerDTOByNameBean.exec(name);
+        SummonerDTO summonerDTO = getSummonerDTOByNameBean.exec(name);
 
         return summonerDTO.getPuuid();
     }

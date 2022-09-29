@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 public class GetMetaRecordsFromFullRecordsBean {
 
     @Autowired
-    GetMetaRecordFromFullRecordBean GetMetaRecordFromFullRecordBean;
+    GetMetaRecordFromFullRecordBean getMetaRecordFromFullRecordBean;
 
     public MetaRecordDTO[] exec(FullRecordDTO[] fullRecordDTOs, String puuid){
         // 로직
         MetaRecordDTO[] metaRecordDTOS = new MetaRecordDTO[10];
         for(int i=0; i<fullRecordDTOs.length; i++){
-            metaRecordDTOS[i] = GetMetaRecordFromFullRecordBean.exec(fullRecordDTOs[i], puuid);
+            metaRecordDTOS[i] = getMetaRecordFromFullRecordBean.exec(fullRecordDTOs[i], puuid);
 
         }
 

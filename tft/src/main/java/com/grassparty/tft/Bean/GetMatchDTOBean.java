@@ -16,10 +16,10 @@ import java.net.URL;
 public class GetMatchDTOBean {
 
     @Autowired
-    GetUrlByMatchIdBean GetUrlByMatchIdBean;
+    GetUrlByMatchIdBean getUrlByMatchIdBean;
 
     public MatchDto exec(String matchid){
-        String matchurl = GetUrlByMatchIdBean.exec(matchid);
+        String matchurl = getUrlByMatchIdBean.exec(matchid);
 
         MatchDto matchDto = null;
         try {

@@ -10,17 +10,17 @@ import org.springframework.stereotype.Component;
 public class GetRecordByMatchIdBean {
 
     @Autowired
-    GetMatchDTOBean GetMatchDTOBean;
+    GetMatchDTOBean getMatchDTOBean;
     @Autowired
-    GetFullRecordFromMatchDTOBean GetFullRecordFromMatchDTOBean;
+    GetFullRecordFromMatchDTOBean getFullRecordFromMatchDTOBean;
 
     public FullRecordDTO exec(String matchid){
         // matchid 로 matchDTO 받기
-        MatchDto matchDto = GetMatchDTOBean.exec(matchid);
+        MatchDto matchDto = getMatchDTOBean.exec(matchid);
 
         // matchDTO를 FullRecordDTo로 변환
         FullRecordDTO fullRecordDTO;
-        fullRecordDTO = GetFullRecordFromMatchDTOBean.exec(matchDto);
+        fullRecordDTO = getFullRecordFromMatchDTOBean.exec(matchDto);
 
         return fullRecordDTO;
     }

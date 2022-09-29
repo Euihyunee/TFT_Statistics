@@ -11,7 +11,7 @@ public class SecondScheduleBean {
     @Autowired
     CustomPreQueryRepository customPreQueryRepository;
     @Autowired
-    GetStatPreServiceTableFromStatPreServiceInterfaceBean GetStatPreServiceTableFromStatPreServiceInterfaceBean;
+    GetStatPreServiceTableFromStatPreServiceInterfaceBean getStatPreServiceTableFromStatPreServiceInterfaceBean;
 
     public void exec(){
         // 로직
@@ -22,7 +22,7 @@ public class SecondScheduleBean {
 
             // preService를 DBTable에 맞추기
             StatPreServiceTable statPreServiceTable =
-                    GetStatPreServiceTableFromStatPreServiceInterfaceBean.exec(preService);
+                    getStatPreServiceTableFromStatPreServiceInterfaceBean.exec(preService);
 
             // preService 저장하기
             customPreQueryRepository.save(statPreServiceTable);

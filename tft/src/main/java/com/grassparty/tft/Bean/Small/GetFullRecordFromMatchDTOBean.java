@@ -11,7 +11,8 @@ import org.springframework.stereotype.Component;
 public class GetFullRecordFromMatchDTOBean {
 
     @Autowired
-    GetFullUnitDTOFromUnitDtoBean GetFullUnitDTOFromUnitDtoBean;
+    GetFullUnitDTOFromUnitDtoBean getFullUnitDTOFromUnitDtoBean;
+
     public FullRecordDTO exec(MatchDto matchDto){
         // 로직
         // Riot DTO인 MatchDTO -> FullRecordDTO 로 변환
@@ -42,7 +43,7 @@ public class GetFullRecordFromMatchDTOBean {
 
             for(int j=0; j<UnitLen; j++){
                 try{
-                    fullUnitDTOS[j] = GetFullUnitDTOFromUnitDtoBean.exec(matchDto.getInfo().getParticipants()[i].getUnits()[j]);
+                    fullUnitDTOS[j] = getFullUnitDTOFromUnitDtoBean.exec(matchDto.getInfo().getParticipants()[i].getUnits()[j]);
                 }
                 catch (NullPointerException e){
 
