@@ -1,4 +1,4 @@
-package com.grassparty.tft.Bean;
+package com.grassparty.tft.Bean.Small;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grassparty.tft.Bean.Small.GetUrl.GetUrl;
