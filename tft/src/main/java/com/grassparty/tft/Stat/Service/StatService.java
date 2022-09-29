@@ -3,7 +3,6 @@ package com.grassparty.tft.Stat.Service;
 import com.grassparty.tft.Bean.Small.InsertStatVaildationBean;
 import com.grassparty.tft.Bean.Small.StatisticsByMatchIdBean;
 import com.grassparty.tft.Bean.Small.StatisticsByNameBean;
-import com.grassparty.tft.Bean.Small.StatisticsByPuuidBean;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -23,15 +23,4 @@ public class HistoryController {
     // matchId로 matchDto를 받아오고 이를 FullRecordDTO로 변환하는 Controller
     @GetMapping(path="/GetRecord/{matchid}")
     public FullRecordDTO GetRecordByMatchId(@PathVariable String matchid){return historyService.GetRecordByMatchId(matchid);}
-
-    // matchId를 가지고 matchDto를 받아오는 Controller
-    @GetMapping(path="/MatchID/{matchId}")
-    public MatchDto GetMatchDTO(@PathVariable String matchId){return historyService.GetMatchDTOByMatchId(matchId);}
-
-    // puuid로 matchID받아오는 Controller
-    @GetMapping(path="/puuid/{puuid}")
-    public MatchID GetMatchID(@PathVariable String puuid){return historyService.GetMatchIdByPuuid(puuid);}
-
-
-
 }

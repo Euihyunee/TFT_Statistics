@@ -31,7 +31,7 @@ public class GetMatchHistoryByNameBean {
         SummonerDTO summonerDTO = getSummonerDTOByNameBean.exec(name);
 
         // matchid 받기
-        MatchID matchID = getMatchIDBean.exec(summonerDTO.getPuuid());
+        MatchID matchID = getMatchIDBean.exec(summonerDTO);
 
         // FullMatchDTO를 MetaRecordDTO로 변환
         MetaRecordDTO[] metaRecordDTOs = new MetaRecordDTO[10];

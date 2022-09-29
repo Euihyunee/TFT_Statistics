@@ -1,7 +1,7 @@
 package com.grassparty.tft.Bean;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grassparty.tft.Bean.Small.GetUrl.GetUrlByMatchIdBean;
+import com.grassparty.tft.Bean.Small.GetUrl.GetUrl;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,10 +16,10 @@ import java.net.URL;
 public class GetMatchDTOBean {
 
     @Autowired
-    GetUrlByMatchIdBean getUrlByMatchIdBean;
+    GetUrl getUrl;
 
     public MatchDto exec(String matchid){
-        String matchurl = getUrlByMatchIdBean.exec(matchid);
+        String matchurl = getUrl.exec(matchid);
 
         MatchDto matchDto = null;
         try {

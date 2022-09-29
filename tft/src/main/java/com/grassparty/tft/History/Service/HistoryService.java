@@ -30,12 +30,4 @@ public class HistoryService {
     public FullRecordDTO GetRecordByMatchId(String matchid){
         return GetRecordByMatchIdBean.exec(matchid);
     }
-
-    public MatchDto GetMatchDTOByMatchId(String matchid) {
-        return GetMatchDTOBean.exec(matchid);
-    }
-
-    public MatchID GetMatchIdByPuuid(String puuid){
-        return GetMatchIDBean.exec(puuid);
-    }
 }
