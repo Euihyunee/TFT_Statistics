@@ -16,12 +16,12 @@ public class GetSummonerDTOByNameBean {
     @Autowired
     GetEncodeBean getEncodeBean;
     @Autowired
+    GetSummonerDTOBean getSummonerDTOBean;
+    @Autowired
     private Environment env;
 
     public SummonerDTO exec(String name){
         String encodedName = getEncodeBean.exec(name);
-
-        GetSummonerDTOBean getSummonerDTOBean = new GetSummonerDTOBean();
 
         String api_query = "?api_key=";
         String site = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/";
