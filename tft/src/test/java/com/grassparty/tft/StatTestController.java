@@ -4,7 +4,7 @@ import com.grassparty.tft.Repository.JPA.CustomPreQueryRepository;
 import com.grassparty.tft.Repository.JPA.CustomQueryRepository;
 import com.grassparty.tft.Repository.StatPreServiceRepository;
 import com.grassparty.tft.Stat.Service.StatService;
-import com.grassparty.tft.Model.DB.StatPreServiceTable;
+import com.grassparty.tft.Model.DAO.StatPreServiceDAO;
 import com.grassparty.tft.Model.DTO.StatisticDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +28,7 @@ public class StatTestController {
 
 
     @GetMapping("/test1111")
-    public StatPreServiceTable test1111(){return statPreServiceRepository.testPrintCount();}
+    public StatPreServiceDAO test1111(){return statPreServiceRepository.testPrintCount();}
 
     // statService 테스트입니당
     @GetMapping("/DBTest1/{matchid}")
@@ -40,8 +40,8 @@ public class StatTestController {
     @GetMapping("/mockdoridomabem")
     public ArrayList<StatisticDTO> mockdoridomabem(){
         ArrayList<StatisticDTO> statisticDTOs = new ArrayList<StatisticDTO>();
-        List<StatPreServiceTable> preServiceTables = customPreQueryRepository.findAll();
-        StatPreServiceTable dummy;
+        List<StatPreServiceDAO> preServiceTables = customPreQueryRepository.findAll();
+        StatPreServiceDAO dummy;
         for(int i=0; i< preServiceTables.size(); i++){
             StatisticDTO statisticDTO = new StatisticDTO();
             dummy = preServiceTables.get(i);
@@ -57,7 +57,7 @@ public class StatTestController {
 
         return statisticDTOs;
     }
-    public String[] FuckThatShit(StatPreServiceTable statPreServiceTable){
+    public String[] FuckThatShit(StatPreServiceDAO statPreServiceTable){
         ArrayList<String> sexsex = new ArrayList<String>();
         if(statPreServiceTable.getTFT7_Aatrox() == 1){
             sexsex.add("TFT7_Nidalee");

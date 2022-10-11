@@ -1,4 +1,4 @@
-package com.grassparty.tft.Model.DB;
+package com.grassparty.tft.Model.DAO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
 
 @Entity
 // 해당 클래스의 인스턴스들이 JPA로 관리되는 엔티티 객체라는 것을 의미한다 / 해당 어노테이션이 붙은 클래스는 오셥에 따라 자동으로 테이블 생성이 가능하고 클래스의 멤버 변수에 따라 자동으로 컬럼들도 생성된다
@@ -18,7 +17,7 @@ import javax.transaction.Transactional;
 @Builder
 @AllArgsConstructor // @Builder 를 이용하기 위해서 항상 같이 처리해야 컴파일 에러가 발생하지 않는다
 @NoArgsConstructor // @Builder 를 이용하기 위해서 항상 같이 처리해야 컴파일 에러가 발생하지 않는다
-public class FullRecordDB {
+public class FullRecordDAO {
 
     @Id
     @Column

@@ -3,7 +3,7 @@ package com.grassparty.tft.Bean.Small;
 import com.google.gson.Gson;
 import com.grassparty.tft.Repository.FullRecordRepository;
 import com.grassparty.tft.Repository.StatValidationRepository;
-import com.grassparty.tft.Model.DB.FullRecordDB;
+import com.grassparty.tft.Model.DAO.FullRecordDAO;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,7 +36,7 @@ public class FirstScheduleBean {
             System.out.println("매치아이디 널임");
             return false;
         }
-        FullRecordDB fullRecordDB = fullRecordRepository.GetFullRecordDBByMatchId(matchid);
+        FullRecordDAO fullRecordDB = fullRecordRepository.GetFullRecordDBByMatchId(matchid);
 
 
         // FullRecordDB에서 FullRecordDTO를 분리

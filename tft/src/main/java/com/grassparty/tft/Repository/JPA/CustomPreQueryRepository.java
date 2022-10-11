@@ -1,13 +1,13 @@
 package com.grassparty.tft.Repository.JPA;
 
-import com.grassparty.tft.Model.DB.StatPreServiceInterface;
-import com.grassparty.tft.Model.DB.StatPreServiceTable;
+import com.grassparty.tft.Model.DAO.StatPreServiceInterface;
+import com.grassparty.tft.Model.DAO.StatPreServiceDAO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface CustomPreQueryRepository extends JpaRepository<StatPreServiceTable, Integer> {
+public interface CustomPreQueryRepository extends JpaRepository<StatPreServiceDAO, Integer> {
     @Query(value =
             "SELECT deck_id AS deckId" +
                     ", tft7_aatrox AS TFT7_Aatrox" +
@@ -81,10 +81,10 @@ public interface CustomPreQueryRepository extends JpaRepository<StatPreServiceTa
 
     @Query(value = "select * from tbl_statpreservice where count = " +
             " (select max(count) from tbl_statpreservice)", nativeQuery = true)
-    StatPreServiceTable getMaxCountRow();
+    StatPreServiceDAO getMaxCountRow();
     //, SUM(placement), COUNT(deck_id)
 
     @Query(value = "select * from tbl_statpreservice where count = " +
             " (select max(count) from tbl_statpreservice)", nativeQuery = true)
-    StatPreServiceTable getCountDesc();
+    StatPreServiceDAO getCountDesc();
 }

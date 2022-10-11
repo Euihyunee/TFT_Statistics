@@ -3,7 +3,7 @@ package com.grassparty.tft.History.Service;
 import com.grassparty.tft.Bean.Small.ClassifyDeckBean;
 import com.grassparty.tft.Bean.Small.FirstScheduleBean;
 import com.grassparty.tft.Bean.Small.SecondScheduleBean;
-import com.grassparty.tft.Model.DB.*;
+import com.grassparty.tft.Model.DAO.*;
 import org.springframework.stereotype.Service;
 
 
@@ -46,10 +46,10 @@ public class ScheduleService {
     }
 
 
-    private StatServiceTable GetServiceFromServiceInterface(StatServiceInterface service) {
+    private StatServiceDAO GetServiceFromServiceInterface(StatServiceInterface service) {
         // 미구현
-        StatServiceTable statServiceTable = StatServiceTable.builder().build();
-        return statServiceTable;
+        StatServiceDAO statServiceDAO = StatServiceDAO.builder().build();
+        return statServiceDAO;
     }
 
 

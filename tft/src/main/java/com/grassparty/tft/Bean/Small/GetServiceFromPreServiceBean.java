@@ -1,13 +1,13 @@
 package com.grassparty.tft.Bean.Small;
 
-import com.grassparty.tft.Model.DB.StatPreServiceTable;
-import com.grassparty.tft.Model.DB.StatServiceTable;
+import com.grassparty.tft.Model.DAO.StatPreServiceDAO;
+import com.grassparty.tft.Model.DAO.StatServiceDAO;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetServiceFromPreServiceBean {
-    public StatServiceTable exec(StatPreServiceTable perService){
-        StatServiceTable service = StatServiceTable.builder()
+    public StatServiceDAO exec(StatPreServiceDAO perService){
+        StatServiceDAO service = StatServiceDAO.builder()
                 .placement(perService.getPlacement())
                 .count(perService.getCount())
                 .TFT7_Aatrox(perService.getTFT7_Aatrox())

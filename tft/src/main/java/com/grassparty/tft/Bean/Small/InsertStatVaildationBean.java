@@ -1,7 +1,7 @@
 package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Repository.JPA.StatVaildationRepositoryJPA;
-import com.grassparty.tft.Model.DB.StatValidationTable;
+import com.grassparty.tft.Model.DAO.StatValidationDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +12,10 @@ public class InsertStatVaildationBean {
     StatVaildationRepositoryJPA statVaildationRepositoryJPA;
 
     public void exec(String matchId){
-        StatValidationTable statValidationTable = StatValidationTable.builder()
+        StatValidationDAO statValidationDAO = StatValidationDAO.builder()
                 .matchID(matchId)
                 .valid(false)
                 .build();
-        statVaildationRepositoryJPA.save(statValidationTable);
+        statVaildationRepositoryJPA.save(statValidationDAO);
     }
 }

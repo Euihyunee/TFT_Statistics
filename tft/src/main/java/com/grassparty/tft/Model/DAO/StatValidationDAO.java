@@ -1,4 +1,4 @@
-package com.grassparty.tft.Model.DB;
+package com.grassparty.tft.Model.DAO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StatValidationTable {
+public class StatValidationDAO {
     @Id
     @Column
     private String matchID;

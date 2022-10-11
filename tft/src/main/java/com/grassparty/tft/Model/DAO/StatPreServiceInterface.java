@@ -1,7 +1,4 @@
-package com.grassparty.tft.Model.DB;
-
-import javax.persistence.Column;
-import java.math.BigDecimal;
+package com.grassparty.tft.Model.DAO;
 
 public interface StatPreServiceInterface {
     // Integer

@@ -1,10 +1,9 @@
-package com.grassparty.tft.Model.DB;
+package com.grassparty.tft.Model.DAO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -14,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class StatPreServiceTable {
+public class StatPreServiceDAO {
     @Id
     @Column
     private long deckId;
@@ -27,7 +26,7 @@ public class StatPreServiceTable {
 
     @ManyToOne
     @JoinColumn(name = "serviceDeckId")
-    private StatServiceTable statServiceTable;
+    private StatServiceDAO statServiceDAO;
 
 
     // 1코스트

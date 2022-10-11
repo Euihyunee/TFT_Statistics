@@ -1,4 +1,4 @@
-package com.grassparty.tft.Model.DB;
+package com.grassparty.tft.Model.DAO;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name = "tbl_statendservice")
 @Data
 @EntityListeners(AuditingEntityListener.class)
-public class StatEndServiceTable {
+public class StatEndServiceDAO {
     @Id
     @Column
     private int serviceId;
@@ -23,5 +23,5 @@ public class StatEndServiceTable {
     private LocalDateTime date;
 
     @OneToMany(mappedBy = "statEndServiceTable")
-    private List<StatServiceTable> statServiceTables = new ArrayList<>();
+    private List<StatServiceDAO> statServiceDAOS = new ArrayList<>();
 }

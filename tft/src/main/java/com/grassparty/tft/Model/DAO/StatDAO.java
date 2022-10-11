@@ -1,4 +1,4 @@
-package com.grassparty.tft.Model.DB;
+package com.grassparty.tft.Model.DAO;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tbl_stat")
 @Data
-public class StatTable {
+public class StatDAO {
     @Id @GeneratedValue
     @Column
     private int deckId;
