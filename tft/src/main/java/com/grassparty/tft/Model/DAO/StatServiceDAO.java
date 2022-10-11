@@ -1,7 +1,9 @@
 package com.grassparty.tft.Model.DAO;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,6 +13,8 @@ import java.util.List;
 @Table(name = "tbl_statservice")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class StatServiceDAO {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
@@ -24,7 +28,7 @@ public class StatServiceDAO {
     @JoinColumn(name = "serviceId")
     private StatEndServiceDAO statEndServiceTable;
 
-    @OneToMany(mappedBy = "statServiceTable")
+    @OneToMany(mappedBy = "statServiceDAO")
     private List<StatPreServiceDAO> statPreServiceTables = new ArrayList<>();
 
 
