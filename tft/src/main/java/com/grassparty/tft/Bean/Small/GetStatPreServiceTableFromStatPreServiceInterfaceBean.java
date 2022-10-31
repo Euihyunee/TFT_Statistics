@@ -10,7 +10,7 @@ public class GetStatPreServiceTableFromStatPreServiceInterfaceBean {
     public StatDeckGroupDAO exec(StatPreServiceInterface statPreServiceInterface){
         StatDeckGroupDAO statPreServiceTable = StatDeckGroupDAO.builder()
                 .deckId(statPreServiceInterface.getDeckId())
-                .placement(statPreServiceInterface.getPlacement())
+                .sum_placement(statPreServiceInterface.getPlacement())
                 .count(statPreServiceInterface.getCount())
                 .valid(false)
                 .TFT7_Aatrox(statPreServiceInterface.getTFT7_Aatrox())
