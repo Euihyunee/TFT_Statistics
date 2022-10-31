@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class FullParticipantDTO {
+public class RecordParticipantDTO {
     String[] augments;
     CompanionDto companion;
     int gold_left;

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.grassparty.tft.Model.DAO.RecordDAO;
 import com.grassparty.tft.Repository.FullRecordRepository;
 import com.grassparty.tft.Repository.StatValidationRepository;
-import com.grassparty.tft.Model.DTO.FullRecordDTO;
+import com.grassparty.tft.Model.DTO.RecordDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,10 +41,10 @@ public class FirstScheduleBean {
 
         // FullRecordDB에서 FullRecordDTO를 분리
         Gson gson = new Gson();
-        FullRecordDTO fullRecordDTO = gson.fromJson(fullRecordDB.getJson(), FullRecordDTO.class);
+        RecordDTO recordDTO = gson.fromJson(fullRecordDB.getJson(), RecordDTO.class);
 
         // FullRecordDTO에서 StatTable로 변환 (*)
-        saveStatTableFromFullRecordDTOBean.exec(fullRecordDTO);
+        saveStatTableFromFullRecordDTOBean.exec(recordDTO);
         System.out.println("몇회실행됬는지 확인점");
 
         return true;

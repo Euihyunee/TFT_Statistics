@@ -2,7 +2,7 @@ package com.grassparty.tft.Repository;
 
 import com.google.gson.Gson;
 import com.grassparty.tft.Model.DAO.RecordDAO;
-import com.grassparty.tft.Model.DTO.FullRecordDTO;
+import com.grassparty.tft.Model.DTO.RecordDTO;
 import com.grassparty.tft.Repository.JPA.FullRecordRepositoryJPA;
 import com.grassparty.tft.Model.Riot.MatchID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +16,17 @@ public class FullRecordRepository {
     @Autowired
     FullRecordRepositoryJPA fullRecordRepositoryJPA;
 
-    public void InsertFullRecords(FullRecordDTO[] fullRecordDTOS){
-        for(FullRecordDTO fullRecordDTO : fullRecordDTOS){
-            InsertFullRecord(fullRecordDTO);
+    public void InsertFullRecords(RecordDTO[] recordDTOS){
+        for(RecordDTO recordDTO : recordDTOS){
+            InsertFullRecord(recordDTO);
         }
     }
 
-    public void InsertFullRecord(FullRecordDTO fullRecordDTO){
-        String matchid = fullRecordDTO.getMatch_id();
+    public void InsertFullRecord(RecordDTO recordDTO){
+        String matchid = recordDTO.getMatch_id();
 
         Gson gson = new Gson();
-        String jsonString = gson.toJson(fullRecordDTO);
+        String jsonString = gson.toJson(recordDTO);
 
         RecordDAO recordDB = RecordDAO.builder()
                 .matchID(matchid)
@@ -40,15 +40,15 @@ public class FullRecordRepository {
         return fullRecordRepositoryJPA.existsById(matchid);
     }
 
-    public FullRecordDTO[] GetFullRecordDTOsByMatchidFromRepository(MatchID matchID){
-        FullRecordDTO[] fullRecordDTOS = new FullRecordDTO[10];
+    public RecordDTO[] GetFullRecordDTOsByMatchidFromRepository(MatchID matchID){
+        RecordDTO[] recordDTOS = new RecordDTO[10];
         for(int i=0; i<matchID.getMatchid().length;i++){
-            fullRecordDTOS[i] = GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
+            recordDTOS[i] = GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
         }
-        return fullRecordDTOS;
+        return recordDTOS;
     }
 
-    public FullRecordDTO GetFullRecordDTOFromRepository(String matchid){
+    public RecordDTO GetFullRecordDTOFromRepository(String matchid){
 
         // DB에서 FullRecordDB 가져오기
         Optional<RecordDAO> recordDB=fullRecordRepositoryJPA.findById(matchid);
@@ -58,9 +58,9 @@ public class FullRecordRepository {
 
         // Gson 역직렬화까즤
         Gson gson = new Gson();
-        FullRecordDTO fullRecordDTO = gson.fromJson(json, FullRecordDTO.class);
+        RecordDTO recordDTO = gson.fromJson(json, RecordDTO.class);
 
-        return fullRecordDTO;
+        return recordDTO;
     }
 
     public RecordDAO GetFullRecordDBByMatchId(String matchId){

@@ -1,7 +1,7 @@
 package com.grassparty.tft.Bean;
 
 import com.grassparty.tft.Bean.Small.*;
-import com.grassparty.tft.Model.DTO.FullRecordDTO;
+import com.grassparty.tft.Model.DTO.RecordDTO;
 import com.grassparty.tft.Model.DTO.MetaRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchID;
@@ -41,23 +41,23 @@ public class GetMatchHistoryByNameBean {
             if (fullRecordRepository.IsExistByMatchid(matchID.getMatchid()[i])){
 
                 // fullRecordDTO를 Matchid로 가져오기(단수)
-                FullRecordDTO fullRecordDTO = fullRecordRepository.GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
+                RecordDTO recordDTO = fullRecordRepository.GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
 
-                metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(fullRecordDTO, summonerDTO.getPuuid());
+                metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(recordDTO, summonerDTO.getPuuid());
 
             }else{ // matchid가 DB에 없을 떄 경우
                 // matchID로 matchDTO 받기 x 15
                 MatchDto matchDto = getMatchDTOBean.exec(matchID.getMatchid()[i]);
 
                 // matchDTO FullMatchDTO로 받기
-                FullRecordDTO fullRecordDTO;
-                fullRecordDTO = getFullRecordFromMatchDTOBean.exec(matchDto);
+                RecordDTO recordDTO;
+                recordDTO = getFullRecordFromMatchDTOBean.exec(matchDto);
 
                 // FullRecord DB 저장
-                fullRecordRepository.InsertFullRecord(fullRecordDTO);
+                fullRecordRepository.InsertFullRecord(recordDTO);
 
                 // FullMatchDTO를 MetaRecordDTO로 변환
-                metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(fullRecordDTO, summonerDTO.getPuuid());
+                metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(recordDTO, summonerDTO.getPuuid());
             }
         }
         return metaRecordDTOs;
