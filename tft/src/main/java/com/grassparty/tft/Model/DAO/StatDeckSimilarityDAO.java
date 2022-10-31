@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "tbl_statservice")
+@Table(name = "stat_deck_similarity")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StatServiceDAO {
+public class StatDeckSimilarityDAO {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private int serviceDeckId;
@@ -25,11 +25,11 @@ public class StatServiceDAO {
     private int count;
 
     @ManyToOne
-    @JoinColumn(name = "serviceId")
-    private StatEndServiceDAO statEndServiceTable;
+    @JoinColumn(name = "serviceDeckId")
+    private StatResultDAO statResultDAO;
 
     @OneToMany(mappedBy = "statServiceDAO")
-    private List<StatDeckGroupDAO> statPreServiceTables = new ArrayList<>();
+    private List<StatDeckGroupDAO> statDeckGroupDAOS = new ArrayList<>();
 
 
 

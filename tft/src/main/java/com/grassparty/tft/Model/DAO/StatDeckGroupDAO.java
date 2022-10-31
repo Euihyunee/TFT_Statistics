@@ -18,15 +18,15 @@ public class StatDeckGroupDAO {
     @Column
     private long deckId;
     @Column
-    private int placement;
+    private int sum_placement;
     @Column
     private int count;
     @Column
     private boolean valid;
 
     @ManyToOne
-    @JoinColumn(name = "serviceDeckId")
-    private StatServiceDAO statServiceDAO;
+    @JoinColumn(name = "deckId")
+    private StatDeckSimilarityDAO statDeckSimilarityDAO;
 
 
     // 1코스트

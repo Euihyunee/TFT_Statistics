@@ -46,10 +46,10 @@ public class ScheduleService {
     }
 
 
-    private StatServiceDAO GetServiceFromServiceInterface(StatServiceInterface service) {
+    private StatDeckSimilarityDAO GetServiceFromServiceInterface(StatServiceInterface service) {
         // 미구현
-        StatServiceDAO statServiceDAO = StatServiceDAO.builder().build();
-        return statServiceDAO;
+        StatDeckSimilarityDAO statDeckSimilarityDAO = StatDeckSimilarityDAO.builder().build();
+        return statDeckSimilarityDAO;
     }
 
 

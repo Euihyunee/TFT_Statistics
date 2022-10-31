@@ -45,7 +45,7 @@ public class StatTestController {
         for(int i=0; i< preServiceTables.size(); i++){
             StatisticDTO statisticDTO = new StatisticDTO();
             dummy = preServiceTables.get(i);
-            statisticDTO.setPlacementRate(dummy.getPlacement() / dummy.getCount());
+            statisticDTO.setPlacementRate(dummy.getSum_placement() / dummy.getCount());
             statisticDTO.setCharacter_id(FuckThatShit(dummy));
             statisticDTOs.add(statisticDTO);
             System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");

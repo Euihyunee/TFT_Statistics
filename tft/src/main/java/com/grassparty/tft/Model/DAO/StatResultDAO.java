@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "tbl_statendservice")
+@Table(name = "stat_result")
 @Data
 @EntityListeners(AuditingEntityListener.class)
-public class StatEndServiceDAO {
+public class StatResultDAO {
     @Id
     @Column
     private int serviceId;
@@ -23,5 +23,5 @@ public class StatEndServiceDAO {
     private LocalDateTime date;
 
     @OneToMany(mappedBy = "statEndServiceTable")
-    private List<StatServiceDAO> statServiceDAOS = new ArrayList<>();
+    private List<StatDeckSimilarityDAO> statDeckSimilarityDAOS = new ArrayList<>();
 }

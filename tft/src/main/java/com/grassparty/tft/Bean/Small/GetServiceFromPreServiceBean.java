@@ -1,14 +1,14 @@
 package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Model.DAO.StatDeckGroupDAO;
-import com.grassparty.tft.Model.DAO.StatServiceDAO;
+import com.grassparty.tft.Model.DAO.StatDeckSimilarityDAO;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetServiceFromPreServiceBean {
-    public StatServiceDAO exec(StatDeckGroupDAO perService){
-        StatServiceDAO service = StatServiceDAO.builder()
-                .placement(perService.getPlacement())
+    public StatDeckSimilarityDAO exec(StatDeckGroupDAO perService){
+        StatDeckSimilarityDAO service = StatDeckSimilarityDAO.builder()
+                .placement(perService.getSum_placement())
                 .count(perService.getCount())
                 .TFT7_Aatrox(perService.getTFT7_Aatrox())
                 .TFT7_Anivia(perService.getTFT7_Anivia())
