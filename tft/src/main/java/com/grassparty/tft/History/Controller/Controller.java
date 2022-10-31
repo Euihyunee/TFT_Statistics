@@ -13,18 +13,15 @@ public class Controller {
         return "user 데이터";
     }
 
-
     @GetMapping("/unit")
     public String GetUnit(){
         return "unit 데이터";
     }
 
-
     @GetMapping("/item")
     public String GetItem(){
         return "item 데이터";
     }
-
 
     @GetMapping("/champ")
     public String GetChamp(){

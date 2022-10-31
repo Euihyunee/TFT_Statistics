@@ -1,6 +1,6 @@
 package com.grassparty.tft.Bean.Small;
 
-import com.grassparty.tft.Model.DTO.FullDTO.FullUnitDTO;
+import com.grassparty.tft.Model.DTO.FullDTO.RecordUnitDTO;
 import com.grassparty.tft.Model.Riot.etc.UnitDto;
 import org.springframework.stereotype.Component;
 
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 public class GetFullUnitDTOFromUnitDtoBean {
 
 
-    public FullUnitDTO exec(UnitDto unitDto){
-        FullUnitDTO fullUnitDTO = new FullUnitDTO();
+    public RecordUnitDTO exec(UnitDto unitDto){
+        RecordUnitDTO fullUnitDTO = new RecordUnitDTO();
 
         fullUnitDTO.setItems(unitDto.getItems());
         fullUnitDTO.setCharacter_id(unitDto.getCharacter_id());

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FullUnitDTO {
+public class RecordUnitDTO {
     int[] items;
     String character_id;
     // String chosen; // ??

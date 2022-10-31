@@ -1,7 +1,7 @@
 package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
-import com.grassparty.tft.Model.DTO.FullDTO.FullUnitDTO;
+import com.grassparty.tft.Model.DTO.FullDTO.RecordUnitDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class GetFullRecordFromMatchDTOBean {
 
 
             int UnitLen = matchDto.getInfo().getParticipants()[i].getUnits().length;
-            FullUnitDTO[] fullUnitDTOS = new FullUnitDTO[12];
+            RecordUnitDTO[] fullUnitDTOS = new RecordUnitDTO[12];
 
             for(int j=0; j<UnitLen; j++){
                 try{

@@ -19,5 +19,5 @@ public class FullParticipantDTO {
     float time_eliminated;
     // int total_damage_to_players;
     TraitDto[] traits;
-    FullUnitDTO[] units;
+    RecordUnitDTO[] units;
 }

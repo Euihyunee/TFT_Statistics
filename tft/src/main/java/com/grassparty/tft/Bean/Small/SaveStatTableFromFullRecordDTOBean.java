@@ -3,7 +3,7 @@ package com.grassparty.tft.Bean.Small;
 import com.grassparty.tft.Repository.StatRepository;
 import com.grassparty.tft.Model.DAO.StatDAO;
 import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
-import com.grassparty.tft.Model.DTO.FullDTO.FullUnitDTO;
+import com.grassparty.tft.Model.DTO.FullDTO.RecordUnitDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,7 +22,7 @@ public class SaveStatTableFromFullRecordDTOBean { // 더작게 ?
 
         for(FullParticipantDTO fp : fullRecordDTO.getParticipants()){
             StatDAO statDAO = new StatDAO();
-            for(FullUnitDTO unit : fp.getUnits()){
+            for(RecordUnitDTO unit : fp.getUnits()){
                 if(unit == null){
                     break;
                 }
