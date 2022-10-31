@@ -1,12 +1,12 @@
 package com.grassparty.tft.Repository.JPA;
 
-import com.grassparty.tft.Model.DAO.StatValidationDAO;
+import com.grassparty.tft.Model.DAO.StatValidRecordDAO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 
-public interface StatVaildationRepositoryJPA extends JpaRepository<StatValidationDAO, String> {
+public interface StatVaildationRepositoryJPA extends JpaRepository<StatValidRecordDAO, String> {
 
-    List<StatValidationDAO> findAllByValid(boolean valid);
+    List<StatValidRecordDAO> findAllByValid(boolean valid);
 }

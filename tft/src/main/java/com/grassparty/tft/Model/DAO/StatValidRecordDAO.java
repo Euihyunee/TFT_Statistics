@@ -11,14 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tbl_statvalidation")
-@Data
+@Table(name = "stat_valid_record")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StatValidationDAO {
+@Data
+public class StatValidRecordDAO {
+
     @Id
-    @Column
     private String matchID;
     
     // date 추가 예정

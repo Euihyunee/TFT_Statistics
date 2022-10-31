@@ -1,8 +1,8 @@
 package com.grassparty.tft.Repository;
 
 import com.google.gson.Gson;
+import com.grassparty.tft.Model.DAO.RecordDAO;
 import com.grassparty.tft.Model.DTO.RecordDTO;
-import com.grassparty.tft.Model.DAO.FullRecordDAO;
 import com.grassparty.tft.Repository.JPA.FullRecordRepositoryJPA;
 import com.grassparty.tft.Model.Riot.MatchID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +28,11 @@ public class FullRecordRepository {
         Gson gson = new Gson();
         String jsonString = gson.toJson(recordDTO);
 
-        FullRecordDAO fullRecordDB = FullRecordDAO.builder()
+        RecordDAO recordDB = RecordDAO.builder()
                 .matchID(matchid)
                 .json(jsonString)
                 .build();
-        fullRecordRepositoryJPA.save(fullRecordDB);
+        fullRecordRepositoryJPA.save(recordDB);
     }
 
     public boolean IsExistByMatchid(String matchid){
@@ -51,10 +51,10 @@ public class FullRecordRepository {
     public RecordDTO GetFullRecordDTOFromRepository(String matchid){
 
         // DB에서 FullRecordDB 가져오기
-        Optional<FullRecordDAO> fullRecordDB=fullRecordRepositoryJPA.findById(matchid);
+        Optional<RecordDAO> recordDB=fullRecordRepositoryJPA.findById(matchid);
 
         // FullRecordDB에서 json 받아오기
-        String json =  fullRecordDB.get().getJson();
+        String json =  recordDB.get().getJson();
 
         // Gson 역직렬화까즤
         Gson gson = new Gson();
@@ -63,7 +63,7 @@ public class FullRecordRepository {
         return recordDTO;
     }
 
-    public FullRecordDAO GetFullRecordDBByMatchId(String matchId){
+    public RecordDAO GetFullRecordDBByMatchId(String matchId){
         return fullRecordRepositoryJPA.getById(matchId);
     }
 
