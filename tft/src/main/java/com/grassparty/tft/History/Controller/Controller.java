@@ -1,5 +1,6 @@
 package com.grassparty.tft.History.Controller;
 
+import com.grassparty.tft.Model.DTO.UserInfoDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -10,8 +11,8 @@ public class Controller {
 
     // TODO 유저 정보 제공 (UserInfoDTO)
     @GetMapping("/user")
-    public String GetUser(){
-        return "user 데이터";
+    public UserInfoDTO GetUserInfo(){
+        return null;
     }
 
 
