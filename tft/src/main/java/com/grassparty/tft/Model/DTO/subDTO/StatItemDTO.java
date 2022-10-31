@@ -1,6 +1,6 @@
 package com.grassparty.tft.Model.DTO.subDTO;
 
-public class StatItemDetail {
+public class StatItemDTO {
     String itemName;
     int itemId;
     float frequency;
