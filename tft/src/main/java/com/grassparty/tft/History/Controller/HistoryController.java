@@ -1,7 +1,7 @@
 package com.grassparty.tft.History.Controller;
 
 import com.grassparty.tft.History.Service.HistoryService;
-import com.grassparty.tft.Model.DTO.FullRecordDTO;
+import com.grassparty.tft.Model.DTO.RecordDTO;
 import com.grassparty.tft.Model.DTO.MetaRecordDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,5 +20,5 @@ public class HistoryController {
 
     // matchId로 matchDto를 받아오고 이를 FullRecordDTO로 변환하는 Controller
     @GetMapping(path="/GetRecord/{matchid}")
-    public FullRecordDTO GetRecordByMatchId(@PathVariable String matchid){return historyService.GetRecordByMatchId(matchid);}
+    public RecordDTO GetRecordByMatchId(@PathVariable String matchid){return historyService.GetRecordByMatchId(matchid);}
 }

@@ -3,7 +3,7 @@ package com.grassparty.tft.History.Service;
 import com.grassparty.tft.Bean.*;
 import com.grassparty.tft.Bean.Small.GetMatchDTOBean;
 import com.grassparty.tft.Bean.Small.GetMatchIDBean;
-import com.grassparty.tft.Model.DTO.FullRecordDTO;
+import com.grassparty.tft.Model.DTO.RecordDTO;
 import com.grassparty.tft.Model.DTO.MetaRecordDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class HistoryService {
         return GetMatchHistoryByNameBean.exec(name);
     }
 
-    public FullRecordDTO GetRecordByMatchId(String matchid){
+    public RecordDTO GetRecordByMatchId(String matchid){
         return GetRecordByMatchIdBean.exec(matchid);
     }
 }

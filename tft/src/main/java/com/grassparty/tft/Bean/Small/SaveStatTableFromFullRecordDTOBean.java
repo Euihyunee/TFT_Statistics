@@ -2,9 +2,9 @@ package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Repository.StatRepository;
 import com.grassparty.tft.Model.DAO.StatDAO;
-import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
+import com.grassparty.tft.Model.DTO.FullDTO.RecordParticipantDTO;
 import com.grassparty.tft.Model.DTO.FullDTO.RecordUnitDTO;
-import com.grassparty.tft.Model.DTO.FullRecordDTO;
+import com.grassparty.tft.Model.DTO.RecordDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,10 +17,10 @@ public class SaveStatTableFromFullRecordDTOBean { // 더작게 ?
     @Autowired
     MappingStatTableBean mappingStatTableBean;
 
-    public void exec(FullRecordDTO fullRecordDTO){
+    public void exec(RecordDTO recordDTO){
         ArrayList<String> charaterName = new ArrayList<>();
 
-        for(FullParticipantDTO fp : fullRecordDTO.getParticipants()){
+        for(RecordParticipantDTO fp : recordDTO.getParticipants()){
             StatDAO statDAO = new StatDAO();
             for(RecordUnitDTO unit : fp.getUnits()){
                 if(unit == null){
