@@ -1,7 +1,7 @@
 package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Repository.StatRepository;
-import com.grassparty.tft.Model.DAO.StatDAO;
+import com.grassparty.tft.Model.DAO.StatDeckDAO;
 import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
 import com.grassparty.tft.Model.DTO.FullDTO.RecordUnitDTO;
 import com.grassparty.tft.Model.DTO.FullRecordDTO;
@@ -21,7 +21,7 @@ public class SaveStatTableFromFullRecordDTOBean { // 더작게 ?
         ArrayList<String> charaterName = new ArrayList<>();
 
         for(FullParticipantDTO fp : fullRecordDTO.getParticipants()){
-            StatDAO statDAO = new StatDAO();
+            StatDeckDAO statDeckDAO = new StatDeckDAO();
             for(RecordUnitDTO unit : fp.getUnits()){
                 if(unit == null){
                     break;
@@ -32,16 +32,16 @@ public class SaveStatTableFromFullRecordDTOBean { // 더작게 ?
             // 캐릭터 이름 맵핑
             System.out.println(charaterName);
             for(int i =0; i< charaterName.size(); i++){
-                statDAO = mappingStatTableBean.exec(statDAO, charaterName.get(i));
+                statDeckDAO = mappingStatTableBean.exec(statDeckDAO, charaterName.get(i));
             }
             // 등수 삽입
-            statDAO.setPlacement(fp.getPlacement());
+            statDeckDAO.setPlacement(fp.getPlacement());
 
             // valid = false
-            statDAO.setValid(false);
+            statDeckDAO.setValid(false);
 
             // StatTable을 DB에 저장
-            statRepository.save(statDAO);
+            statRepository.save(statDeckDAO);
 
             // 초기화
             charaterName.clear();

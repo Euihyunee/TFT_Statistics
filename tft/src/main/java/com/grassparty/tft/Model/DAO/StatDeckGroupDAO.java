@@ -1,20 +1,33 @@
 package com.grassparty.tft.Model.DAO;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tbl_stat")
+@Table(name = "stat_deck_group")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class StatDAO {
-    @Id @GeneratedValue
+public class StatDeckGroupDAO {
+    @Id
     @Column
-    private int deckId;
+    private long deckId;
     @Column
     private int placement;
     @Column
+    private int count;
+    @Column
     private boolean valid;
+
+    @ManyToOne
+    @JoinColumn(name = "serviceDeckId")
+    private StatServiceDAO statServiceDAO;
+
 
     // 1코스트
     @Column
@@ -147,5 +160,4 @@ public class StatDAO {
     private int TFT7_AurelionSol;
     @Column
     private int TFT7_Shyvana;
-
 }

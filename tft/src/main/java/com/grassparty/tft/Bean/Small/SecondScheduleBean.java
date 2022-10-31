@@ -1,8 +1,8 @@
 package com.grassparty.tft.Bean.Small;
 
+import com.grassparty.tft.Model.DAO.StatDeckGroupDAO;
 import com.grassparty.tft.Repository.JPA.CustomPreQueryRepository;
 import com.grassparty.tft.Model.DAO.StatPreServiceInterface;
-import com.grassparty.tft.Model.DAO.StatPreServiceDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +21,7 @@ public class SecondScheduleBean {
             StatPreServiceInterface preService = customPreQueryRepository.GetQuery().get(i);
 
             // preService를 DBTable에 맞추기
-            StatPreServiceDAO statPreServiceTable =
+            StatDeckGroupDAO statPreServiceTable =
                     getStatPreServiceTableFromStatPreServiceInterfaceBean.exec(preService);
 
             // preService 저장하기

@@ -29,7 +29,7 @@ public class StatServiceDAO {
     private StatEndServiceDAO statEndServiceTable;
 
     @OneToMany(mappedBy = "statServiceDAO")
-    private List<StatPreServiceDAO> statPreServiceTables = new ArrayList<>();
+    private List<StatDeckGroupDAO> statPreServiceTables = new ArrayList<>();
 
 
 

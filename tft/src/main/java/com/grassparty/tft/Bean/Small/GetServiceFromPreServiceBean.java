@@ -1,12 +1,12 @@
 package com.grassparty.tft.Bean.Small;
 
-import com.grassparty.tft.Model.DAO.StatPreServiceDAO;
+import com.grassparty.tft.Model.DAO.StatDeckGroupDAO;
 import com.grassparty.tft.Model.DAO.StatServiceDAO;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetServiceFromPreServiceBean {
-    public StatServiceDAO exec(StatPreServiceDAO perService){
+    public StatServiceDAO exec(StatDeckGroupDAO perService){
         StatServiceDAO service = StatServiceDAO.builder()
                 .placement(perService.getPlacement())
                 .count(perService.getCount())

@@ -1,14 +1,14 @@
 package com.grassparty.tft.Bean.Small;
 
+import com.grassparty.tft.Model.DAO.StatDeckGroupDAO;
 import com.grassparty.tft.Model.DAO.StatPreServiceInterface;
-import com.grassparty.tft.Model.DAO.StatPreServiceDAO;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetStatPreServiceTableFromStatPreServiceInterfaceBean {
 
-    public StatPreServiceDAO exec(StatPreServiceInterface statPreServiceInterface){
-        StatPreServiceDAO statPreServiceTable = StatPreServiceDAO.builder()
+    public StatDeckGroupDAO exec(StatPreServiceInterface statPreServiceInterface){
+        StatDeckGroupDAO statPreServiceTable = StatDeckGroupDAO.builder()
                 .deckId(statPreServiceInterface.getDeckId())
                 .placement(statPreServiceInterface.getPlacement())
                 .count(statPreServiceInterface.getCount())
