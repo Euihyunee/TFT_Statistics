@@ -1,13 +1,8 @@
 package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Repository.StatRepository;
-<<<<<<< HEAD
 import com.grassparty.tft.Model.DAO.StatDeckDAO;
-import com.grassparty.tft.Model.DTO.FullDTO.FullParticipantDTO;
-=======
-import com.grassparty.tft.Model.DAO.StatDAO;
 import com.grassparty.tft.Model.DTO.FullDTO.RecordParticipantDTO;
->>>>>>> 4ac3f78bdbc8489b1b5622f1d545852d3b911aeb
 import com.grassparty.tft.Model.DTO.FullDTO.RecordUnitDTO;
 import com.grassparty.tft.Model.DTO.RecordDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +20,8 @@ public class SaveStatTableFromFullRecordDTOBean { // 더작게 ?
     public void exec(RecordDTO recordDTO){
         ArrayList<String> charaterName = new ArrayList<>();
 
-<<<<<<< HEAD
-        for(FullParticipantDTO fp : fullRecordDTO.getParticipants()){
-            StatDeckDAO statDeckDAO = new StatDeckDAO();
-=======
         for(RecordParticipantDTO fp : recordDTO.getParticipants()){
-            StatDAO statDAO = new StatDAO();
->>>>>>> 4ac3f78bdbc8489b1b5622f1d545852d3b911aeb
+            StatDeckDAO statDeckDAO = new StatDeckDAO();
             for(RecordUnitDTO unit : fp.getUnits()){
                 if(unit == null){
                     break;
