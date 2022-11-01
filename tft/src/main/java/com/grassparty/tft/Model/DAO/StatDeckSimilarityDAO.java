@@ -18,24 +18,14 @@ import java.util.List;
 public class StatDeckSimilarityDAO {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private int serviceDeckId;
+    private long serviceDeckId;
     @Column
     private int placement;
     @Column
     private int count;
-/*
 
-    @ManyToOne
-    @JoinColumn(name = "serviceDeckId")
-    private StatResultDAO statResultDAO;
-*/
 
-/*
-    @OneToMany(mappedBy = "statDeckGroupDAO")
-    private List<StatDeckGroupDAO> statDeckGroupDAOS = new ArrayList<>();
-*/
-
-    // 챔피언 칼럼 1~80
+    // 챔피언 칼럼 0~80
     @Column
     private int champion0;
     @Column

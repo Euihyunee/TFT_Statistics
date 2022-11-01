@@ -19,7 +19,7 @@ public class StatDeckDAO {
     @Column
     private long season_id;
 
-    // 챔피언 칼럼 1~80
+    // 챔피언 칼럼 0~80
     @Column
     private int champion0;
     @Column
