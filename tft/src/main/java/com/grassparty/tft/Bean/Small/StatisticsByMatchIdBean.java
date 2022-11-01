@@ -1,6 +1,6 @@
 package com.grassparty.tft.Bean.Small;
 
-import com.grassparty.tft.Repository.FullRecordRepository;
+import com.grassparty.tft.Repository.RecordRepository;
 import com.grassparty.tft.Repository.JPA.FullRecordRepositoryJPA;
 import com.grassparty.tft.Repository.JPA.StatVaildationRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ public class StatisticsByMatchIdBean {
     @Autowired
     FullRecordRepositoryJPA fullRecordRepositoryJPA;
     @Autowired
-    FullRecordRepository fullRecordRepository;
+    RecordRepository recordRepository;
     @Autowired
     StatVaildationRepositoryJPA statVaildationRepositoryJPA;
     @Autowired
@@ -28,7 +28,7 @@ public class StatisticsByMatchIdBean {
                 fullRecordRepositoryJPA.existsById(matchId);
         if(!isMatchIdExist){
             // fullrecordDTO받아오기
-            fullRecordRepository.InsertFullRecord(
+            recordRepository.InsertFullRecord(
                     getFullRecordFromMatchDTOBean.exec(getMatchDTOBean.exec(matchId))
             );
         }

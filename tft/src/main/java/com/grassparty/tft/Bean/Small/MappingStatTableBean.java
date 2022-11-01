@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MappingStatTableBean {
     public StatDeckDAO exec(StatDeckDAO statDeckDAO, String charaterName){
-        switch (charaterName) {
+        /*switch (charaterName) {
             case "TFT7_Nidalee":
                 statDeckDAO.setTFT7_Nidalee(1);
                 break;
@@ -183,9 +183,10 @@ public class MappingStatTableBean {
                 break;
             case "TFT7_Shyvana":
                 statDeckDAO.setTFT7_Shyvana(1);
-                break;
-        }
+                break;*/
+        // }
 
-        return statDeckDAO;
+        // return statDeckDAO;
+        return null;
     }
 }

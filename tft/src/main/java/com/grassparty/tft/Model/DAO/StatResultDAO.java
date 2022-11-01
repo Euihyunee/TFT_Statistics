@@ -21,7 +21,8 @@ public class StatResultDAO {
     @Column
     @CreatedDate
     private LocalDateTime date;
-
+/*
     @OneToMany(mappedBy = "StatDeckSimilarityDAO")
     private List<StatDeckSimilarityDAO> statDeckSimilarityDAOS = new ArrayList<>();
+    */
 }

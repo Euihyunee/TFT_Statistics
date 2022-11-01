@@ -17,7 +17,7 @@ public class StatDeckDAO {
     private boolean valid;
     // 외래키
     @Column
-    private int season_id;
+    private long season_id;
 
     // 챔피언 칼럼 1~80
     @Column

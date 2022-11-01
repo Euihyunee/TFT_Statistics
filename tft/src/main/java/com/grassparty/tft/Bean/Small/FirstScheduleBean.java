@@ -2,7 +2,7 @@ package com.grassparty.tft.Bean.Small;
 
 import com.google.gson.Gson;
 import com.grassparty.tft.Model.DAO.RecordDAO;
-import com.grassparty.tft.Repository.FullRecordRepository;
+import com.grassparty.tft.Repository.RecordRepository;
 import com.grassparty.tft.Repository.StatValidationRepository;
 import com.grassparty.tft.Model.DTO.RecordDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FirstScheduleBean {
     @Autowired
-    FullRecordRepository fullRecordRepository;
+    RecordRepository recordRepository;
     @Autowired
     StatValidationRepository statValidationRepository;
     @Autowired
@@ -36,12 +36,12 @@ public class FirstScheduleBean {
             System.out.println("매치아이디 널임");
             return false;
         }
-        RecordDAO fullRecordDB = fullRecordRepository.GetFullRecordDBByMatchId(matchid);
+        RecordDAO recordDAO = recordRepository.GetFullRecordDBByMatchId(matchid);
 
 
         // FullRecordDB에서 FullRecordDTO를 분리
         Gson gson = new Gson();
-        RecordDTO recordDTO = gson.fromJson(fullRecordDB.getJson(), RecordDTO.class);
+        RecordDTO recordDTO = gson.fromJson(recordDAO.getJson(), RecordDTO.class);
 
         // FullRecordDTO에서 StatTable로 변환 (*)
         saveStatTableFromFullRecordDTOBean.exec(recordDTO);

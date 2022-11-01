@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class FullRecordRepository {
+public class RecordRepository {
 
     @Autowired
     FullRecordRepositoryJPA fullRecordRepositoryJPA;

@@ -6,14 +6,14 @@ import com.grassparty.tft.Model.DTO.MetaRecordDTO;
 import com.grassparty.tft.Model.Riot.MatchDto;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
-import com.grassparty.tft.Repository.FullRecordRepository;
+import com.grassparty.tft.Repository.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetMatchHistoryByNameBean {
     @Autowired
-    FullRecordRepository fullRecordRepository;
+    RecordRepository recordRepository;
     @Autowired
     GetSummonerDTOByNameBean getSummonerDTOByNameBean;
     @Autowired
@@ -38,10 +38,10 @@ public class GetMatchHistoryByNameBean {
 
 
         for(int i=0; i < matchID.getMatchid().length; i++){
-            if (fullRecordRepository.IsExistByMatchid(matchID.getMatchid()[i])){
+            if (recordRepository.IsExistByMatchid(matchID.getMatchid()[i])){
 
                 // fullRecordDTO를 Matchid로 가져오기(단수)
-                RecordDTO recordDTO = fullRecordRepository.GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
+                RecordDTO recordDTO = recordRepository.GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
 
                 metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(recordDTO, summonerDTO.getPuuid());
 
@@ -54,7 +54,7 @@ public class GetMatchHistoryByNameBean {
                 recordDTO = getFullRecordFromMatchDTOBean.exec(matchDto);
 
                 // FullRecord DB 저장
-                fullRecordRepository.InsertFullRecord(recordDTO);
+                recordRepository.InsertFullRecord(recordDTO);
 
                 // FullMatchDTO를 MetaRecordDTO로 변환
                 metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(recordDTO, summonerDTO.getPuuid());

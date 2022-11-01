@@ -23,15 +23,17 @@ public class StatDeckSimilarityDAO {
     private int placement;
     @Column
     private int count;
+/*
 
     @ManyToOne
     @JoinColumn(name = "serviceDeckId")
     private StatResultDAO statResultDAO;
+*/
 
-    @OneToMany(mappedBy = "StatDeckGroupDAO")
+/*
+    @OneToMany(mappedBy = "statDeckGroupDAO")
     private List<StatDeckGroupDAO> statDeckGroupDAOS = new ArrayList<>();
-
-
+*/
 
     // 챔피언 칼럼 1~80
     @Column

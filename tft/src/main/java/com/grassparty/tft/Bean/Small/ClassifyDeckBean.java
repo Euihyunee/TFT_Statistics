@@ -13,8 +13,6 @@ public class ClassifyDeckBean {
     CustomQueryRepository customQueryRepository;
     @Autowired
     CustomPreQueryRepository customPreQueryRepository;
-    @Autowired
-    GetServiceFromPreServiceBean getServiceFromPreServiceBean;
 
     public void exec(){
         // 로직
@@ -22,7 +20,8 @@ public class ClassifyDeckBean {
         StatDeckGroupDAO perService = customPreQueryRepository.getMaxCountRow();
 
         // 첫번째 덱 덱리스트(serviceTable)에 저장하기
-        StatDeckSimilarityDAO service = getServiceFromPreServiceBean.exec(perService);
-        customQueryRepository.save(service);
+
+
+
     }
 }

@@ -23,11 +23,13 @@ public class StatDeckGroupDAO {
     private int count;
     @Column
     private boolean valid;
+/*
 
     @ManyToOne
     @JoinColumn(name = "deckId")
     private StatDeckSimilarityDAO statDeckSimilarityDAO;
 
+*/
 
     // 챔피언 칼럼 1~80
     @Column
