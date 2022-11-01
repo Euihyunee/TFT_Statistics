@@ -18,7 +18,7 @@ public class StatChampionDAO {
 
     // 외래키
     @Column
-    private int seasion_id;
+    private int season_id;
 
     @Column
     private int update_id;

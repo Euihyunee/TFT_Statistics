@@ -18,7 +18,7 @@ public class StatChampionResult {
 
     // 외래키
     @Column
-    private int seasion_id;
+    private int season_id;
 
     // 외래키
     @Column

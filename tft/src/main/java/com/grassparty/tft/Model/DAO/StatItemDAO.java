@@ -19,7 +19,7 @@ public class StatItemDAO {
 
     // 외래키(시즌 버전)
     @Column
-    private int seasion_id;
+    private int season_id;
 
     @Column
     private String item_name;
