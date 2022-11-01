@@ -22,9 +22,6 @@ public class StatItemDAO {
     private int season_id;
 
     @Column
-    private String item_name;
-
-    @Column
     private Long count;
 
     @Column
