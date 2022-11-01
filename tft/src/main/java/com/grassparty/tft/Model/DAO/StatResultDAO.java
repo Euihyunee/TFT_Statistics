@@ -22,6 +22,6 @@ public class StatResultDAO {
     @CreatedDate
     private LocalDateTime date;
 
-    @OneToMany(mappedBy = "statEndServiceTable")
+    @OneToMany(mappedBy = "StatDeckSimilarityDAO")
     private List<StatDeckSimilarityDAO> statDeckSimilarityDAOS = new ArrayList<>();
 }

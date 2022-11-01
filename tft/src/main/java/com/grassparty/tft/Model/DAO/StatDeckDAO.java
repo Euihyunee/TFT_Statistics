@@ -15,137 +15,178 @@ public class StatDeckDAO {
     private int placement;
     @Column
     private boolean valid;
+    // 외래키
+    @Column
+    private int season_id;
 
-    // 1코스트
+    // 챔피언 칼럼 1~80
     @Column
-    private int TFT7_Nidalee;
+    private int champion1;
     @Column
-    private int TFT7_Leona;
+    private int champion2;
     @Column
-    private int TFT7_Vladimir;
+    private int champion3;
     @Column
-    private int TFT7_Senna;
+    private int champion4;
     @Column
-    private int TFT7_Sejuani;
+    private int champion5;
     @Column
-    private int TFT7_Sett;
+    private int champion6;
     @Column
-    private int TFT7_Skarner;
+    private int champion7;
     @Column
-    private int TFT7_Aatrox;
+    private int champion8;
     @Column
-    private int TFT7_Ezreal;
+    private int champion9;
     @Column
-    private int TFT7_Taric;
-    @Column
-    private int TFT7_Karma;
-    @Column
-    private int TFT7_TahmKench;
-    @Column
-    private int TFT7_Heimerdinger;
+    private int champion10;
 
-    //2코스트
     @Column
-    private int TFT7_Gnar;
+    private int champion11;
     @Column
-    private int TFT7_Nami;
+    private int champion12;
     @Column
-    private int TFT7_Lillia;
+    private int champion13;
     @Column
-    private int TFT7_Braum;
+    private int champion14;
     @Column
-    private int TFT7_Shen;
+    private int champion15;
     @Column
-    private int TFT7_Thresh;
+    private int champion16;
     @Column
-    private int TFT7_Ashe;
+    private int champion17;
     @Column
-    private int TFT7_Yone;
+    private int champion18;
     @Column
-    private int TFT7_Jinx;
+    private int champion19;
     @Column
-    private int TFT7_Kayn;
-    @Column
-    private int TFT7_Qiyana;
-    @Column
-    private int TFT7_Tristana;
-    @Column
-    private int TFT7_Twitch;
+    private int champion20;
 
-    // 3코스트
     @Column
-    private int TFT7_Nunu;
+    private int champion21;
     @Column
-    private int TFT7_Diana;
+    private int champion22;
     @Column
-    private int TFT7_Ryze;
+    private int champion23;
     @Column
-    private int TFT7_Lulu;
+    private int champion24;
     @Column
-    private int TFT7_LeeSin;
+    private int champion25;
     @Column
-    private int TFT7_Varus;
+    private int champion26;
     @Column
-    private int TFT7_Volibear;
+    private int champion27;
     @Column
-    private int TFT7_Sylas;
+    private int champion28;
     @Column
-    private int TFT7_Swain;
+    private int champion29;
     @Column
-    private int TFT7_Anivia;
-    @Column
-    private int TFT7_Elise;
-    @Column
-    private int TFT7_Olaf;
-    @Column
-    private int TFT7_Illaoi;
+    private int champion30;
 
-    // 4코스트
     @Column
-    private int TFT7_Neeko;
+    private int champion31;
     @Column
-    private int TFT7_Sona;
+    private int champion32;
     @Column
-    private int TFT7_Ornn;
+    private int champion33;
     @Column
-    private int TFT7_Xayah;
+    private int champion34;
     @Column
-    private int TFT7_Corki;
+    private int champion35;
     @Column
-    private int TFT7_Talon;
+    private int champion36;
     @Column
-    private int TFT7_Hecarim;
+    private int champion37;
+    @Column
+    private int champion38;
+    @Column
+    private int champion39;
+    @Column
+    private int champion40;
 
-    // 5코스트
     @Column
-    private int TFT7_Bard;
+    private int champion41;
     @Column
-    private int TFT7_Soraka;
+    private int champion42;
     @Column
-    private int TFT7_Yasuo;
+    private int champion43;
     @Column
-    private int TFT7_Zoe;
+    private int champion44;
     @Column
-    private int TFT7_Pyke;
+    private int champion45;
+    @Column
+    private int champion46;
+    @Column
+    private int champion47;
+    @Column
+    private int champion48;
+    @Column
+    private int champion49;
+    @Column
+    private int champion50;
 
-    // 4코 용
     @Column
-    private int TFT7_DragonBlue;
+    private int champion51;
     @Column
-    private int TFT7_DragonGold;
+    private int champion52;
     @Column
-    private int TFT7_DragonPurple;
+    private int champion53;
     @Column
-    private int TFT7_DragonGreen;
+    private int champion54;
     @Column
-    private int TFT7_TrainerDragon;
+    private int champion55;
+    @Column
+    private int champion56;
+    @Column
+    private int champion57;
+    @Column
+    private int champion58;
+    @Column
+    private int champion59;
+    @Column
+    private int champion60;
 
-    // 5코 용
     @Column
-    private int TFT7_AoShin;
+    private int champion61;
     @Column
-    private int TFT7_AurelionSol;
+    private int champion62;
     @Column
-    private int TFT7_Shyvana;
+    private int champion63;
+    @Column
+    private int champion64;
+    @Column
+    private int champion65;
+    @Column
+    private int champion66;
+    @Column
+    private int champion67;
+    @Column
+    private int champion68;
+    @Column
+    private int champion69;
+    @Column
+    private int champion70;
+
+    @Column
+    private int champion71;
+    @Column
+    private int champion72;
+    @Column
+    private int champion73;
+    @Column
+    private int champion74;
+    @Column
+    private int champion75;
+    @Column
+    private int champion76;
+    @Column
+    private int champion77;
+    @Column
+    private int champion78;
+    @Column
+    private int champion79;
+    @Column
+    private int champion80;
+
 
 }

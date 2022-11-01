@@ -19,5 +19,5 @@ public class VersionDAO {
     private int update_version;
     @Column
     private float total_version;
-    
+
 }
