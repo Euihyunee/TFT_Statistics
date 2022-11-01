@@ -19,7 +19,7 @@ public class StatItemDAO {
 
     // 외래키(시즌 버전)
     @Column
-    private int season_id;
+    private int version_id;
 
     @Column
     private Long count;

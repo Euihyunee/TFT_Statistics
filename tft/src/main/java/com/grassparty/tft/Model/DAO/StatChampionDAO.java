@@ -18,10 +18,7 @@ public class StatChampionDAO {
 
     // 외래키
     @Column
-    private int season_id;
-
-    @Column
-    private int update_id;
+    private int version_id;
 
     @Column
     private String current_date;
