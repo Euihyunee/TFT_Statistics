@@ -18,7 +18,7 @@ public class StatChampionResultDAO {
 
     // 외래키
     @Column
-    private int version_id;
+    private int gameVersionId;
 
     @Column
     private double frequency;
