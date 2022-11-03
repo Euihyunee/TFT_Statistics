@@ -1,5 +1,8 @@
-package com.grassparty.tft.Bean.Small;
+package com.grassparty.tft.Bean;
 
+import com.grassparty.tft.Bean.Small.GetMatchIdFromStatValidBean;
+import com.grassparty.tft.Bean.Small.GetRecordBean;
+import com.grassparty.tft.Bean.Small.MakeVersionChampionIndexBean;
 import com.grassparty.tft.Model.DAO.VersionChampionIndexDAO;
 import com.grassparty.tft.Model.DAO.VersionDAO;
 import com.grassparty.tft.Model.DTO.RecordDTO;
