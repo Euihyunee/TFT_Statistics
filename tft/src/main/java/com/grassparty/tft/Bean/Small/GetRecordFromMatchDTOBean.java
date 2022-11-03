@@ -20,6 +20,13 @@ public class GetRecordFromMatchDTOBean {
         RecordParticipantDTO[] recordParticipantDTOS = new RecordParticipantDTO[8];
         RecordDTO recordDTO = new RecordDTO();
 
+
+        recordDTO.setGame_datetime(matchDto.getInfo().getGame_datetime());
+
+        // version parsing 후 recordDTO.setGame_version
+        String version_parsing = matchDto.getInfo().getGame_version();
+        String[] version = version_parsing.split(" ");
+        recordDTO.setGame_version(version[1]);
         recordDTO.setMatch_id(matchDto.getMetadata().getMatch_id());
         recordDTO.setParticipantsPuuid(matchDto.getMetadata().getParticipants());
         recordDTO.setGame_length(matchDto.getInfo().getGame_length());

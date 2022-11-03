@@ -19,7 +19,7 @@ public class GetRecordByMatchIdBean {
         // matchid 로 matchDTO 받기
         MatchDto matchDto = getMatchDTOBean.exec(matchid);
 
-        // matchDTO를 FullRecordDTo로 변환
+        // matchDTO를 RecordDTo로 변환
         RecordDTO recordDTO;
         recordDTO = getRecordFromMatchDTOBean.exec(matchDto);
 
