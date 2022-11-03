@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class SaveStatTableFromFullRecordDTOBean { // 더작게 ?
+public class SaveStatDeckFromRecordDTOBean {
     @Autowired
     StatRepository statRepository;
     @Autowired

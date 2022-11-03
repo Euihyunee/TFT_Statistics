@@ -1,25 +1,22 @@
 package com.grassparty.tft.Model.DAO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="version_champion_index")
 public class VersionChampionIndexDAO {
 
-    @Id
-    private Long version_champion_id;
+    @Id @GeneratedValue
+    private Long versionChampionId;
 
     // 외래키
     @Column
-    private int version_id;
+    private Long versionId;
 
     // 외래키
     @Column
-    private int champion_id;
+    private int championId;
 
     @Column
-    private int id;
+    private int index;
 }

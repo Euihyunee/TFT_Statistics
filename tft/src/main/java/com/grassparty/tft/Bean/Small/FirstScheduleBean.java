@@ -17,7 +17,7 @@ public class FirstScheduleBean {
     @Autowired
     StatValidationRepository statValidationRepository;
     @Autowired
-    SaveStatTableFromFullRecordDTOBean saveStatTableFromFullRecordDTOBean;
+    SaveStatDeckFromRecordDTOBean saveStatDeckFromRecordDTOBean;
 
 
     public void exec(){
@@ -45,7 +45,7 @@ public class FirstScheduleBean {
         RecordDTO recordDTO = gson.fromJson(recordDAO.getJson(), RecordDTO.class);
 
         // FullRecordDTO에서 StatTable로 변환 (*)
-        saveStatTableFromFullRecordDTOBean.exec(recordDTO);
+        saveStatDeckFromRecordDTOBean.exec(recordDTO);
         System.out.println("몇회실행됬는지 확인점");
 
         return true;

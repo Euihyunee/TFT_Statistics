@@ -11,13 +11,13 @@ import javax.persistence.Table;
 public class VersionDAO {
 
     @Id
-    private Long version_id;
+    private Long versionId;
 
     @Column
-    private int season_version;
+    private int seasonVersion;
     @Column
-    private int update_version;
+    private int updateVersion;
     @Column
-    private float total_version;
+    private float totalVersion;
 
 }
