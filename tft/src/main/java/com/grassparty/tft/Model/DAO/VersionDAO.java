@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Getter @Setter
 public class VersionDAO {
 
+
     @Id @GeneratedValue
     private Long gameVersionId;
 

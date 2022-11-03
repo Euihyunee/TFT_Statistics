@@ -18,10 +18,10 @@ public class StatChampionDAO {
 
     // 외래키
     @Column
-    private int gameVersionId;
+    private Long versionId;
 
     @Column
-    private String current_date;
+    private String currentDate;
 
     @Column
     private Long count;
