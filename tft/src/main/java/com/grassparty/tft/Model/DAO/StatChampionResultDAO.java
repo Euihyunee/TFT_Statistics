@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="stat_champion_result")
-public class StatChampionResult {
+public class StatChampionResultDAO {
 
     @Id
     private Long id;
