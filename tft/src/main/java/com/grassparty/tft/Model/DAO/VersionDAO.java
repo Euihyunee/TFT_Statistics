@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class VersionDAO {
 
     @Id
-    private Long gameVersionId;
+    private Long versionId;
 
     @Column
     private int seasonVersion;

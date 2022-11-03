@@ -14,7 +14,7 @@ public class StatChampionDeckCountDAO {
 
     // 외래키
     @Column
-    private int gameVersionId;
+    private int versionId;
 
     @Column
     private Long total_deck_count;
