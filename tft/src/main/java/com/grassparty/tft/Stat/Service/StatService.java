@@ -1,8 +1,8 @@
 package com.grassparty.tft.Stat.Service;
 
-import com.grassparty.tft.Bean.Small.InsertStatVaildationBean;
+import com.grassparty.tft.Bean.Small.InsertStatVaildRecordBean;
 import com.grassparty.tft.Bean.Small.StartStatisticBean;
-import com.grassparty.tft.Bean.Small.StatisticsByMatchIdBean;
+import com.grassparty.tft.Bean.Small.InsertMatchIdStatBean;
 import com.grassparty.tft.Bean.Small.PutRecordForStatBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,11 +20,11 @@ public class StatService {
     }
 
     public void StatisticsByMatchId(String matchId){
-        StatisticsByMatchIdBean statisticsByMatchIdBean = new StatisticsByMatchIdBean();
-        InsertStatVaildationBean insertStatVaildationBean = new InsertStatVaildationBean();
+        InsertMatchIdStatBean insertMatchIdStatBean = new InsertMatchIdStatBean();
+        InsertStatVaildRecordBean insertStatVaildRecordBean = new InsertStatVaildRecordBean();
 
-        insertStatVaildationBean.exec(matchId);
-        statisticsByMatchIdBean.exec(matchId);
+        insertStatVaildRecordBean.exec(matchId);
+        insertMatchIdStatBean.exec(matchId);
     }
 
     public void StartStatistic() {

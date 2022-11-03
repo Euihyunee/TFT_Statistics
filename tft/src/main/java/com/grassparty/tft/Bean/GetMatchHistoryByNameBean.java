@@ -54,7 +54,7 @@ public class GetMatchHistoryByNameBean {
                 recordDTO = getFullRecordFromMatchDTOBean.exec(matchDto);
 
                 // FullRecord DB 저장
-                recordRepository.InsertFullRecord(recordDTO);
+                recordRepository.InsertRecord(recordDTO);
 
                 // FullMatchDTO를 MetaRecordDTO로 변환
                 metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(recordDTO, summonerDTO.getPuuid());

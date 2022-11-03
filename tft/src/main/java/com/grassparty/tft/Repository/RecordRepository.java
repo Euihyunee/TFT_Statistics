@@ -18,11 +18,11 @@ public class RecordRepository {
 
     public void InsertFullRecords(RecordDTO[] recordDTOS){
         for(RecordDTO recordDTO : recordDTOS){
-            InsertFullRecord(recordDTO);
+            InsertRecord(recordDTO);
         }
     }
 
-    public void InsertFullRecord(RecordDTO recordDTO){
+    public void InsertRecord(RecordDTO recordDTO){
         String matchid = recordDTO.getMatch_id();
 
         Gson gson = new Gson();
