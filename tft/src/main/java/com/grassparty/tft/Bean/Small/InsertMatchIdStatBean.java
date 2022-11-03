@@ -16,7 +16,7 @@ public class InsertMatchIdStatBean {
     @Autowired
     StatVaildationRepositoryJPA statVaildationRepositoryJPA;
     @Autowired
-    GetFullRecordFromMatchDTOBean getFullRecordFromMatchDTOBean;
+    GetRecordFromMatchDTOBean getRecordFromMatchDTOBean;
     @Autowired
     GetMatchDTOBean getMatchDTOBean;
     @Autowired
@@ -30,7 +30,7 @@ public class InsertMatchIdStatBean {
         if(!isMatchIdExist){
             // 라이엇에서 recordDTO받아오기
             recordRepository.InsertRecord(
-                    getFullRecordFromMatchDTOBean.exec(getMatchDTOBean.exec(matchId))
+                    getRecordFromMatchDTOBean.exec(getMatchDTOBean.exec(matchId))
             );
         }
         // 통계로직용 밸리데이션 테이블 저장

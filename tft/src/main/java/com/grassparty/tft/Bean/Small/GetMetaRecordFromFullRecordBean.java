@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 public class GetMetaRecordFromFullRecordBean {
 
     @Autowired
-    GetFullParticipantDTOByPuuidFromFullRecordDTOBean getFullParticipantDTOByPuuidFromFullRecordDTOBean;
+    GetParticipantDTOByPuuidFromRecordDTOBean getParticipantDTOByPuuidFromRecordDTOBean;
 
     public MetaRecordDTO exec(RecordDTO recordDTO, String puuid){
         // 로직
         // FullRecordDTO -> MetaRecordDTO 로 변환
         MetaRecordDTO metaRecordDTO = new MetaRecordDTO();
 
-        RecordParticipantDTO recordParticipantDTO = getFullParticipantDTOByPuuidFromFullRecordDTOBean.exec(recordDTO, puuid);
+        RecordParticipantDTO recordParticipantDTO = getParticipantDTOByPuuidFromRecordDTOBean.exec(recordDTO, puuid);
 
         metaRecordDTO.setMatch_id(recordDTO.getMatch_id());
         metaRecordDTO.setPlacement(recordParticipantDTO.getPlacement());

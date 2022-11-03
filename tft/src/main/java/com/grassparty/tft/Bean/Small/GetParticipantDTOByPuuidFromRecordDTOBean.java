@@ -5,7 +5,7 @@ import com.grassparty.tft.Model.DTO.RecordDTO;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GetFullParticipantDTOByPuuidFromFullRecordDTOBean {
+public class GetParticipantDTOByPuuidFromRecordDTOBean {
     public RecordParticipantDTO exec(RecordDTO recordDTO, String puuid){
         // 로직
         int index =0;

@@ -23,7 +23,7 @@ public class GetMatchHistoryByNameBean {
     @Autowired
     GetMatchDTOBean getMatchDTOBean;
     @Autowired
-    GetFullRecordFromMatchDTOBean getFullRecordFromMatchDTOBean;
+    GetRecordFromMatchDTOBean getRecordFromMatchDTOBean;
 
 
     public MetaRecordDTO[] exec(String name){
@@ -51,7 +51,7 @@ public class GetMatchHistoryByNameBean {
 
                 // matchDTO FullMatchDTO로 받기
                 RecordDTO recordDTO;
-                recordDTO = getFullRecordFromMatchDTOBean.exec(matchDto);
+                recordDTO = getRecordFromMatchDTOBean.exec(matchDto);
 
                 // FullRecord DB 저장
                 recordRepository.InsertRecord(recordDTO);

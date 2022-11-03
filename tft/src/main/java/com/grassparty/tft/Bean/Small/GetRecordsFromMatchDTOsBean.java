@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GetFullRecordsFromMatchDTOsBean {
+public class GetRecordsFromMatchDTOsBean {
 
     @Autowired
-    GetFullRecordFromMatchDTOBean getFullRecordFromMatchDTOBean;
+    GetRecordFromMatchDTOBean getRecordFromMatchDTOBean;
 
     public RecordDTOs exec(MatchDtos matchDtos){
         // 로직
@@ -18,7 +18,7 @@ public class GetFullRecordsFromMatchDTOsBean {
         RecordDTOs recordDTOs = new RecordDTOs();
         int count =0;
         for(int i =0; i < matchDtos.getMatchDtos().toArray().length; i++){
-            recordDTO = getFullRecordFromMatchDTOBean.exec(matchDtos.getMatchDtos().get(i));
+            recordDTO = getRecordFromMatchDTOBean.exec(matchDtos.getMatchDtos().get(i));
             recordDTOs.add(recordDTO);
         }
 

@@ -5,7 +5,7 @@ import com.grassparty.tft.Model.Riot.etc.UnitDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GetFullUnitDTOFromUnitDtoBean {
+public class GetRecordUnitDTOFromUnitDtoBean {
 
 
     public RecordUnitDTO exec(UnitDto unitDto){
