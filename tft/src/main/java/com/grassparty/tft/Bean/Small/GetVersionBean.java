@@ -31,8 +31,8 @@ public class GetVersionBean {
         // ex) 12.20.474.8882
         for (RecordDTO recordDTO : records){
 
-            // parsing 부분 Bean으로 만들거 시발~~~~~
-            // gmae_version parsing해서 12는 season_id, 20은 update_id로 나머지는 total_id로 분리
+            // parsing 부분 Bean으로 만들거
+            // game_version parsing해서 12는 season_id, 20은 update_id로 나머지는 total_id로 분리
             String GameVersion = recordDTO.getGame_version();
             String[] GameVersionSplit = GameVersion.split("\\.");
             int SeasonId = Integer.parseInt(GameVersionSplit[0]);
