@@ -76,7 +76,7 @@ public class StartStatisticBean {
             Long versionId = repository.findIdBySeasonVersion(versionInt);
 
             // 조회된 버전 아이디로 지문 조회
-            versionMap.put(versionId, indexRepository.findByGameVersionId(versionId));
+            versionMap.put(versionId, indexRepository.findByVersionId(versionId));
 
         }
         System.out.println("버전맵핑 정보 : " + versionMap);

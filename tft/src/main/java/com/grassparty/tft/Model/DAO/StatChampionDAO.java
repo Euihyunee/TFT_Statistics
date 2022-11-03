@@ -14,14 +14,14 @@ public class StatChampionDAO {
 
     // 외래키
     @Column
-    private int champion_id;
+    private int championId;
 
     // 외래키
     @Column
     private Long versionId;
 
     @Column
-    private String currentDate;
+    private String gameDatetime;
 
     @Column
     private Long count;
