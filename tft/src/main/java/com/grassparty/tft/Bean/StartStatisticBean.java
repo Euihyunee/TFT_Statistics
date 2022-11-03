@@ -31,10 +31,10 @@ public class StartStatisticBean {
     VersionRepositoryJPA repository;
 
     public void exec(){
-        // TODO 밸리데이션 테이블에서 matchId 가져옴
+        // 밸리데이션 테이블에서 matchId 가져옴
         MatchID matchID = getMatchIdFromStatValidBean.exec();
 
-        // TODO matchid로 Record가져오기
+        // matchid로 Record가져오기
         List<RecordDTO> records = getRecordBean.exec(matchID);
 
         // TODO record에 있는 version으로 version champion index 가져오기
@@ -70,25 +70,22 @@ public class StartStatisticBean {
 
         // 버전 정보별 챔피언 지문 인덱스 가져오기
         // 버전 - 인덱스
-        HashMap<Long, VersionChampionIndexDAO> versionMap = new HashMap<>();
+        HashMap<Integer, List<VersionChampionIndexDAO>> versionMap = new HashMap<>();
 
         // 버전을 우선 조회하기
         for(String version: uniqueVersion){
-            int versionInt = Integer.parseInt( version);
-            // 버전 아이디
-            Long versionId = repository.findIdBySeasonVersion(versionInt);
+            int seasonVersion = Integer.parseInt( version);
 
-            // 조회된 버전 아이디로 지문 조회
-            versionMap.put(versionId, indexRepository.findBySeasonVersion(versionId));
-
+            if(!indexRepository.existsBySeasonVersion(seasonVersion)){
+                System.out.println("seasonVersion 존재하지 않음 : " + seasonVersion);
+                break;
+            }
+            // 조회된 버전 아이디로 지문 조회 후 저장
+            versionMap.put(seasonVersion, indexRepository.findAllBySeasonVersion(seasonVersion));
         }
-        System.out.println("버전맵핑 정보 : " + versionMap);
-
-
-
-
 
         // TODO index로 지문 생성
+        
 
         // TODO deck에 저장
 
