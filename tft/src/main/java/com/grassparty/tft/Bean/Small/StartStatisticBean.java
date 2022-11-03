@@ -1,8 +1,11 @@
 package com.grassparty.tft.Bean.Small;
 
+import com.grassparty.tft.Model.DTO.RecordDTO;
 import com.grassparty.tft.Model.Riot.MatchID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class StartStatisticBean {
@@ -16,9 +19,10 @@ public class StartStatisticBean {
         MatchID matchID = getMatchIdFromStatValidBean.exec();
 
         // TODO matchid로 Record가져오기
-        getRecordBean.exec(matchID);
+        List<RecordDTO> records = getRecordBean.exec(matchID);
 
         // TODO record에 있는 version으로 version champion index 가져오기
+
 
         // TODO index로 지문 생성
 
