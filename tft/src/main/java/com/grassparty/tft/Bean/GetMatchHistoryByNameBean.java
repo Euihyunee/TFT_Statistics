@@ -24,6 +24,8 @@ public class GetMatchHistoryByNameBean {
     GetMatchDTOBean getMatchDTOBean;
     @Autowired
     GetRecordFromMatchDTOBean getRecordFromMatchDTOBean;
+    @Autowired
+    SaveRecordBean saveRecordBean;
 
 
     public MetaRecordDTO[] exec(String name){
@@ -54,7 +56,7 @@ public class GetMatchHistoryByNameBean {
                 recordDTO = getRecordFromMatchDTOBean.exec(matchDto);
 
                 // FullRecord DB 저장
-                recordRepository.InsertRecord(recordDTO);
+                saveRecordBean.exec(recordDTO);
 
                 // FullMatchDTO를 MetaRecordDTO로 변환
                 metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(recordDTO, summonerDTO.getPuuid());

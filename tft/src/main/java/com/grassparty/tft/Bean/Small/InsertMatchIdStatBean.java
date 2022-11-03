@@ -21,6 +21,8 @@ public class InsertMatchIdStatBean {
     GetMatchDTOBean getMatchDTOBean;
     @Autowired
     InsertStatVaildRecordBean insertStatVaildRecordBean;
+    @Autowired
+    SaveRecordBean saveRecordBean;
 
     public void exec(String matchId){
         // TODO matchid 에 대한 매치 정보가 DB에 이미 있나용?
@@ -29,7 +31,7 @@ public class InsertMatchIdStatBean {
         // TODO 없음 -> 라이엇에 데이터 요청 -> 데이터 저장, 통계로직에 들어갈 정보 테이블에도 저장
         if(!isMatchIdExist){
             // 라이엇에서 recordDTO받아오기
-            recordRepository.InsertRecord(
+            saveRecordBean.exec(
                     getRecordFromMatchDTOBean.exec(getMatchDTOBean.exec(matchId))
             );
         }

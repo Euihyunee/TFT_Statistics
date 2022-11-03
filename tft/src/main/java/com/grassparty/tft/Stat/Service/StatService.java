@@ -1,9 +1,9 @@
 package com.grassparty.tft.Stat.Service;
 
 import com.grassparty.tft.Bean.Small.InsertStatVaildRecordBean;
-import com.grassparty.tft.Bean.Small.StartStatisticBean;
+import com.grassparty.tft.Bean.StartStatisticBean;
 import com.grassparty.tft.Bean.Small.InsertMatchIdStatBean;
-import com.grassparty.tft.Bean.Small.PutRecordForStatBean;
+import com.grassparty.tft.Bean.PutRecordForStatBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

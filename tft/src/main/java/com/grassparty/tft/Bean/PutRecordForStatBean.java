@@ -1,5 +1,8 @@
-package com.grassparty.tft.Bean.Small;
+package com.grassparty.tft.Bean;
 
+import com.grassparty.tft.Bean.Small.GetMatchIDBean;
+import com.grassparty.tft.Bean.Small.GetSummonerDTOByNameBean;
+import com.grassparty.tft.Bean.Small.InsertMatchIdStatBean;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -15,25 +15,7 @@ public class RecordRepository {
 
     @Autowired
     RecordRepositoryJPA recordRepositoryJPA;
-
-    public void InsertFullRecords(RecordDTO[] recordDTOS){
-        for(RecordDTO recordDTO : recordDTOS){
-            InsertRecord(recordDTO);
-        }
-    }
-
-    public void InsertRecord(RecordDTO recordDTO){
-        String matchid = recordDTO.getMatch_id();
-
-        Gson gson = new Gson();
-        String jsonString = gson.toJson(recordDTO);
-
-        RecordDAO recordDAO = RecordDAO.builder()
-                .matchID(matchid)
-                .json(jsonString)
-                .build();
-        recordRepositoryJPA.save(recordDAO);
-    }
+    
 
     public boolean IsExistByMatchid(String matchid){
 
