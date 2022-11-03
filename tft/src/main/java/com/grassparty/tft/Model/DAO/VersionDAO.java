@@ -1,16 +1,17 @@
 package com.grassparty.tft.Model.DAO;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "version")
+@Getter @Setter
 public class VersionDAO {
 
-    @Id
+    @Id @GeneratedValue
     private Long gameVersionId;
 
     @Column

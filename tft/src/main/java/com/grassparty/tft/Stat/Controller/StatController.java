@@ -1,5 +1,6 @@
 package com.grassparty.tft.Stat.Controller;
 
+import com.grassparty.tft.Bean.Small.GetVersionBean;
 import com.grassparty.tft.Model.DTO.StatDeckDTO;
 import com.grassparty.tft.Model.DTO.StatItemDTOs;
 import com.grassparty.tft.Model.DTO.StatUnitDTOs;
@@ -13,10 +14,13 @@ import org.springframework.web.bind.annotation.*;
 public class StatController {
     @Autowired
     StatService statService;
+    @Autowired
+    GetVersionBean getVersionBean;
 
     // TODO 덱 티어리스트 제공 (StatDeckDTO)
     @GetMapping("/champ")
     public StatDeckDTO GetChamp(){
+        getVersionBean.exec();
         return null;
     }
 

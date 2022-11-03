@@ -4,6 +4,8 @@ import com.grassparty.tft.Model.DAO.RecordDAO;
 import com.grassparty.tft.Model.DAO.VersionDAO;
 import com.grassparty.tft.Model.DTO.RecordDTO;
 import com.grassparty.tft.Model.Riot.MatchID;
+import com.grassparty.tft.Repository.JPA.VersionRepositoryJPA;
+import jdk.nashorn.internal.runtime.Version;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,9 +16,10 @@ public class GetVersionBean {
 
     @Autowired
     GetRecordBean getRecordBean;
-
     @Autowired
     GetMatchIdFromStatValidBean getMatchIdFromStatValidBean;
+    @Autowired
+    VersionRepositoryJPA repository;
 
     public void exec(){
         // DB record 테이블에서 json(RecordDTO) 가져오기
@@ -37,7 +40,13 @@ public class GetVersionBean {
             String TotalId = GameVersion;
 
             // version_table에 조회해서 있으면 냅두고 없으면 추가하는 방식 만들기
-
+            if(!repository.existsByTotalVersion(TotalId)){
+                VersionDAO versionDAO = new VersionDAO();
+                versionDAO.setSeasonVersion(SeasonId);
+                versionDAO.setUpdateVersion(updateId);
+                versionDAO.setTotalVersion(TotalId);
+                repository.save(versionDAO);
+            }
         }
 
     }
