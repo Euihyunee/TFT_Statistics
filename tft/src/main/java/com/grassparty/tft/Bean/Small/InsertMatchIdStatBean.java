@@ -2,7 +2,7 @@ package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Repository.RecordRepository;
-import com.grassparty.tft.Repository.JPA.FullRecordRepositoryJPA;
+import com.grassparty.tft.Repository.JPA.RecordRepositoryJPA;
 import com.grassparty.tft.Repository.JPA.StatVaildationRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class InsertMatchIdStatBean {
     @Autowired
-    FullRecordRepositoryJPA fullRecordRepositoryJPA;
+    RecordRepositoryJPA recordRepositoryJPA;
     @Autowired
     RecordRepository recordRepository;
     @Autowired
@@ -24,7 +24,7 @@ public class InsertMatchIdStatBean {
 
     public void exec(String matchId){
         // TODO matchid 에 대한 매치 정보가 DB에 이미 있나용?
-        boolean isMatchIdExist = fullRecordRepositoryJPA.existsById(matchId);
+        boolean isMatchIdExist = recordRepositoryJPA.existsById(matchId);
 
         // TODO 없음 -> 라이엇에 데이터 요청 -> 데이터 저장, 통계로직에 들어갈 정보 테이블에도 저장
         if(!isMatchIdExist){

@@ -41,7 +41,7 @@ public class GetMatchHistoryByNameBean {
             if (recordRepository.IsExistByMatchid(matchID.getMatchid()[i])){
 
                 // fullRecordDTO를 Matchid로 가져오기(단수)
-                RecordDTO recordDTO = recordRepository.GetFullRecordDTOFromRepository(matchID.getMatchid()[i]);
+                RecordDTO recordDTO = recordRepository.GetRecordDTOFromRepository(matchID.getMatchid()[i]);
 
                 metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(recordDTO, summonerDTO.getPuuid());
 
