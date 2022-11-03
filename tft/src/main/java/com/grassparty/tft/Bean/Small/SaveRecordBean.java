@@ -12,8 +12,12 @@ import org.springframework.stereotype.Component;
 public class SaveRecordBean {
     @Autowired
     RecordRepositoryJPA recordRepositoryJPA;
+    @Autowired
+    MappingChampionIndexBean mapping;
 
     public void exec(RecordDTO recordDTO){
+        mapping.exec(recordDTO);
+
         String matchid = recordDTO.getMatch_id();
 
         Gson gson = new Gson();

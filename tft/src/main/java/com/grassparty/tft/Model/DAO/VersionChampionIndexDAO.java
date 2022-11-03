@@ -11,7 +11,7 @@ public class VersionChampionIndexDAO {
 
     // 외래키
     @Column
-    private Long versionId;
+    private int seasonVersion;
 
     // 외래키
     @Column

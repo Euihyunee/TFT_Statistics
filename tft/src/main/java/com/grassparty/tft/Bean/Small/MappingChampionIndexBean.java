@@ -1,0 +1,25 @@
+package com.grassparty.tft.Bean.Small;
+
+import com.grassparty.tft.Model.DTO.RecordDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+public class MappingChampionIndexBean {
+    @Autowired
+    GetChampionIdListBean getChampionIdListBean;
+    public void exec(RecordDTO recordDTO){
+        // 12.20.448.8884
+        // 12 seasonVersion
+        String seasonVersion = recordDTO.getGame_version();
+
+        // 챔피언 이름 뽑기
+        List<String> chanpionIdList = getChampionIdListBean.exec(recordDTO);
+
+
+
+    }
+}
+
