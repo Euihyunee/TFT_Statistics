@@ -8,4 +8,7 @@ import java.util.Optional;
 
 public interface VersionChampionIndexRepositoryJPA extends JpaRepository<VersionChampionIndexDAO, String> {
     VersionChampionIndexDAO findBySeasonVersion(Long seasonVersion);
+    boolean existsByChampionIdAndSeasonVersion(String championId, int seasonVersion);
+    boolean existsBySeasonVersion(int seasonVersion);
+    VersionChampionIndexDAO findTopBySeasonVersionOrderByOrderIndexDesc(int seasonVersion);
 }
