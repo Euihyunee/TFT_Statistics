@@ -15,9 +15,10 @@ public class MappingChampionIndexBean {
         // 12 seasonVersion
         String seasonVersion = recordDTO.getGame_version();
 
+        System.out.println("레코드 : " + recordDTO);
         // 챔피언 이름 뽑기
         List<String> chanpionIdList = getChampionIdListBean.exec(recordDTO);
-
+        System.out.println("챔피언 id : " + chanpionIdList);
 
 
     }

@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface VersionChampionIndexRepositoryJPA extends JpaRepository<VersionChampionIndexDAO, String> {
-    VersionChampionIndexDAO findByVersionId(Long versionId);
+    VersionChampionIndexDAO findBySeasonVersion(Long seasonVersion);
 }

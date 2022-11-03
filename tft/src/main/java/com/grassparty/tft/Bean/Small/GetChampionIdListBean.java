@@ -14,7 +14,12 @@ public class GetChampionIdListBean {
         List<String> championIdList = new ArrayList<>();
         for(RecordParticipantDTO recordParticipantDTO :recordDTO.getParticipants()){
             for(RecordUnitDTO recordUnitDTO:recordParticipantDTO.getUnits()){
+                if(recordUnitDTO == null){
+                    break;
+                }
+                System.out.println("챔피언 아이디 : " + recordUnitDTO.getCharacter_id());
                 championIdList.add(recordUnitDTO.getCharacter_id());
+
             }
         }
 
