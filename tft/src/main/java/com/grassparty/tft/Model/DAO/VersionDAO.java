@@ -13,7 +13,7 @@ public class VersionDAO {
 
 
     @Id @GeneratedValue
-    private Long gameVersionId;
+    private Long versionId;
 
     @Column
     private int seasonVersion;
