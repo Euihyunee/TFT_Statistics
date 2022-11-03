@@ -34,11 +34,11 @@ public class StatController {
 
 
     // 통계 로직에 데이터 넣기
-    @GetMapping(path="/stat/put/{name}")
+    @GetMapping(path="/put/{name}")
     public void PutStatistic(@PathVariable String name){ statService.PutRecordForStatByName(name);}
 
     // 통계 로직 실행
-    @GetMapping(path="/stat/start")
+    @GetMapping(path="/start")
     public void StartStatistic(){ statService.StartStatistic(); }
 
 }
