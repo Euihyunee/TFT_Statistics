@@ -18,5 +18,5 @@ public class VersionChampionIndexDAO {
     private int championId;
 
     @Column
-    private int index;
+    private int orderIndex;
 }
