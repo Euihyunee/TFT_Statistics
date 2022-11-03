@@ -28,11 +28,11 @@ public class RecordRepository {
         Gson gson = new Gson();
         String jsonString = gson.toJson(recordDTO);
 
-        RecordDAO recordDB = RecordDAO.builder()
+        RecordDAO recordDAO = RecordDAO.builder()
                 .matchID(matchid)
                 .json(jsonString)
                 .build();
-        fullRecordRepositoryJPA.save(recordDB);
+        fullRecordRepositoryJPA.save(recordDAO);
     }
 
     public boolean IsExistByMatchid(String matchid){
