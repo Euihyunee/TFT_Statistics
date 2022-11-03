@@ -6,6 +6,7 @@ import com.grassparty.tft.Repository.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -17,7 +18,7 @@ public class GetRecordBean {
         return repository.GetRecordDTOFromRepository(matchID);
     }
     public List<RecordDTO> exec(MatchID matchID){
-        List<RecordDTO> records = null;
+        List<RecordDTO> records = new ArrayList<>();
 
         for (String matchId:matchID.getMatchid()) {
             records.add(exec(matchId));

@@ -17,7 +17,7 @@ public class StatValidationRepository {
     public MatchID GetMatchIdFromStatValidation(){
         try {
             List<StatValidRecordDAO> statValidRecordDAOS = statVaildationRepositoryJPA.findAllByValid(false); // 이거 위험해보임...
-            MatchID matchID = null;
+
             String[] buffer = new String[statValidRecordDAOS.size()];
             int count=0;
 
@@ -28,7 +28,7 @@ public class StatValidationRepository {
                 System.out.println("벨리데이션 테이블에서 가져온 데이터 True 변경 : " + dao.getMatchID()+ " : " + dao.getValid());
             }
 
-            matchID.setMatchid(buffer);
+            MatchID matchID = new MatchID(buffer);
 
             return matchID;
         }
