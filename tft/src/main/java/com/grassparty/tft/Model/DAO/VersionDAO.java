@@ -18,6 +18,6 @@ public class VersionDAO {
     @Column
     private int updateVersion;
     @Column
-    private float totalVersion;
+    private String totalVersion;
 
 }

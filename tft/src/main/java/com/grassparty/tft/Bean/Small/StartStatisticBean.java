@@ -57,7 +57,8 @@ public class StartStatisticBean {
 
         // 버전 챔피언 인덱스 존재 여부 확인
         for(String version: uniqueVersion) {
-            if(!repository.existsBySeasonVersion(version)){
+            int versionInt = Integer.parseInt( version);
+            if(!repository.existsBySeasonVersion(versionInt)){
                 makeVersionChampionIndexBean.exec(version);
             }
         }
@@ -70,11 +71,12 @@ public class StartStatisticBean {
 
         // 버전을 우선 조회하기
         for(String version: uniqueVersion){
+            int versionInt = Integer.parseInt( version);
             // 버전 아이디
-            Long versionId = repository.findIdBySeasonVersion(version);
+            Long versionId = repository.findIdBySeasonVersion(versionInt);
 
             // 조회된 버전 아이디로 지문 조회
-            versionMap.put(versionId, indexRepository.findByVersionId(versionId));
+            versionMap.put(versionId, indexRepository.findByGameVersionId(versionId));
 
         }
         System.out.println("버전맵핑 정보 : " + versionMap);
