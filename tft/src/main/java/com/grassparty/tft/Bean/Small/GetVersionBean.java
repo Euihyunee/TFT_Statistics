@@ -19,6 +19,8 @@ public class GetVersionBean {
     GetMatchIdFromStatValidBean getMatchIdFromStatValidBean;
     @Autowired
     VersionRepositoryJPA repository;
+    @Autowired
+    GetParserBean getParserBean;
 
     public void exec(){
         // DB record 테이블에서 json(RecordDTO) 가져오기
@@ -33,17 +35,16 @@ public class GetVersionBean {
             // parsing 부분 Bean으로 만들거
             // game_version parsing해서 12는 season_id, 20은 update_id로 나머지는 total_id로 분리
             String GameVersion = recordDTO.getGame_version();
-            String[] GameVersionSplit = GameVersion.split("\\.");
-            int SeasonId = Integer.parseInt(GameVersionSplit[0]);
-            int updateId = Integer.parseInt(GameVersionSplit[1]);
-            String TotalId = GameVersion;
+            int seasonId = getParserBean.exec(GameVersion, GetParserBean.EnumVersion.Season);
+            int updateId = getParserBean.exec(GameVersion, GetParserBean.EnumVersion.Update);
+            String totalId = GameVersion;
 
             // version_table에 조회해서 있으면 냅두고 없으면 추가하는 방식 만들기
-            if(!repository.existsByTotalVersion(TotalId)){
+            if(!repository.existsByTotalVersion(totalId)){
                 VersionDAO versionDAO = new VersionDAO();
-                versionDAO.setSeasonVersion(SeasonId);
+                versionDAO.setSeasonVersion(seasonId);
                 versionDAO.setUpdateVersion(updateId);
-                versionDAO.setTotalVersion(TotalId);
+                versionDAO.setTotalVersion(totalId);
                 repository.save(versionDAO);
             }
         }
