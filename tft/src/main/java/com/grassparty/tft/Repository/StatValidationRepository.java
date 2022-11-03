@@ -1,9 +1,12 @@
 package com.grassparty.tft.Repository;
 
 import com.grassparty.tft.Model.DAO.StatValidRecordDAO;
+import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Repository.JPA.StatVaildationRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class StatValidationRepository {
@@ -11,15 +14,23 @@ public class StatValidationRepository {
     StatVaildationRepositoryJPA statVaildationRepositoryJPA;
 
     // matchId를 DB Statvalidation 테이블에서 가져오기
-    public String GetMatchIdFromStatValidation(){
+    public MatchID GetMatchIdFromStatValidation(){
         try {
-            StatValidRecordDAO statValidRecordDAO = statVaildationRepositoryJPA.findAllByValid(false).get(0);
+            List<StatValidRecordDAO> statValidRecordDAOS = statVaildationRepositoryJPA.findAllByValid(false); // 이거 위험해보임...
+            MatchID matchID = null;
+            String[] buffer = new String[statValidRecordDAOS.size()];
+            int count=0;
 
             // 가져온 데이터는 True로 업데이트
-            statValidRecordDAO.setValid(true);
-            statVaildationRepositoryJPA.save(statValidRecordDAO);
+            for (StatValidRecordDAO dao: statValidRecordDAOS) {
+                dao.setValid(true);
+                buffer[count++] = dao.getMatchID();
+                System.out.println("벨리데이션 테이블에서 가져온 데이터 True 변경 : " + dao.getMatchID()+ " : " + dao.getValid());
+            }
 
-            return statValidRecordDAO.getMatchID();
+            matchID.setMatchid(buffer);
+
+            return matchID;
         }
         catch (IndexOutOfBoundsException e){
             return null;

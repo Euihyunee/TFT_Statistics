@@ -2,6 +2,7 @@ package com.grassparty.tft.Bean.Small;
 
 import com.google.gson.Gson;
 import com.grassparty.tft.Model.DAO.RecordDAO;
+import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Repository.RecordRepository;
 import com.grassparty.tft.Repository.StatValidationRepository;
 import com.grassparty.tft.Model.DTO.RecordDTO;
@@ -29,14 +30,14 @@ public class FirstScheduleBean {
 
     private boolean method(){
         // matchId를 DB Statvalidation 테이블에서 가져오기
-        String matchid = statValidationRepository.GetMatchIdFromStatValidation();
+        MatchID matchid = statValidationRepository.GetMatchIdFromStatValidation();
 
         // DB에서 FullRecordDB 가져오기
         if(matchid == null){
             System.out.println("매치아이디 널임");
             return false;
         }
-        RecordDAO recordDAO = recordRepository.GetFullRecordDBByMatchId(matchid);
+        RecordDAO recordDAO = recordRepository.GetFullRecordDBByMatchId(matchid.getMatchid()[0]);
 
 
         // FullRecordDB에서 FullRecordDTO를 분리
