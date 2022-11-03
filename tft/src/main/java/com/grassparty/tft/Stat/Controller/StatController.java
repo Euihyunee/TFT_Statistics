@@ -35,10 +35,10 @@ public class StatController {
 
     // 통계 로직에 데이터 넣기
     @GetMapping(path="/stat/put/{name}")
-    public void PutStatistic(@PathVariable String name){ statService.StatisticsByName(name);}
+    public void PutStatistic(@PathVariable String name){ statService.PutRecordForStatByName(name);}
 
     // 통계 로직 실행
     @GetMapping(path="/stat/start")
-    public void StartStatistic(){ }
+    public void StartStatistic(){ statService.StartStatistic(); }
 
 }

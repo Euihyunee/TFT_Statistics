@@ -1,16 +1,22 @@
 package com.grassparty.tft.Stat.Service;
 
 import com.grassparty.tft.Bean.Small.InsertStatVaildationBean;
+import com.grassparty.tft.Bean.Small.StartStatisticBean;
 import com.grassparty.tft.Bean.Small.StatisticsByMatchIdBean;
-import com.grassparty.tft.Bean.Small.StatisticsByNameBean;
+import com.grassparty.tft.Bean.Small.PutRecordForStatBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StatService {
-    public String StatisticsByName(String name){
-        StatisticsByNameBean statisticsByNameBean = new StatisticsByNameBean();
+    @Autowired
+    PutRecordForStatBean putRecordForStatBean;
 
-        return statisticsByNameBean.exec(name);
+    @Autowired
+    StartStatisticBean startStatisticBean;
+
+    public String PutRecordForStatByName(String name){
+        return putRecordForStatBean.exec(name);
     }
 
     public void StatisticsByMatchId(String matchId){
@@ -19,5 +25,9 @@ public class StatService {
 
         insertStatVaildationBean.exec(matchId);
         statisticsByMatchIdBean.exec(matchId);
+    }
+
+    public void StartStatistic() {
+        startStatisticBean.exec();
     }
 }
