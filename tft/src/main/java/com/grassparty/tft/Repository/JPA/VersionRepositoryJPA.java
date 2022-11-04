@@ -5,7 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface VersionRepositoryJPA extends JpaRepository<VersionDAO, String> {
     boolean existsByTotalVersion(String totalVersion);
+    VersionDAO findByTotalVersion(String totalVersion);
     VersionDAO findBySeasonVersion(int seasonVersion);
     VersionDAO findByTotalVersion(String totalVersion);
     boolean existsBySeasonVersion(int seasonVersion);
+    VersionDAO findBySeasonVersionAndAndUpdateVersion(int seasonVersion, int updateVersion);
 }

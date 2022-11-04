@@ -27,8 +27,6 @@ public class StatDeckGroupDAO {
 
     // 챔피언 칼럼 0~80
     @Column
-    private int champion0;
-    @Column
     private int champion1;
     @Column
     private int champion2;
