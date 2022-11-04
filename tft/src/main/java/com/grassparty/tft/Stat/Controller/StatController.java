@@ -29,6 +29,7 @@ public class StatController {
     @GetMapping("/champion")
     public VersionDAO GetVersion(){
         getStatChampionDeckCountBean.exec();
+
         return null;
     }
 

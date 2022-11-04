@@ -3,6 +3,7 @@ package com.grassparty.tft.Bean;
 import com.grassparty.tft.Bean.Small.GetMatchIdFromStatValidBean;
 import com.grassparty.tft.Bean.Small.GetRecordBean;
 import com.grassparty.tft.Model.DAO.StatChampionDeckCountDAO;
+import com.grassparty.tft.Model.DAO.VersionDAO;
 import com.grassparty.tft.Model.DTO.RecordDTO;
 import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Repository.JPA.StatChampionDeckCountRepositoryJPA;
@@ -35,7 +36,8 @@ public class GetStatChampionDeckCountBean {
 
         for(RecordDTO recordDTO : records){
             String TotalVersion = recordDTO.getGame_version();
-            Long versionId = versionRepository.findByTotalVersion(TotalVersion).getVersionId();
+            VersionDAO versionDAO = versionRepository.findByTotalVersion(TotalVersion);
+            Long versionId = versionDAO.getVersionId();
             Long totalDeckCount = 8L;
             StatChampionDeckCountDAO statChampionDeckCountDAO = new StatChampionDeckCountDAO();
             statChampionDeckCountDAO.setVersionId(versionId);

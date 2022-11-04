@@ -7,9 +7,6 @@ import javax.persistence.*;
 @Entity
 @Table(name="stat_champion_deck_count")
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class StatChampionDeckCountDAO {
 
     @Id @GeneratedValue
