@@ -1,7 +1,7 @@
 package com.grassparty.tft.Stat.Controller;
 
+import com.grassparty.tft.Bean.GetStatChampionDeckCountBean;
 import com.grassparty.tft.Bean.Small.GetVersionBean;
-import com.grassparty.tft.Model.DAO.RecordDAO;
 import com.grassparty.tft.Model.DAO.VersionDAO;
 import com.grassparty.tft.Model.DTO.StatDeckDTO;
 import com.grassparty.tft.Model.DTO.StatItemDTOs;
@@ -18,6 +18,8 @@ public class StatController {
     StatService statService;
     @Autowired
     GetVersionBean getVersionBean;
+    @Autowired
+    GetStatChampionDeckCountBean getStatChampionDeckCountBean;
 
     // TODO 덱 티어리스트 제공 (StatDeckDTO)
     @GetMapping("/champ")
@@ -26,7 +28,7 @@ public class StatController {
     }
     @GetMapping("/champion")
     public VersionDAO GetVersion(){
-        getVersionBean.exec();
+        getStatChampionDeckCountBean.exec();
         return null;
     }
 

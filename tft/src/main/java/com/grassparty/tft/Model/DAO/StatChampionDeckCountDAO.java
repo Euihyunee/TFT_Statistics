@@ -1,20 +1,23 @@
 package com.grassparty.tft.Model.DAO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="stat_champion_deck_count")
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class StatChampionDeckCountDAO {
 
-    @Id
+    @Id @GeneratedValue
     private Long id;
 
     // 외래키
     @Column
-    private int versionId;
+    private Long versionId;
 
     @Column
     private Long total_deck_count;

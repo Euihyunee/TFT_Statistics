@@ -1,6 +1,5 @@
 package com.grassparty.tft.Bean.Small;
 
-import com.grassparty.tft.Model.DAO.RecordDAO;
 import com.grassparty.tft.Model.DAO.VersionDAO;
 import com.grassparty.tft.Model.DTO.RecordDTO;
 import com.grassparty.tft.Model.Riot.MatchID;
