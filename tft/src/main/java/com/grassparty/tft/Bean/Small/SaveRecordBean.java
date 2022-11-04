@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.grassparty.tft.Model.DAO.RecordDAO;
 import com.grassparty.tft.Model.DTO.RecordDTO;
 import com.grassparty.tft.Repository.JPA.RecordRepositoryJPA;
+import org.modelmapper.spi.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,9 +15,12 @@ public class SaveRecordBean {
     RecordRepositoryJPA recordRepositoryJPA;
     @Autowired
     MappingChampionIndexBean mapping;
+    @Autowired
+    MappingVersionBean mappingVersionBean;
 
     public void exec(RecordDTO recordDTO){
         mapping.exec(recordDTO);
+        mappingVersionBean.exec(recordDTO);
 
         String matchid = recordDTO.getMatch_id();
 
