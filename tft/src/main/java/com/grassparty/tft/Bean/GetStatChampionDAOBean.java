@@ -1,9 +1,37 @@
 package com.grassparty.tft.Bean;
 
+import com.grassparty.tft.Bean.Small.GetChampionIdListBean;
+import com.grassparty.tft.Bean.Small.GetMatchIdFromStatValidBean;
+import com.grassparty.tft.Bean.Small.GetRecordBean;
+import com.grassparty.tft.Model.DTO.RecordDTO;
+import com.grassparty.tft.Model.Riot.MatchID;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class GetStatChampionDAOBean {
+
+    @Autowired
+    GetMatchIdFromStatValidBean getMatchIdFromStatValidBean;
+    @Autowired
+    GetRecordBean getRecordBean;
+    @Autowired
+    GetChampionIdListBean getChampionIdListBean;
+
+
+    public void exec(){
+        // DB Record 테이블 json 가져오면
+        MatchID matchID = getMatchIdFromStatValidBean.exec();
+        List<RecordDTO> records = getRecordBean.exec(matchID);
+
+        for(RecordDTO recordDTO : records){
+            List<String> ChampionList = getChampionIdListBean.exec(recordDTO);
+
+        }
+    }
     // statChampion에 데이터 넣는 최종 Bean
 
     // champion_list 뽑아내는 Bean
