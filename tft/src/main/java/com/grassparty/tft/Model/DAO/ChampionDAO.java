@@ -1,6 +1,8 @@
 package com.grassparty.tft.Model.DAO;
 
 
+import lombok.Getter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,11 +10,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name ="champion")
+@Getter
 public class ChampionDAO {
 
     @Id
-    private String champion_id;
+    private String ChampionId;
 
     @Column
-    private String champion_name;
+    private String ChampionName;
 }
