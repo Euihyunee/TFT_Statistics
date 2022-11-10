@@ -34,7 +34,7 @@ public class StatController {
     }
     @GetMapping("/champion")
     public VersionDAO GetVersion(){
-        getVersionBean.exec();
+//        getVersionBean.exec(RecordDTO recordDTO);
 
         return null;
     }
@@ -52,7 +52,7 @@ public class StatController {
         getVersionBean.exec();
     }
 
-    // 여기에 RecordDTO 낱개 넣으면 됨 
+    // 여기에 RecordDTO 낱개 넣으면 됨
     @GetMapping("/statchampion")
     public void GetStatChampion(){
 //        getStatChampionDAOBean.exec(RecordDTO recordDTO);
