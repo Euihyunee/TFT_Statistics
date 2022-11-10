@@ -1,6 +1,8 @@
 package com.grassparty.tft.Stat.Controller;
 
+import com.grassparty.tft.Bean.GetStatChampionDAOBean;
 import com.grassparty.tft.Bean.GetStatChampionDeckCountBean;
+import com.grassparty.tft.Bean.GetStatChampionResultDAOBean;
 import com.grassparty.tft.Bean.Small.GetVersionBean;
 import com.grassparty.tft.Model.DAO.VersionDAO;
 import com.grassparty.tft.Model.DTO.StatDeckDTO;
@@ -20,6 +22,10 @@ public class StatController {
     GetVersionBean getVersionBean;
     @Autowired
     GetStatChampionDeckCountBean getStatChampionDeckCountBean;
+    @Autowired
+    GetStatChampionDAOBean getStatChampionDAOBean;
+    @Autowired
+    GetStatChampionResultDAOBean getStatChampionResultDAOBean;
 
     // TODO 덱 티어리스트 제공 (StatDeckDTO)
     @GetMapping("/champ")
@@ -28,10 +34,11 @@ public class StatController {
     }
     @GetMapping("/champion")
     public VersionDAO GetVersion(){
-        getStatChampionDeckCountBean.exec();
+        getVersionBean.exec();
 
         return null;
     }
+
 
 
 
@@ -40,6 +47,23 @@ public class StatController {
     public StatUnitDTOs GetUnit(){
         return null;
     }
+    @GetMapping("/version")
+    public void GetVersionid(){
+        getVersionBean.exec();
+    }
+    @GetMapping("/statchampion")
+    public void GetStatChampion(){
+        getStatChampionDAOBean.exec();
+    }
+    @GetMapping("/statdeckcount")
+    public void GetStatDeckCount(){
+        getStatChampionDeckCountBean.exec();
+    }
+    @GetMapping("/statresult")
+    public void GetStatResult(){
+        getStatChampionResultDAOBean.exec();
+    }
+
 
     // TODO 아이템 티어리스트 제공 (StatItemDTOs)
     @GetMapping("/item")

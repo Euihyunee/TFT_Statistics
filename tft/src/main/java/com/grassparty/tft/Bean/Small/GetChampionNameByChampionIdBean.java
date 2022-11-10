@@ -15,5 +15,5 @@ public class GetChampionNameByChampionIdBean {
     public String exec(String championId) {
         ChampionDAO championDAO = championRepository.findByChampionId(championId);
         return championDAO.getChampionId();
-    }
+}
 }

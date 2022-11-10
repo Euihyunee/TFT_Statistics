@@ -41,11 +41,11 @@ public class GetStatChampionDeckCountBean {
             Long totalDeckCount = 8L;
             StatChampionDeckCountDAO statChampionDeckCountDAO = new StatChampionDeckCountDAO();
             statChampionDeckCountDAO.setVersionId(versionId);
-            statChampionDeckCountDAO.setTotal_deck_count(totalDeckCount);
+            statChampionDeckCountDAO.setTotalDeckCount(totalDeckCount);
             if(statChampionDeckCountRepository.existsByVersionId(versionId)){
                 statChampionDeckCountDAO = statChampionDeckCountRepository.findByVersionId(versionId);
-                totalDeckCount += statChampionDeckCountDAO.getTotal_deck_count();
-                statChampionDeckCountDAO.setTotal_deck_count(totalDeckCount);
+                totalDeckCount += statChampionDeckCountDAO.getTotalDeckCount();
+                statChampionDeckCountDAO.setTotalDeckCount(totalDeckCount);
             }
             statChampionDeckCountRepository.save(statChampionDeckCountDAO);
         }

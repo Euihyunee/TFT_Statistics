@@ -17,5 +17,5 @@ public class StatChampionDeckCountDAO {
     private Long versionId;
 
     @Column
-    private Long total_deck_count;
+    private Long totalDeckCount;
 }
