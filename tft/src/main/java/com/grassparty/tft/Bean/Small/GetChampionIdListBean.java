@@ -25,4 +25,20 @@ public class GetChampionIdListBean {
 
         return championIdList;
     }
+
+    public List<String> exec(RecordDTO record, int i) {
+        List<String> championIdList = new ArrayList<>();
+
+        RecordParticipantDTO recordParticipantDTO = record.getParticipants()[i];
+        for(RecordUnitDTO recordUnitDTO:recordParticipantDTO.getUnits()){
+            if(recordUnitDTO == null){
+                break;
+            }
+            System.out.println("챔피언 아이디 : " + recordUnitDTO.getCharacter_id());
+            championIdList.add(recordUnitDTO.getCharacter_id());
+
+        }
+
+        return championIdList;
+    }
 }

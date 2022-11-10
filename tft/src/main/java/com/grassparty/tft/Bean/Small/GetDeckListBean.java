@@ -25,6 +25,8 @@ public class GetDeckListBean {
     GetChampionIdMapBean getChampionIdMapBean;
     @Autowired
     MapIndexToStatDeckBean mapIndexToStatDeckBean;
+    @Autowired
+    GetVersionIdBean getVersionIdBean;
 
     // 덱이 여러개 들어올때
     public List<StatDeckDAO> exec(List<RecordDTO> records){
@@ -41,7 +43,7 @@ public class GetDeckListBean {
         List<StatDeckDAO> decklist = new ArrayList<>();
 
         int seasonVersion = getSeasonVersionBean.exec(record);
-        long versionId = getParserBean.exec(record.getGame_version(), GetParserBean.EnumVersion.Season);
+        long versionId = getVersionIdBean.exec(record.getGame_version());
         List<VersionChampionIndexDAO> championIndex = indexRepository.findAllBySeasonVersion(seasonVersion);
 
 
@@ -49,7 +51,7 @@ public class GetDeckListBean {
             StatDeckDAO deck = new StatDeckDAO();
             deck.setVersionId(versionId);
 
-            List<String> championIdList = getChampionIdListBean.exec(record);
+            List<String> championIdList = getChampionIdListBean.exec(record, i);
 
             for(String championId : championIdList){
                 int index = 0;
@@ -61,6 +63,7 @@ public class GetDeckListBean {
                 }
                 deck = mapIndexToStatDeckBean.exec(deck, index);
             }
+            System.out.println("덱 보기? : " + deck);
             decklist.add(deck);
         }
 
