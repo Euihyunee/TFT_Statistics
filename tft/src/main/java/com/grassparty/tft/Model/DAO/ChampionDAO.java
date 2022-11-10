@@ -14,8 +14,8 @@ import javax.persistence.Table;
 public class ChampionDAO {
 
     @Id
-    private String ChampionId;
+    private String championId;
 
     @Column
-    private String ChampionName;
+    private String championName;
 }

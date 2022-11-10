@@ -5,14 +5,13 @@ import com.grassparty.tft.Repository.JPA.StatRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
-public class SaveStatDeckBean {
+public class SaveAllStatDeckBean {
     @Autowired
     StatRepositoryJPA repository;
-    @Autowired
-    MapIndexToStatDeckBean mapIndexToStatDeckBean;
-    public void exec(StatDeckDAO dao){
-        repository.save(dao);
+    public void exec(List<StatDeckDAO> daoList){
+        repository.saveAll(daoList);
     }
-
 }
