@@ -21,32 +21,33 @@ public class GetVersionBean {
     @Autowired
     GetParserBean getParserBean;
 
-    public void exec(){
-        // DB record 테이블에서 json(RecordDTO) 가져오기
-        MatchID matchID = getMatchIdFromStatValidBean.exec();
+    public void exec(RecordDTO recordDTO){
 
-        List<RecordDTO> records = getRecordBean.exec(matchID);
+        //test용
+//        // DB record 테이블에서 json(RecordDTO) 가져오기
+//        MatchID matchID = getMatchIdFromStatValidBean.exec();
+//
+//        List<RecordDTO> records = getRecordBean.exec(matchID);
+//
+//        // json데이터에서 game_version 가져오기
+//        // ex) 12.20.474.8882
+//        for (RecordDTO recordDTO : records){
 
-        // json데이터에서 game_version 가져오기
-        // ex) 12.20.474.8882
-        for (RecordDTO recordDTO : records){
+        // parsing 부분 Bean으로 만들거
+        // game_version parsing해서 12는 season_id, 20은 update_id로 나머지는 total_id로 분리
+        String GameVersion = recordDTO.getGame_version();
+        int seasonId = getParserBean.exec(GameVersion, GetParserBean.EnumVersion.Season);
+        int updateId = getParserBean.exec(GameVersion, GetParserBean.EnumVersion.Update);
+        String totalId = GameVersion;
 
-            // parsing 부분 Bean으로 만들거
-            // game_version parsing해서 12는 season_id, 20은 update_id로 나머지는 total_id로 분리
-            String GameVersion = recordDTO.getGame_version();
-            int seasonId = getParserBean.exec(GameVersion, GetParserBean.EnumVersion.Season);
-            int updateId = getParserBean.exec(GameVersion, GetParserBean.EnumVersion.Update);
-            String totalId = GameVersion;
-
-            // version_table에 조회해서 있으면 냅두고 없으면 추가하는 방식 만들기
-            if(!repository.existsByTotalVersion(totalId)){
-                VersionDAO versionDAO = new VersionDAO();
-                versionDAO.setSeasonVersion(seasonId);
-                versionDAO.setUpdateVersion(updateId);
-                versionDAO.setTotalVersion(totalId);
-                repository.save(versionDAO);
-            }
+        // version_table에 조회해서 있으면 냅두고 없으면 추가하는 방식 만들기
+        if(!repository.existsByTotalVersion(totalId)){
+            VersionDAO versionDAO = new VersionDAO();
+            versionDAO.setSeasonVersion(seasonId);
+            versionDAO.setUpdateVersion(updateId);
+            versionDAO.setTotalVersion(totalId);
+            repository.save(versionDAO);
         }
-
     }
+
 }

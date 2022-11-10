@@ -51,13 +51,12 @@ public class StatController {
     public void GetVersionid(){
         getVersionBean.exec();
     }
+
+    // 여기에 RecordDTO 낱개 넣으면 됨 
     @GetMapping("/statchampion")
     public void GetStatChampion(){
-        getStatChampionDAOBean.exec();
-    }
-    @GetMapping("/statdeckcount")
-    public void GetStatDeckCount(){
-        getStatChampionDeckCountBean.exec();
+//        getStatChampionDAOBean.exec(RecordDTO recordDTO);
+//        getStatChampionDeckCountBean.exec(RecordDTO recordDTO);
     }
     @GetMapping("/statresult")
     public void GetStatResult(){
