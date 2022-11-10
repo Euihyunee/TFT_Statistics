@@ -2,6 +2,7 @@ package com.grassparty.tft.Stat.Service;
 
 import com.grassparty.tft.Bean.Small.ClassifyDeckBean;
 import com.grassparty.tft.Bean.Small.FirstScheduleBean;
+import com.grassparty.tft.Bean.Small.StatChampionResultScheduleBean;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -11,7 +12,13 @@ import java.text.SimpleDateFormat;
 public class ScheduleService {
     FirstScheduleBean FirstScheduleBean = new FirstScheduleBean();
     ClassifyDeckBean ClassifyDeckBean = new ClassifyDeckBean();
+    StatChampionResultScheduleBean statChampionResultScheduleBean = new StatChampionResultScheduleBean();
 
+
+    public void statisticChampionResult(){
+        System.out.println("StatChampionResult 값 최신화----------------------------------");
+        statChampionResultScheduleBean.exec();
+    }
 
     // @Scheduled(fixedDelay = 3000000)
     public void statisticRecordToDeck(){
