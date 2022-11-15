@@ -1,5 +1,6 @@
 package com.grassparty.tft.Bean.Small;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grassparty.tft.Model.Riot.LeagueEntryDTO;
 import com.grassparty.tft.Model.Riot.SummonerDTO;
@@ -13,6 +14,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 @Component
 public class GetLeagueEntryBean {
@@ -36,7 +40,10 @@ public class GetLeagueEntryBean {
 
             // Manually converting the response body InputStream to summonerDTO using Jackson
             ObjectMapper mapper = new ObjectMapper();
-            leagueEntryDTO = mapper.readValue(responseStream, LeagueEntryDTO.class);
+            Set<LeagueEntryDTO> leagueEntryDTOSet = mapper.readValue(responseStream, new TypeReference<>() { });
+            Iterator iter = leagueEntryDTOSet.iterator();
+            leagueEntryDTO = (LeagueEntryDTO) iter.next();
+
         } catch (MalformedURLException | ProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {

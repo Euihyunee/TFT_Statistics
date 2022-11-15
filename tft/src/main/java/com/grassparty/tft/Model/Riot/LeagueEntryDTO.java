@@ -5,17 +5,16 @@ import lombok.Data;
 @Data
 public class LeagueEntryDTO {
     String leagueId;
-    String summonerId;
     String queueType;
-    String ratedTier;
-    int ratedRating;
     String tier;
     String rank;
+    String summonerId;
+    String summonerName;
     int leaguePoints;
     int wins;
     int losses;
-    boolean hotStreak;
     boolean veteran;
-    boolean freshBlood;
     boolean inactive;
+    boolean freshBlood;
+    boolean hotStreak;
 }
