@@ -27,29 +27,31 @@ public class StatController {
     @Autowired
     GetStatChampionResultDAOBean getStatChampionResultDAOBean;
 
+
     // TODO 덱 티어리스트 제공 (StatDeckDTO)
-    @GetMapping("/champ")
+    @GetMapping("/deck")
     public StatDeckDTO GetChamp(){
         return null;
     }
-    @GetMapping("/champion")
-    public VersionDAO GetVersion(){
-//        getVersionBean.exec(RecordDTO recordDTO);
-
-        return null;
-    }
-
-
-
 
     // TODO 챔피언 티어리스트 제공 (StatUnitDTOs)
     @GetMapping("/unit")
     public StatUnitDTOs GetUnit(){
         return null;
     }
-    @GetMapping("/version")
-    public void GetVersionid(){
-        getVersionBean.exec();
+
+    // TODO 아이템 티어리스트 제공 (StatItemDTOs)
+    @GetMapping("/item")
+    public StatItemDTOs GetItem(){
+        return null;
+    }
+
+
+    @GetMapping("/champion")
+    public VersionDAO GetVersion(){
+//        getVersionBean.exec(RecordDTO recordDTO);
+
+        return null;
     }
 
     // 여기에 RecordDTO 낱개 넣으면 됨
@@ -62,14 +64,6 @@ public class StatController {
     public void GetStatResult(){
         getStatChampionResultDAOBean.exec();
     }
-
-
-    // TODO 아이템 티어리스트 제공 (StatItemDTOs)
-    @GetMapping("/item")
-    public StatItemDTOs GetItem(){
-        return null;
-    }
-
 
     // 통계 로직에 데이터 넣기
     @GetMapping(path="/put/{name}")
