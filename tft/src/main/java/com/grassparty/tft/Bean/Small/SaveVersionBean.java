@@ -2,7 +2,6 @@ package com.grassparty.tft.Bean.Small;
 
 import com.grassparty.tft.Model.DAO.VersionDAO;
 import com.grassparty.tft.Model.DTO.RecordDTO;
-import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Repository.JPA.VersionRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class GetVersionBean {
+public class SaveVersionBean {
 
     @Autowired
     GetRecordBean getRecordBean;
@@ -47,6 +46,12 @@ public class GetVersionBean {
             versionDAO.setUpdateVersion(updateId);
             versionDAO.setTotalVersion(totalId);
             repository.save(versionDAO);
+        }
+    }
+
+    public void exec(List<RecordDTO> records) {
+        for (RecordDTO recordDTO : records) {
+            exec(recordDTO);
         }
     }
 

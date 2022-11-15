@@ -1,12 +1,10 @@
 package com.grassparty.tft.Bean;
 
 import com.grassparty.tft.Bean.Small.*;
-import com.grassparty.tft.Model.DAO.ChampionDAO;
 import com.grassparty.tft.Model.DAO.StatChampionDAO;
 import com.grassparty.tft.Model.DTO.FullDTO.RecordParticipantDTO;
 import com.grassparty.tft.Model.DTO.FullDTO.RecordUnitDTO;
 import com.grassparty.tft.Model.DTO.RecordDTO;
-import com.grassparty.tft.Model.Riot.MatchID;
 import com.grassparty.tft.Repository.JPA.ChampionRepositoryJPA;
 import com.grassparty.tft.Repository.JPA.StatChampionRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class GetStatChampionDAOBean {
+public class SaveStatChampionDAOBean {
 
     @Autowired
     ChampionRepositoryJPA championRepository;
@@ -43,29 +41,17 @@ public class GetStatChampionDAOBean {
     @Autowired
     SaveChampionBean saveChampionBean;
     @Autowired
-    UpdateChampionCountBean updateChampionCountBean;
+    GetChampionCountBean getChampionCountBean;
     @Autowired
-    UpdateChampionPlacementBean updateChampionPlacementBean;
+    GetChampionPlacementBean getChampionPlacementBean;
     @Autowired
-    UpdateChampionThreeStarCountBean updateChampionThreeStarCountBean;
+    GetChampionThreeStarCountBean getChampionThreeStarCountBean;
     @Autowired
-    UpdateChampionThreeStarPlacementBean updateChampionThreeStarPlacementBean;
+    GetChampionThreeStarPlacementBean getChampionThreeStarPlacementBean;
 
 
 
     public void exec(RecordDTO recordDTO) {
-
-        // test용이였음
-//        // DB Record 테이블 json 가져오면
-//        MatchID matchID = getMatchIdFromStatValidBean.exec();
-//        List<RecordDTO> records = getRecordBean.exec(matchID);
-//
-//        for (RecordDTO recordDTO : records) {
-
-
-        /* GetVersionIdFromVersionTableBean
-         record에서 version보낸 상태에서 version_id 가져오기
-        */
         Long VersionId = getVersionIdBean.exec(recordDTO.getGame_version());
 
          /* GetCurrentDateFromRecordBean
@@ -108,11 +94,11 @@ public class GetStatChampionDAOBean {
                 /* count
                     1 더하기
                  */
-                Long sumCount = updateChampionCountBean.exec(statChampionDAO);
+                Long sumCount = getChampionCountBean.exec(statChampionDAO);
                 /* placement
                    기존 placement += record placement
                  */
-                Long sumPlacement = updateChampionPlacementBean.exec(statChampionDAO, placement);
+                Long sumPlacement = getChampionPlacementBean.exec(statChampionDAO, placement);
 
                 statChampionDAO.setCount(sumCount);
                 statChampionDAO.setPlacement(sumPlacement);
@@ -123,14 +109,20 @@ public class GetStatChampionDAOBean {
                     three_star_placement += record placement
                  */
                 if (recordUnitDTO.getRarity() == 2) {
-                    Long sumThreeStarCount = updateChampionThreeStarCountBean.exec(statChampionDAO);
-                    Long sumThreeStarPlacement = updateChampionThreeStarPlacementBean.exec(statChampionDAO, placement);
+                    Long sumThreeStarCount = getChampionThreeStarCountBean.exec(statChampionDAO);
+                    Long sumThreeStarPlacement = getChampionThreeStarPlacementBean.exec(statChampionDAO, placement);
                     statChampionDAO.setThreeStarCount(sumThreeStarCount);
                     statChampionDAO.setThreeStarPlacement(sumThreeStarPlacement);
                 }
 
                 statChampionRepositoryJPA.save(statChampionDAO);
             }
+        }
+    }
+
+    public void exec(List<RecordDTO> records) {
+        for (RecordDTO recordDTO : records) {
+            exec(recordDTO);
         }
     }
 }

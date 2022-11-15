@@ -10,9 +10,11 @@ import com.grassparty.tft.Repository.JPA.VersionRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 
 @Component
-public class GetStatChampionDeckCountBean {
+public class SaveStatChampionDeckCountBean {
     @Autowired
     GetRecordBean getRecordBean;
     @Autowired
@@ -48,6 +50,11 @@ public class GetStatChampionDeckCountBean {
             statChampionDeckCountDAO.setTotalDeckCount(totalDeckCount);
         }
         statChampionDeckCountRepository.save(statChampionDeckCountDAO);
+    }
+    public void exec(List<RecordDTO> records) {
+        for (RecordDTO recordDTO : records) {
+            exec(recordDTO);
+        }
     }
 }
 

@@ -1,9 +1,11 @@
 package com.grassparty.tft.Stat.Controller;
 
-import com.grassparty.tft.Bean.GetStatChampionDAOBean;
-import com.grassparty.tft.Bean.GetStatChampionDeckCountBean;
-import com.grassparty.tft.Bean.GetStatChampionResultDAOBean;
-import com.grassparty.tft.Bean.Small.GetVersionBean;
+import com.grassparty.tft.Bean.SaveStatChampionDAOBean;
+import com.grassparty.tft.Bean.SaveStatChampionDeckCountBean;
+import com.grassparty.tft.Bean.Small.GetStatChampionResultBean;
+import com.grassparty.tft.Bean.UpdateStatChampionResultDAOBean;
+import com.grassparty.tft.Bean.Small.SaveVersionBean;
+import com.grassparty.tft.Model.DAO.StatChampionResultDAO;
 import com.grassparty.tft.Model.DAO.VersionDAO;
 import com.grassparty.tft.Model.DTO.StatDeckDTO;
 import com.grassparty.tft.Model.DTO.StatItemDTOs;
@@ -12,6 +14,8 @@ import com.grassparty.tft.Stat.Service.StatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/stat")
 @CrossOrigin("*")
@@ -19,13 +23,15 @@ public class StatController {
     @Autowired
     StatService statService;
     @Autowired
-    GetVersionBean getVersionBean;
+    SaveVersionBean saveVersionBean;
     @Autowired
-    GetStatChampionDeckCountBean getStatChampionDeckCountBean;
+    SaveStatChampionDeckCountBean saveStatChampionDeckCountBean;
     @Autowired
-    GetStatChampionDAOBean getStatChampionDAOBean;
+    SaveStatChampionDAOBean saveStatChampionDAOBean;
     @Autowired
-    GetStatChampionResultDAOBean getStatChampionResultDAOBean;
+    UpdateStatChampionResultDAOBean updateStatChampionResultDAOBean;
+    @Autowired
+    GetStatChampionResultBean getStatChampionResultBean;
 
 
     // TODO 덱 티어리스트 제공 (StatDeckDTO)
@@ -48,10 +54,8 @@ public class StatController {
 
 
     @GetMapping("/champion")
-    public VersionDAO GetVersion(){
-//        getVersionBean.exec(RecordDTO recordDTO);
-
-        return null;
+    public List<StatChampionResultDAO> GetStatChampionResult(){
+        return getStatChampionResultBean.exec();
     }
 
     // 여기에 RecordDTO 낱개 넣으면 됨
@@ -62,7 +66,7 @@ public class StatController {
     }
     @GetMapping("/statresult")
     public void GetStatResult(){
-        getStatChampionResultDAOBean.exec();
+        updateStatChampionResultDAOBean.exec();
     }
 
     // 통계 로직에 데이터 넣기
