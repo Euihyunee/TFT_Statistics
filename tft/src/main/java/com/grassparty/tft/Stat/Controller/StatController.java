@@ -23,16 +23,6 @@ import java.util.List;
 public class StatController {
     @Autowired
     StatService statService;
-    @Autowired
-    SaveVersionBean saveVersionBean;
-    @Autowired
-    SaveStatChampionDeckCountBean saveStatChampionDeckCountBean;
-    @Autowired
-    SaveStatChampionDAOBean saveStatChampionDAOBean;
-    @Autowired
-    UpdateStatChampionResultDAOBean updateStatChampionResultDAOBean;
-    @Autowired
-    GetStatChampionResultBean getStatChampionResultBean;
 
     @Autowired
     Mocker mocker;
@@ -46,31 +36,13 @@ public class StatController {
 
     // TODO 챔피언 티어리스트 제공 (StatUnitDTOs)
     @GetMapping("/unit")
-    public StatUnitDTOs GetUnit(){
-        return null;
+    public List<StatChampionResultDAO> GetStatChampionResult(){
+        return statService.GetStatChampionResult();
     }
-
     // TODO 아이템 티어리스트 제공 (StatItemDTOs)
     @GetMapping("/item")
     public StatItemDTOs GetItem(){
         return mocker.GetMockItem();
-    }
-
-
-    @GetMapping("/champion")
-    public List<StatChampionResultDAO> GetStatChampionResult(){
-        return getStatChampionResultBean.exec();
-    }
-
-    // 여기에 RecordDTO 낱개 넣으면 됨
-    @GetMapping("/statchampion")
-    public void GetStatChampion(){
-//        getStatChampionDAOBean.exec(RecordDTO recordDTO);
-//        getStatChampionDeckCountBean.exec(RecordDTO recordDTO);
-    }
-    @GetMapping("/statresult")
-    public void GetStatResult(){
-        updateStatChampionResultDAOBean.exec();
     }
 
     // 통계 로직에 데이터 넣기

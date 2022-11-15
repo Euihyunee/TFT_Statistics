@@ -41,20 +41,25 @@ public class UpdateStatChampionResultDAOBean {
             statChampionResultDAO.setVersionId(statChampionDAO.getVersionId());
 
             double frequency =  (double)statChampionDAO.getCount() / totalDeckCount;
-            double averagePlacement =  (double)statChampionDAO.getPlacement() / totalDeckCount;
+            double averagePlacement =  (double)statChampionDAO.getPlacement() / statChampionDAO.getCount();
             if (statChampionDAO.getThreeStarCount() == null) {
                 statChampionDAO.setThreeStarCount(0L);
                 statChampionDAO.setThreeStarPlacement(0L);
-                statChampionResultDAO.setThreeStarFrequency(0);
-                statChampionResultDAO.setThreeStarAveragePlacement(0);
+                statChampionResultDAO.setThreeStarFrequency(0L);
+                statChampionResultDAO.setThreeStarAveragePlacement(0L);
             }
             double threeStarFrequency =  (double)statChampionDAO.getThreeStarCount() / totalDeckCount;
-            double threeStarAveragePlacement =  (double)statChampionDAO.getThreeStarPlacement() / totalDeckCount;
+            double threeStarAveragePlacement = 0;
+            if(statChampionDAO.getThreeStarCount() != 0) {
+                threeStarAveragePlacement = (double) statChampionDAO.getThreeStarPlacement() / statChampionDAO.getThreeStarCount();
+            }
 
-            statChampionResultDAO.setFrequency(frequency);
-            statChampionResultDAO.setAveragePlacement(averagePlacement);
-            statChampionResultDAO.setThreeStarFrequency(threeStarFrequency);
-            statChampionResultDAO.setThreeStarAveragePlacement(threeStarAveragePlacement);
+
+            // Math.round(num * 100) / 100.0;
+            statChampionResultDAO.setFrequency(Math.round(frequency*1000) / 1000.0);
+            statChampionResultDAO.setAveragePlacement(Math.round(averagePlacement*1000) / 1000.0);
+            statChampionResultDAO.setThreeStarFrequency(Math.round(threeStarFrequency*1000) / 1000.0);
+            statChampionResultDAO.setThreeStarAveragePlacement(Math.round(threeStarAveragePlacement*1000) / 1000.0);
 
             statChampionResultRepositoryJPA.save(statChampionResultDAO);
 

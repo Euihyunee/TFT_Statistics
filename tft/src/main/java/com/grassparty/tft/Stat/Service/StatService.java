@@ -1,11 +1,15 @@
 package com.grassparty.tft.Stat.Service;
 
+import com.grassparty.tft.Bean.Small.GetStatChampionResultBean;
 import com.grassparty.tft.Bean.Small.InsertStatVaildRecordBean;
 import com.grassparty.tft.Bean.StartStatisticBean;
 import com.grassparty.tft.Bean.Small.InsertMatchIdStatBean;
 import com.grassparty.tft.Bean.PutRecordForStatBean;
+import com.grassparty.tft.Model.DAO.StatChampionResultDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class StatService {
@@ -14,6 +18,9 @@ public class StatService {
 
     @Autowired
     StartStatisticBean startStatisticBean;
+
+    @Autowired
+    GetStatChampionResultBean getStatChampionResultBean;
 
     public String PutRecordForStatByName(String name){
         return putRecordForStatBean.exec(name);
@@ -30,4 +37,6 @@ public class StatService {
     public void StartStatistic() {
         startStatisticBean.exec();
     }
+
+    public List<StatChampionResultDAO> GetStatChampionResult(){return getStatChampionResultBean.exec();}
 }
