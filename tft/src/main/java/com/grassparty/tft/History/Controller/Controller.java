@@ -15,9 +15,9 @@ public class Controller {
     public String helloDTO(){ return "hello";}
 
     // TODO 유저 정보 제공 (UserInfoDTO)
-    @GetMapping("/user")
-    public UserInfoDTO GetUserInfo(){
-        return historyService.GetUserInfo();
+    @GetMapping("/user/{userName}")
+    public UserInfoDTO GetUserInfo(@PathVariable String userName){
+        return historyService.GetUserInfo(userName);
     }
 
 
