@@ -37,9 +37,7 @@ public class UpdateStatChampionResultDAOBean {
             Long totalDeckCount = statChampionDeckCountDAO.getTotalDeckCount();
 
             StatChampionResultDAO statChampionResultDAO = new StatChampionResultDAO();
-            if (!statChampionResultRepositoryJPA.existsByChampionIdAndAndChampionId(statChampionDAO.getVersionId(),statChampionDAO.getChampionName())) {
-                statChampionResultDAO = statChampionResultRepositoryJPA.findByVersionIdAndChampionId(statChampionDAO.getVersionId(), statChampionDAO.getChampionName());
-            }
+
             statChampionResultDAO.setChampionId(statChampionDAO.getChampionName());
             statChampionResultDAO.setVersionId(statChampionDAO.getVersionId());
 
