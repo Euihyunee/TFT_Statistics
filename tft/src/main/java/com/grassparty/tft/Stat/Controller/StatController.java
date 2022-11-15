@@ -4,6 +4,7 @@ import com.grassparty.tft.Bean.GetStatChampionDAOBean;
 import com.grassparty.tft.Bean.GetStatChampionDeckCountBean;
 import com.grassparty.tft.Bean.GetStatChampionResultDAOBean;
 import com.grassparty.tft.Bean.Small.GetVersionBean;
+import com.grassparty.tft.Mock.Mocker;
 import com.grassparty.tft.Model.DAO.VersionDAO;
 import com.grassparty.tft.Model.DTO.StatDeckDTO;
 import com.grassparty.tft.Model.DTO.StatItemDTOs;
@@ -11,6 +12,8 @@ import com.grassparty.tft.Model.DTO.StatUnitDTOs;
 import com.grassparty.tft.Stat.Service.StatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/stat")
@@ -26,12 +29,14 @@ public class StatController {
     GetStatChampionDAOBean getStatChampionDAOBean;
     @Autowired
     GetStatChampionResultDAOBean getStatChampionResultDAOBean;
+    @Autowired
+    Mocker mocker;
 
 
     // TODO 덱 티어리스트 제공 (StatDeckDTO)
     @GetMapping("/deck")
-    public StatDeckDTO GetChamp(){
-        return null;
+    public List<StatDeckDTO> GetChamp(){
+        return mocker.GetMockDeck();
     }
 
     // TODO 챔피언 티어리스트 제공 (StatUnitDTOs)
@@ -43,7 +48,7 @@ public class StatController {
     // TODO 아이템 티어리스트 제공 (StatItemDTOs)
     @GetMapping("/item")
     public StatItemDTOs GetItem(){
-        return null;
+        return mocker.GetMockItem();
     }
 
 
