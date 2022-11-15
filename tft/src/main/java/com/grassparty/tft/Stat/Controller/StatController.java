@@ -33,11 +33,14 @@ public class StatController {
     @Autowired
     GetStatChampionResultBean getStatChampionResultBean;
 
+    @Autowired
+    Mocker mocker;
+
 
     // TODO 덱 티어리스트 제공 (StatDeckDTO)
     @GetMapping("/deck")
-    public StatDeckDTO GetChamp(){
-        return null;
+    public List<StatDeckDTO> GetChamp(){
+        return mocker.GetMockDeck();
     }
 
     // TODO 챔피언 티어리스트 제공 (StatUnitDTOs)
@@ -49,7 +52,7 @@ public class StatController {
     // TODO 아이템 티어리스트 제공 (StatItemDTOs)
     @GetMapping("/item")
     public StatItemDTOs GetItem(){
-        return null;
+        return mocker.GetMockItem();
     }
 
 

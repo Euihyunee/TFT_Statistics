@@ -10,6 +10,7 @@ public class StatDeckDTO {
     String version;
     String deckName;
     float averagePlacement;
+    float frequency;
     String tier; // 덱 티어
     // 유닛
     List<RecordUnitDTO> unit;
