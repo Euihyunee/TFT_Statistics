@@ -28,7 +28,7 @@ public class HistoryService {
         return GetRecordByMatchIdBean.exec(matchid);
     }
 
-    public UserInfoDTO GetUserInfo(){
-        return getUserInfoBean.exec();
+    public UserInfoDTO GetUserInfo(String userName){
+        return getUserInfoBean.exec(userName);
     }
 }
