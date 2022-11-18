@@ -40,7 +40,7 @@ public class GetLeagueEntryBean {
 
             // Manually converting the response body InputStream to summonerDTO using Jackson
             ObjectMapper mapper = new ObjectMapper();
-            Set<LeagueEntryDTO> leagueEntryDTOSet = mapper.readValue(responseStream, new TypeReference<>() { });
+            Set<LeagueEntryDTO> leagueEntryDTOSet = mapper.readValue(responseStream, new TypeReference<Set<LeagueEntryDTO>>() { });
             Iterator iter = leagueEntryDTOSet.iterator();
             leagueEntryDTO = (LeagueEntryDTO) iter.next();
 
