@@ -5,14 +5,14 @@ import com.grassparty.tft.Model.DTO.UserInfoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@org.springframework.stereotype.Controller
 @CrossOrigin("*")
 public class Controller {
     @Autowired
     HistoryService historyService;
 
     @GetMapping("/")
-    public String helloDTO(){ return "hello";}
+    public String helloDTO(){ return "forward:/index.html";}
 
     // TODO 유저 정보 제공 (UserInfoDTO)
     @GetMapping("/user/{userName}")
