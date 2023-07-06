@@ -29,7 +29,7 @@ public class GetMatchHistoryByNameBean {
 
 
     public MetaRecordDTO[] exec(String name){
-        // puuid 요청
+        // TODO puuid 요청
         SummonerDTO summonerDTO = getSummonerDTOByNameBean.exec(name);
 
         // matchid 받기

@@ -55,36 +55,67 @@
 **유저의 요청을 담은 History와 통계 요청인 Stat으로 구분하여 Controller 작성**
 <br/>
 
-1. package com.grassparty.tft.History.Controller
+### 1. package com.grassparty.tft.History.Controller
 
 - 유저 닉네임을 Get방식으로 받아와 유저 전적을 전해줌
+
 ```java
     @GetMapping("/user/{userName}")
     public UserInfoDTO GetUserInfo(@PathVariable String userName){
         return historyService.GetUserInfo(userName);
     }
-```
-
-2. package com.grassparty.tft.Stat.Controller
-
-- 덱 티어리스트 제공 
-```java
-@GetMapping("/deck")
-    public List<StatDeckDTO> GetChamp(){
-        return mocker.GetMockDeck();
-    }
 ```  
-- 챔피언 티어리스트 제공
- ```java
-@GetMapping("/unit")
-    public List<StatChampionResultDAO> GetStatChampionResult(){
-        return statService.GetStatChampionResult();
-    }
-```
-- 아이템 티어리스트 제공 
-```java
-@GetMapping("/item")
-    public StatItemDTOs GetItem(){
-        return mocker.GetMockItem();
-    }
-```
+
+
+#### 1.1. 동작 방식은 다음과 같습니다. 
+
+> 1. 닉네임을 가지고 유저정보를 라이엇 API에 요청합니다. 
+> 2. 유저정보를 기반으로 최근전적(matchId)을 라이엇 API에 요청합니다. 
+> 3. matchId가 DB에 있는지 검사합니다. 
+>   - DB에 있는 경우 DB에서 정보를 가져와 전달합니다. 
+>   - DB에 없는 경우 해당 matchId의 정보(matchDTO)를 라이엇 API에 요청한 후에 DB에 저장 후 전달합니다.  
+
+
+
+```java 
+public MetaRecordDTO[] exec(String name){
+        // 소환사의 닉네임을 가지고 라이엇 유저정보 API 요청 
+        SummonerDTO summonerDTO = getSummonerDTOByNameBean.exec(name);
+
+        // 유저정보를 기반으로 다시 라이엇 matchid(최근게임 10건) API 요청 
+        MatchID matchID = getMatchIDBean.exec(summonerDTO);
+
+        /* 라이엇의 데이터를 받을 DTO 리스트 선언 
+            fullRecordDTO = 라이엇 전체 DTO
+            metaRecordDTO = 라이엇 데이터에서 필요한 데이터만 추출해 매핑한 DTO
+        */
+        MetaRecordDTO[] metaRecordDTOs = new MetaRecordDTO[10];
+
+        
+        for(int i=0; i < matchID.getMatchid().length; i++){
+            // matchID가 DB에 있는 경우 -> 최근 전적이 이미 저장되어있는 경우
+            if (recordRepository.IsExistByMatchid(matchID.getMatchid()[i])){
+
+                // fullRecordDTO를 Matchid로 가져오기
+                RecordDTO recordDTO = recordRepository.GetRecordDTOFromRepository(matchID.getMatchid()[i]);
+
+                metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(recordDTO, summonerDTO.getPuuid());
+            // matchid가 DB에 없을 떄 경우
+            }else{
+                // matchID로 라이엇 matchDTO API 요청 
+                MatchDto matchDto = getMatchDTOBean.exec(matchID.getMatchid()[i]);
+
+                // matchDTO FullMatchDTO로 받기
+                RecordDTO recordDTO;
+                recordDTO = getRecordFromMatchDTOBean.exec(matchDto);
+
+                // FullRecord DB 저장
+                saveRecordBean.exec(recordDTO);
+
+                // FullMatchDTO를 MetaRecordDTO로 변환
+                metaRecordDTOs[i] = getMetaRecordFromFullRecordBean.exec(recordDTO, summonerDTO.getPuuid());
+            }
+        }
+        return metaRecordDTOs;
+}
+```  
